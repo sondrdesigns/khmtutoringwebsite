@@ -1,6 +1,8 @@
+import { memo } from "react";
 import { Award, Clock, Heart, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Move static data outside component
 const features = [
   {
     icon: Award,
@@ -24,7 +26,7 @@ const features = [
   },
 ];
 
-export const MissionSection = () => {
+export const MissionSection = memo(() => {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -83,7 +85,7 @@ export const MissionSection = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              At KHM Tutoring, we believe every student deserves personalized attention and the tools to succeed. Our mission is to build confidence, foster critical thinking, and create a solid academic foundation that lasts a lifetime.
+              At KHM Tutoring, Hawaii's trusted tutoring service, we believe every student deserves personalized attention and the tools to succeed. Our mission is to build confidence, foster critical thinking, and create a solid academic foundation that lasts a lifetime for students across Honolulu and all of Hawaii.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -92,7 +94,7 @@ export const MissionSection = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              We partner with families to provide exceptional one-on-one instruction that adapts to each student's learning style, helping them not just understand concepts, but truly master them.
+              We partner with families throughout Oahu and Hawaii to provide exceptional one-on-one instruction that adapts to each student's learning style, helping them not just understand concepts, but truly master them.
             </motion.p>
           </motion.div>
 
@@ -151,4 +153,4 @@ export const MissionSection = () => {
       </div>
     </section>
   );
-};
+});

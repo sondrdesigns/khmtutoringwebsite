@@ -39,10 +39,10 @@ const About = () => {
               </div>
             </div>
             <p className="text-xl text-foreground leading-relaxed text-center">
-              At KHM Tutoring, we believe that every student has the ability to succeed with the right guidance, support, and mindset. Our mission is to empower students to achieve academic excellence and confidence through personalized, high-quality tutoring.
+              At KHM Tutoring, Hawaii's premier tutoring service, we believe that every student has the ability to succeed with the right guidance, support, and mindset. Our mission is to empower students across Honolulu and all of Hawaii to achieve academic excellence and confidence through personalized, high-quality tutoring.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed text-center">
-              Founded on the belief that education should be both effective and inspiring, KHM Tutoring provides one-on-one and small group tutoring across a wide range of academic subjects — from core areas like math, English, and science to test preparation and enrichment courses designed to challenge advanced learners.
+              Founded on the belief that education should be both effective and inspiring, KHM Tutoring provides one-on-one and small group tutoring throughout Hawaii — from Honolulu to all of Oahu. We cover a wide range of academic subjects, from core areas like math, English, and science to test preparation and enrichment courses designed to challenge advanced learners.
             </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ const About = () => {
                 Our Story
               </h3>
               <p className="text-muted-foreground leading-relaxed text-base">
-                KHM Tutoring began with a simple vision: to create affordable, high quality tutoring where students not only improve their grades but also rediscover their motivation to learn. What started as a local tutoring service has grown into a trusted academic partner for families seeking meaningful, results-driven instruction.
+                KHM Tutoring began with a simple vision: to create affordable, high quality tutoring in Hawaii where students not only improve their grades but also rediscover their motivation to learn. What started as a local Honolulu tutoring service has grown into a trusted academic partner for families across Oahu and all of Hawaii seeking meaningful, results-driven instruction.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ const About = () => {
                 Our Team
               </h3>
               <p className="text-muted-foreground leading-relaxed text-base">
-                Our team of tutors consists of experienced educators and subject specialists who share one goal — helping each student succeed. Every tutor is carefully vetted for expertise, communication skills, and dedication. We take pride in matching students with tutors who best fit their learning style, ensuring a productive and comfortable learning experience.
+                Our team of tutors in Hawaii consists of experienced educators and subject specialists who share one goal — helping each student succeed. Every tutor serving Honolulu and the surrounding areas is carefully vetted for expertise, communication skills, and dedication. We take pride in matching Hawaii students with tutors who best fit their learning style, ensuring a productive and comfortable learning experience.
               </p>
             </div>
 
@@ -117,7 +117,7 @@ const About = () => {
               <span className="text-primary">Flexible Learning</span>
             </div>
             <p className="text-xl text-foreground leading-relaxed">
-              Whether lessons are held in-home or at a nearby library, our tutors make learning accessible, engaging, and tailored to each student's goals.
+              Whether lessons are held in-home throughout Honolulu and Oahu, at a nearby library, or online, our Hawaii tutors make learning accessible, engaging, and tailored to each student's goals. We serve families across the entire island of Oahu and beyond.
             </p>
           </div>
         </div>

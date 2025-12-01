@@ -54,6 +54,18 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      minify: 'esbuild',
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            'motion-vendor': ['motion/react', 'framer-motion'],
+            'ui-vendor': ['lucide-react'],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000,
     },
     server: {
       port: 3000,

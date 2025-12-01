@@ -1,10 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import logoImage from "figma:asset/9dd0cc8891b8db9b815fdcb7342d12e827711047.png";
 
-export const LoadingScreen = () => {
+// Memoize particle array
+const PARTICLE_COUNT = 20;
+
+export const LoadingScreen = memo(() => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  // Memoize window dimensions to avoid recalculating on every render
+  const windowDimensions = useMemo(() => ({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080,
+  }), []);
+
+  const particles = useMemo(() => 
+    Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
+      id: i,
+      x: Math.random() * windowDimensions.width,
+      y: Math.random() * windowDimensions.height,
+      delay: Math.random() * 2,
+      duration: 4 + Math.random() * 3,
+    })), [windowDimensions]
+  );
 
   useEffect(() => {
     // Simulate loading progress
@@ -62,28 +81,28 @@ export const LoadingScreen = () => {
           </div>
 
           {/* Floating Particles */}
-          {[...Array(20)].map((_, i) => (
+          {particles.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: particle.x,
+                y: particle.y,
                 opacity: 0,
               }}
               animate={{
-                y: [0, -50, 0],
+                y: [particle.y, particle.y - 50, particle.y],
                 opacity: [0, 0.8, 0],
               }}
               transition={{
-                duration: 4 + Math.random() * 3,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: particle.delay,
                 ease: [0.45, 0.05, 0.55, 0.95],
               }}
               className="absolute w-2 h-2 bg-white rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(particle.x / windowDimensions.width) * 100}%`,
+                top: `${(particle.y / windowDimensions.height) * 100}%`,
               }}
             />
           ))}
@@ -128,8 +147,11 @@ export const LoadingScreen = () => {
               >
                 <img
                   src={logoImage}
-                  alt="KHM Tutoring"
+                  alt="KHM Tutoring - Expert Tutors in Hawaii and Honolulu"
                   className="w-24 h-24 object-contain"
+                  loading="eager"
+                  width={96}
+                  height={96}
                 />
               </motion.div>
 
@@ -228,4 +250,4 @@ export const LoadingScreen = () => {
       )}
     </AnimatePresence>
   );
-};
+});

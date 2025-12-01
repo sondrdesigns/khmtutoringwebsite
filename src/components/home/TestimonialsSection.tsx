@@ -1,8 +1,10 @@
+import { memo, useCallback, useMemo } from "react";
 import { Star, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Move static data outside component
 const testimonials = [
   {
     name: "Sarah Johnson",
@@ -30,16 +32,20 @@ const testimonials = [
   },
 ];
 
-export const TestimonialsSection = () => {
+export const TestimonialsSection = memo(() => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
+  const nextTestimonial = useCallback(() => {
+    setActiveIndex((current) => (current + 1) % testimonials.length);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextTestimonial, 5000);
+    return () => clearInterval(interval);
+  }, [nextTestimonial]);
+
+  const activeTestimonial = useMemo(() => testimonials[activeIndex], [activeIndex]);
+  const starArray = useMemo(() => Array.from({ length: activeTestimonial.rating }), [activeTestimonial.rating]);
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
@@ -118,7 +124,7 @@ export const TestimonialsSection = () => {
 
                   {/* Stars */}
                   <div className="flex gap-1 mb-6 relative z-10">
-                    {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
+                    {starArray.map((_, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, scale: 0 }}
@@ -139,7 +145,7 @@ export const TestimonialsSection = () => {
                     transition={{ delay: 0.2 }}
                     className="text-base md:text-lg text-foreground/90 mb-8 leading-relaxed relative z-10 italic"
                   >
-                    "{testimonials[activeIndex].content}"
+                    "{activeTestimonial.content}"
                   </motion.p>
 
                   {/* Author */}
@@ -154,14 +160,14 @@ export const TestimonialsSection = () => {
                       transition={{ duration: 0.5 }}
                       className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg md:text-xl"
                     >
-                      {testimonials[activeIndex].name.charAt(0)}
+                      {activeTestimonial.name.charAt(0)}
                     </motion.div>
                     <div>
                       <p className="font-semibold text-base md:text-lg">
-                        {testimonials[activeIndex].name}
+                        {activeTestimonial.name}
                       </p>
                       <p className="text-sm md:text-base text-muted-foreground">
-                        {testimonials[activeIndex].role}
+                        {activeTestimonial.role}
                       </p>
                     </div>
                   </motion.div>
@@ -223,4 +229,4 @@ export const TestimonialsSection = () => {
       </div>
     </section>
   );
-};
+});

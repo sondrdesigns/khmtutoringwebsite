@@ -25,7 +25,7 @@ const Contact = () => {
               </span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-              Schedule a session or ask us anything about our courses
+              Contact KHM Tutoring in Hawaii and Honolulu. Schedule a session or ask us anything about our tutoring services. Serving students across Oahu and all of Hawaii.
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ const Contact = () => {
                   Let's Start Your Learning Journey
                 </h2>
                 <p className="text-sm md:text-base text-muted-foreground">
-                  Whether you're looking to boost grades, prep for tests, or build confidence, we're here to help. Fill out the form and we'll get back to you within 24 hours.
+                  Whether you're looking to boost grades, prep for tests, or build confidence, our Hawaii tutors are here to help. Serving Honolulu, Oahu, and all of Hawaii. Fill out the form and we'll get back to you within 24 hours.
                 </p>
               </div>
 

@@ -1,16 +1,17 @@
+import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
 import logoImage from "figma:asset/51ab7cd8aba1e62a4cfa312f8af5d07e91449f85.png";
 
-export const Footer = () => {
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About Us" },
-    { to: "/educators", label: "Educators" },
-    { to: "/contact", label: "Contact Us" },
-  ];
+// Move static data outside component
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About Us" },
+  { to: "/educators", label: "Educators" },
+  { to: "/contact", label: "Contact Us" },
+];
 
-  const socialLinks = [
+const socialLinks = [
     {
       name: "Instagram",
       icon: Instagram,
@@ -33,7 +34,10 @@ export const Footer = () => {
       url: "https://www.yelp.com/biz/khm-tutoring",
       color: "hover:text-red-500",
     },
-  ];
+];
+
+export const Footer = memo(() => {
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
     <footer className="bg-primary text-white">
@@ -59,8 +63,11 @@ export const Footer = () => {
           <div className="flex justify-center order-first md:order-none">
             <img
               src={logoImage}
-              alt="KHM Tutoring"
+              alt="KHM Tutoring - Expert Tutors in Hawaii and Honolulu"
               className="w-40 md:w-48 h-auto object-contain"
+              loading="lazy"
+              width={192}
+              height={192}
             />
           </div>
 
@@ -69,6 +76,11 @@ export const Footer = () => {
             <div>
               <p className="text-white text-sm md:text-base break-all">
                 Email: khmtutoring1@gmail.com
+              </p>
+            </div>
+            <div>
+              <p className="text-white/80 text-sm md:text-base font-semibold">
+                Serving Honolulu, Oahu & All of Hawaii
               </p>
             </div>
             <div>
@@ -111,17 +123,17 @@ export const Footer = () => {
         <div className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <p className="text-center text-white/60 text-xs md:text-sm">
-              © Copyright {new Date().getFullYear()} KHM Tutoring. All Rights Reserved.
+              © Copyright {currentYear} KHM Tutoring. All Rights Reserved.
             </p>
             <p className="text-center text-white/60 text-xs md:text-sm">
               Site by{" "}
               <a
-                href="https://your-design-agency.com"
+                href="https://www.sondrdesigns.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-colors underline underline-offset-2"
               >
-                Your Design Agency
+                Sondr Designs
               </a>
             </p>
           </div>
@@ -129,4 +141,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useMemo } from "react";
 import { Award, BookOpen, GraduationCap, Star, X } from "lucide-react";
 import { cn } from "../lib/utils";
 import {
@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "../components/ui/dialog";
 
+// Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
 
 const educators = [
@@ -86,13 +87,16 @@ const educators = [
   },
 ];
 
-export default function Educators() {
+const Educators = memo(() => {
   const [selectedEducator, setSelectedEducator] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredEducators = activeFilter === "All" 
-    ? educators 
-    : educators.filter(edu => edu.category === activeFilter);
+  const filteredEducators = useMemo(() => 
+    activeFilter === "All" 
+      ? educators 
+      : educators.filter(edu => edu.category === activeFilter),
+    [activeFilter]
+  );
 
   return (
     <main className="pt-24">
@@ -107,7 +111,7 @@ export default function Educators() {
               </span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Experienced, passionate teachers dedicated to your child's success
+              Experienced, passionate tutors in Hawaii and Honolulu dedicated to your child's success. Serving students across Oahu and all of Hawaii.
             </p>
           </div>
         </div>
@@ -149,8 +153,11 @@ export default function Educators() {
                 <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
                   <img
                     src={educator.image}
-                    alt={educator.name}
+                    alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
+                    width={400}
+                    height={192}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
@@ -199,8 +206,11 @@ export default function Educators() {
               <div className="relative h-64 rounded-xl overflow-hidden">
                 <img
                   src={educators[selectedEducator].image}
-                  alt={educators[selectedEducator].name}
+                  alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width={600}
+                  height={256}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -273,4 +283,6 @@ export default function Educators() {
       )}
     </main>
   );
-}
+});
+
+export default Educators;

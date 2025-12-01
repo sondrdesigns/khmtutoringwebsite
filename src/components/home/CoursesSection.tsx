@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, memo, useMemo } from "react";
 import { BookOpen, Calculator, FileText, GraduationCap, Target, TrendingUp } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { motion } from "framer-motion";
 
+// Move static data outside component
 const courses = [
   {
     id: "k12",
@@ -72,10 +73,10 @@ const courses = [
   },
 ];
 
-export const CoursesSection = () => {
+export const CoursesSection = memo(() => {
   const [activeTab, setActiveTab] = useState("k12");
 
-  const activeCourse = courses.find((c) => c.id === activeTab)!;
+  const activeCourse = useMemo(() => courses.find((c) => c.id === activeTab)!, [activeTab]);
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
@@ -238,4 +239,4 @@ export const CoursesSection = () => {
       </div>
     </section>
   );
-};
+});

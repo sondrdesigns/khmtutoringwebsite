@@ -1,9 +1,14 @@
+import { memo, useMemo } from "react";
 import { Button } from "../ui/button";
 import { ArrowRight, Users, TrendingUp, Sparkles, Award } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { motion } from "motion/react";
 
-export const HeroSection = () => {
+// Memoize sparkle array to avoid recreating on every render
+const SPARKLE_COUNT = 15;
+
+export const HeroSection = memo(() => {
+  const sparkles = useMemo(() => Array.from({ length: SPARKLE_COUNT }, (_, i) => i), []);
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 md:pt-20 overflow-hidden bg-background">
       {/* Enhanced Background gradient with animation */}
@@ -42,7 +47,7 @@ export const HeroSection = () => {
 
       {/* Floating Sparkles for Mobile Magic */}
       <div className="absolute inset-0 md:hidden overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {sparkles.map((i) => (
           <motion.div
             key={i}
             initial={{
@@ -128,7 +133,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Expert instruction in Math, English, and Test Prep. Take it higher with personalized learning that builds confidence and achieves academic excellence.
+              Expert tutoring in Hawaii and Honolulu. Specializing in Math, English, and Test Prep for students across Oahu. Take it higher with personalized learning that builds confidence and achieves academic excellence.
             </motion.p>
             
             <motion.div 
@@ -195,8 +200,11 @@ export const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent z-10 md:hidden" />
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1654366698665-e6d611a9aaa9?w=800"
-                alt="Students learning together"
+                alt="Students learning together with KHM Tutoring in Hawaii and Honolulu"
                 className="w-full h-auto"
+                loading="lazy"
+                width={800}
+                height={600}
               />
             </motion.div>
             
@@ -308,4 +316,4 @@ export const HeroSection = () => {
       </div>
     </section>
   );
-};
+});

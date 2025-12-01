@@ -1,9 +1,18 @@
+import { memo, useCallback } from "react";
 import { Button } from "../ui/button";
 import { ArrowRight, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export const CTASection = () => {
+export const CTASection = memo(() => {
   const navigate = useNavigate();
+
+  const handleContactClick = useCallback(() => {
+    navigate("/contact");
+  }, [navigate]);
+
+  const handleEducatorsClick = useCallback(() => {
+    navigate("/educators");
+  }, [navigate]);
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
@@ -20,12 +29,12 @@ export const CTASection = () => {
             Ready to Help Your Child <span className="text-gradient font-bold">Thrive Academically</span>?
           </h2>
           <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto px-4">
-            Join hundreds of families who trust KHM Tutoring for personalized, results-driven education.
+            Join hundreds of families across Hawaii and Honolulu who trust KHM Tutoring for personalized, results-driven education. Serving students throughout Oahu and all of Hawaii.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
             <Button
-              onClick={() => navigate("/contact")}
+              onClick={handleContactClick}
               size="lg"
               className="bg-white text-primary hover:bg-white/90 px-6 py-5 md:px-8 md:py-6 rounded-full shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
             >
@@ -33,7 +42,7 @@ export const CTASection = () => {
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
-              onClick={() => navigate("/educators")}
+              onClick={handleEducatorsClick}
               size="lg"
               variant="outline"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-5 md:px-8 md:py-6 rounded-full transition-all duration-300 w-full sm:w-auto"
@@ -63,4 +72,4 @@ export const CTASection = () => {
       </div>
     </section>
   );
-};
+});
