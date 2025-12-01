@@ -91,7 +91,7 @@ const AppContent = () => {
       <StructuredData type={getPageType()} />
       <LoadingScreen />
       <ScrollToTop />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background w-full">
         <Navigation />
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>}>
           <Routes>

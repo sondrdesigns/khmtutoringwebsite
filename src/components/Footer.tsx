@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
-import logoImage from "figma:asset/51ab7cd8aba1e62a4cfa312f8af5d07e91449f85.png";
+import logoImage from "../assets/51ab7cd8aba1e62a4cfa312f8af5d07e91449f85.png";
 
 // Move static data outside component
 const navLinks = [
@@ -40,9 +40,9 @@ export const Footer = memo(() => {
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-primary text-white w-full" style={{ width: '100vw', maxWidth: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-8 md:py-12">
+      <div className="w-full container mx-auto px-4 py-8 md:py-12">
         <div className="grid md:grid-cols-3 gap-8 items-start text-center md:text-left">
           {/* Left - Navigation Links */}
           <div className="space-y-3 md:space-y-4">
@@ -119,7 +119,7 @@ export const Footer = memo(() => {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-white/10">
+      <div className="w-full border-t border-white/10">
         <div className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2">
             <p className="text-center text-white/60 text-xs md:text-sm">

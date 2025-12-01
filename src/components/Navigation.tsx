@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { NavLink } from "./NavLink";
 import { Menu, X } from "lucide-react";
 import { cn } from "../lib/utils";
-import logoImage from "figma:asset/9dd0cc8891b8db9b815fdcb7342d12e827711047.png";
+import logoImage from "../assets/9dd0cc8891b8db9b815fdcb7342d12e827711047.png";
 
 // Move static data outside component
 const navItems = [
