@@ -183,7 +183,7 @@ export const HeroSection = memo(() => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative mt-8 lg:mt-0 hidden lg:block"
+            className="relative mt-8 lg:mt-0 hidden lg:block overflow-visible"
           >
             <motion.div 
               whileHover={{ scale: 1.02 }}
