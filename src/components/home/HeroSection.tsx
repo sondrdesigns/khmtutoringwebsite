@@ -175,19 +175,6 @@ export const HeroSection = memo(() => {
                   </span>
                 </Button>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto"
-              >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full border-2 hover:bg-primary/5 w-full sm:w-auto"
-                >
-                  View Courses
-                </Button>
-              </motion.div>
             </motion.div>
           </div>
 
