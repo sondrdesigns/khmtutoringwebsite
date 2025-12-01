@@ -117,12 +117,29 @@ const Educators = memo(() => {
   const [selectedEducator, setSelectedEducator] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredEducators = useMemo(() => 
-    activeFilter === "All" 
-      ? educators 
-      : educators.filter(edu => edu.category === activeFilter),
-    [activeFilter]
-  );
+  const filteredEducators = useMemo(() => {
+    if (activeFilter === "All") {
+      return educators;
+    }
+    
+    // Map filter categories to subject keywords
+    const filterMap: Record<string, string[]> = {
+      "Math": ["Math", "Mathematics", "Calculus", "Physics", "Pre-Calculus"],
+      "English": ["English", "Essay Writing", "Reading Comprehension", "College Essay Writing", "Writing"],
+      "Test Prep": ["SAT", "ACT", "SSAT", "MCAT", "Test Prep"],
+      "AP Subjects": ["AP", "Advanced Placement"]
+    };
+    
+    const keywords = filterMap[activeFilter] || [];
+    
+    return educators.filter(edu => 
+      edu.subjects.some(subject => 
+        keywords.some(keyword => 
+          subject.toLowerCase().includes(keyword.toLowerCase())
+        )
+      )
+    );
+  }, [activeFilter]);
 
   return (
     <main className="pt-24">
@@ -189,18 +206,23 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <h3 className="mb-2">
+                <div className="p-6 pb-16 flex flex-col">
+                  <h3 className="mb-2 font-semibold">
                     {educator.name}
                   </h3>
-                  <p className="text-primary mb-2">
+                  <p className="text-primary mb-2 text-sm">
                     {educator.subjects.join(" • ")}
                   </p>
-                  <p className="text-muted-foreground italic">
+                  <p className="text-muted-foreground italic text-sm mb-2 overflow-hidden" style={{ 
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    maxHeight: '3rem'
+                  }}>
                     "{educator.tagline}"
                   </p>
                 </div>
-                <div className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-primary transition-colors">
+                <div className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium">
                   Click for full bio →
                 </div>
               </button>
