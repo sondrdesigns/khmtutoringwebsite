@@ -97,6 +97,16 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm md:text-base">Phone Number (Optional)</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="(808) 123-4567"
+                    className="h-11 md:h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="grade" className="text-sm md:text-base">Student Grade</Label>
                   <Input
                     id="grade"
