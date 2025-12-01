@@ -53,7 +53,7 @@
     },
     build: {
       target: 'esnext',
-      outDir: 'build',
+      outDir: 'dist',
       minify: 'esbuild',
       cssMinify: true,
       rollupOptions: {
