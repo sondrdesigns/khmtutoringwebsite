@@ -1,14 +1,20 @@
-import { memo, useMemo } from "react";
+import { memo, useMemo, useCallback } from "react";
 import { Button } from "../ui/button";
 import { ArrowRight, Users, TrendingUp, Sparkles, Award } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 
 // Memoize sparkle array to avoid recreating on every render
 const SPARKLE_COUNT = 15;
 
 export const HeroSection = memo(() => {
+  const navigate = useNavigate();
   const sparkles = useMemo(() => Array.from({ length: SPARKLE_COUNT }, (_, i) => i), []);
+
+  const handleConsultationClick = useCallback(() => {
+    navigate("/contact");
+  }, [navigate]);
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 md:pt-20 overflow-hidden bg-background">
       {/* Enhanced Background gradient with animation */}
@@ -149,6 +155,7 @@ export const HeroSection = memo(() => {
               >
                 <Button
                   size="lg"
+                  onClick={handleConsultationClick}
                   className="bg-accent hover:bg-accent/90 text-accent-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group w-full sm:w-auto relative overflow-hidden"
                 >
                   <motion.span
