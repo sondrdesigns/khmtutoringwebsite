@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
-import logoImage from "../assets/51ab7cd8aba1e62a4cfa312f8af5d07e91449f85.png";
+import logoImage from "../assets/khm-tutoring-logo.png";
 
 // Move static data outside component
 const navLinks = [

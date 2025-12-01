@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -9,9 +10,103 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    grade: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      subject: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      // EmailJS configuration
+      // Get your credentials from https://www.emailjs.com/
+      // See EMAILJS_SETUP.md for detailed setup instructions
+      // For production, use environment variables:
+      // const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      // const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      // const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+      
+      // Check if EmailJS is configured
+      if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_PUBLIC_KEY") {
+        throw new Error("EmailJS is not configured. Please set up your EmailJS credentials. See EMAILJS_SETUP.md for instructions.");
+      }
+
+      const templateParams = {
+        to_email: "khmtutoring1@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || "Not provided",
+        grade: formData.grade || "Not provided",
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.email,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        grade: "",
+        subject: "",
+        message: "",
+      });
+      
+      // Reset form
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 5000);
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setSubmitStatus("error");
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <main className="pt-20 md:pt-24">
       {/* Hero Section */}
@@ -74,11 +169,18 @@ const Contact = () => {
 
             {/* Right - Form */}
             <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <form className="bg-card rounded-2xl md:rounded-3xl shadow-xl border border-border p-6 md:p-8 space-y-5 md:space-y-6">
+              <form 
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="bg-card rounded-2xl md:rounded-3xl shadow-xl border border-border p-6 md:p-8 space-y-5 md:space-y-6"
+              >
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-sm md:text-base">Full Name *</Label>
                   <Input
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="John Doe"
                     required
                     className="h-11 md:h-12"
@@ -89,7 +191,10 @@ const Contact = () => {
                   <Label htmlFor="email" className="text-sm md:text-base">Email *</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="john@example.com"
                     required
                     className="h-11 md:h-12"
@@ -100,7 +205,10 @@ const Contact = () => {
                   <Label htmlFor="phone" className="text-sm md:text-base">Phone Number (Optional)</Label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="(808) 123-4567"
                     className="h-11 md:h-12"
                   />
@@ -110,6 +218,9 @@ const Contact = () => {
                   <Label htmlFor="grade" className="text-sm md:text-base">Student Grade</Label>
                   <Input
                     id="grade"
+                    name="grade"
+                    value={formData.grade}
+                    onChange={handleChange}
                     placeholder="e.g., 10th Grade"
                     className="h-11 md:h-12"
                   />
@@ -117,7 +228,7 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="subject" className="text-sm md:text-base">Subject / Area of Interest *</Label>
-                  <Select required>
+                  <Select required value={formData.subject} onValueChange={handleSelectChange}>
                     <SelectTrigger className="h-11 md:h-12">
                       <SelectValue placeholder="Select a subject" />
                     </SelectTrigger>
@@ -137,18 +248,40 @@ const Contact = () => {
                   <Label htmlFor="message" className="text-sm md:text-base">Message *</Label>
                   <Textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell us about your learning goals and how we can help..."
                     required
                     className="min-h-[100px] md:min-h-[120px] resize-none"
                   />
                 </div>
 
+                {submitStatus === "success" && (
+                  <div className="flex items-center gap-2 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                    <p className="text-sm text-green-700 dark:text-green-300">
+                      Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === "error" && (
+                  <div className="flex items-center gap-2 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                    <p className="text-sm text-red-700 dark:text-red-300">
+                      Sorry, there was an error sending your message. Please try again or email us directly at khmtutoring1@gmail.com
+                    </p>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 py-5 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Inquiry
+                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
                 </Button>
 
                 <p className="text-xs md:text-sm text-muted-foreground text-center">

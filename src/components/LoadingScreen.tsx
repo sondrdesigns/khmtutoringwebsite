@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import logoImage from "../assets/9dd0cc8891b8db9b815fdcb7342d12e827711047.png";
+import logoImage from "../assets/khm-tutoring-logo.png";
 
 // Memoize particle array
 const PARTICLE_COUNT = 20;

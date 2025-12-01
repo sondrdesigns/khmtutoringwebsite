@@ -25,7 +25,7 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
       "alternateName": "KHM Tutoring Hawaii",
       "description": "Expert K-12 tutoring services in Hawaii and Honolulu. Specializing in Math, English, SAT, SSAT, and AP prep with personalized learning plans.",
       "url": baseUrl,
-      "logo": `${baseUrl}/logo.png`,
+      "logo": `${baseUrl}/khm-tutoring-logo.png`,
       "image": `${baseUrl}/og-image.jpg`,
       "telephone": "+1-808-XXX-XXXX",
       "email": "khmtutoring1@gmail.com",
