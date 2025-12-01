@@ -248,7 +248,7 @@ export const HeroSection = memo(() => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
               whileHover={{ scale: 1.1, rotate: 2 }}
-              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-gradient-to-br from-card to-card/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-2xl p-3 md:p-6 border border-border max-w-[160px] md:max-w-[200px]"
+              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-card/95 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-2xl p-3 md:p-6 border-2 border-border/80 max-w-[160px] md:max-w-[200px] z-10"
             >
               <div className="flex items-center gap-2 md:gap-3">
                 <motion.div 
@@ -260,7 +260,7 @@ export const HeroSection = memo(() => {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="p-2 md:p-3 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-lg md:rounded-xl"
+                  className="p-2 md:p-3 bg-secondary/20 rounded-lg md:rounded-xl"
                 >
                   <TrendingUp className="w-4 h-4 md:w-6 md:h-6 text-secondary" />
                 </motion.div>
@@ -275,11 +275,11 @@ export const HeroSection = memo(() => {
                       ease: "easeInOut",
                       delay: 0.5,
                     }}
-                    className="text-lg md:text-2xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent"
+                    className="text-lg md:text-2xl font-bold text-secondary"
                   >
                     +15%
                   </motion.p>
-                  <p className="text-xs md:text-sm text-muted-foreground">Avg. Improvement</p>
+                  <p className="text-xs md:text-sm text-foreground/80 font-medium">Avg. Improvement</p>
                 </div>
               </div>
             </motion.div>
