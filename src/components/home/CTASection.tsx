@@ -1,0 +1,66 @@
+import { Button } from "../ui/button";
+import { ArrowRight, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+export const CTASection = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary" />
+      
+      {/* Decorative shapes */}
+      <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-secondary/30 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight px-2">
+            Ready to Help Your Child <span className="text-gradient font-bold">Thrive Academically</span>?
+          </h2>
+          <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto px-4">
+            Join hundreds of families who trust KHM Tutoring for personalized, results-driven education.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
+            <Button
+              onClick={() => navigate("/contact")}
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 px-6 py-5 md:px-8 md:py-6 rounded-full shadow-2xl hover:shadow-white/20 transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
+            >
+              Contact Us
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button
+              onClick={() => navigate("/educators")}
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-5 md:px-8 md:py-6 rounded-full transition-all duration-300 w-full sm:w-auto"
+            >
+              <Users className="mr-2" />
+              View Educators
+            </Button>
+          </div>
+
+          <div className="pt-6 md:pt-8 flex flex-wrap justify-center gap-6 md:gap-8 text-white/80 px-4">
+            <div className="min-w-[100px]">
+              <p className="text-2xl md:text-3xl font-bold text-white">500+</p>
+              <p className="text-sm md:text-base">Students Helped</p>
+            </div>
+            <div className="w-px bg-white/20 hidden sm:block" />
+            <div className="min-w-[100px]">
+              <p className="text-2xl md:text-3xl font-bold text-white">15+</p>
+              <p className="text-sm md:text-base">Years Experience</p>
+            </div>
+            <div className="w-px bg-white/20 hidden sm:block" />
+            <div className="min-w-[100px]">
+              <p className="text-2xl md:text-3xl font-bold text-white">98%</p>
+              <p className="text-sm md:text-base">Satisfaction Rate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
