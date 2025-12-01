@@ -208,24 +208,6 @@ export const TestimonialsSection = memo(() => {
             ))}
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <p className="text-sm md:text-base text-muted-foreground mb-4">
-            Have a review to share?
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="text-primary hover:underline font-semibold"
-          >
-            Log in to post your review
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );
