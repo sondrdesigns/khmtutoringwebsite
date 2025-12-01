@@ -1,5 +1,5 @@
 import { useState, memo, useMemo } from "react";
-import { Award, BookOpen, GraduationCap, Star, X } from "lucide-react";
+import { Award, BookOpen, GraduationCap, X } from "lucide-react";
 import { cn } from "../lib/utils";
 import {
   Dialog,
@@ -176,14 +176,16 @@ const Educators = memo(() => {
                 className="relative h-[400px] group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
                     loading="lazy"
-                    width={400}
-                    height={192}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
@@ -194,16 +196,9 @@ const Educators = memo(() => {
                   <p className="text-primary mb-2">
                     {educator.subjects.join(" • ")}
                   </p>
-                  <p className="text-muted-foreground italic mb-4">
+                  <p className="text-muted-foreground italic">
                     "{educator.tagline}"
                   </p>
-                  <div className="flex gap-2">
-                    <Star className="w-5 h-5 fill-accent text-accent" />
-                    <Star className="w-5 h-5 fill-accent text-accent" />
-                    <Star className="w-5 h-5 fill-accent text-accent" />
-                    <Star className="w-5 h-5 fill-accent text-accent" />
-                    <Star className="w-5 h-5 fill-accent text-accent" />
-                  </div>
                 </div>
                 <div className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-primary transition-colors">
                   Click for full bio →
@@ -233,10 +228,12 @@ const Educators = memo(() => {
                 <img
                   src={educators[selectedEducator].image}
                   alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
-                  width={600}
-                  height={256}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -247,15 +244,6 @@ const Educators = memo(() => {
                     "{educators[selectedEducator].tagline}"
                   </p>
                 </div>
-              </div>
-
-              {/* Star Rating */}
-              <div className="flex gap-2 justify-center">
-                <Star className="w-6 h-6 fill-accent text-accent" />
-                <Star className="w-6 h-6 fill-accent text-accent" />
-                <Star className="w-6 h-6 fill-accent text-accent" />
-                <Star className="w-6 h-6 fill-accent text-accent" />
-                <Star className="w-6 h-6 fill-accent text-accent" />
               </div>
 
               {/* Bio */}
