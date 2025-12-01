@@ -8,81 +8,107 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../components/ui/dialog";
+import kodyImage from "../assets/kody.jpg";
+import andrewImage from "../assets/andrew.jpg";
+import noahImage from "../assets/noah.jpg";
+import peterImage from "../assets/peter.jpg";
+import blytheImage from "../assets/blythe.jpg";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
 
 const educators = [
   {
-    name: "Dr. Emily Carter",
-    subjects: ["Mathematics", "AP Calculus"],
-    tagline: "Patient and methodical",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    bio: "15+ years of experience teaching advanced mathematics. Specializes in making complex concepts accessible and building student confidence.",
-    experience: "15 years",
-    certifications: "PhD Mathematics, Certified AP Instructor",
-    funFact: "Former competitive chess player",
-    grades: "9-12",
-    category: "Math",
-  },
-  {
-    name: "Mr. James Wilson",
-    subjects: ["English", "Writing"],
-    tagline: "Inspiring writer and mentor",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-    bio: "Published author with a passion for developing strong writers. Creates engaging lessons that foster creativity and critical thinking.",
-    experience: "12 years",
-    certifications: "MA English Literature, Published Author",
-    funFact: "Has written 3 young adult novels",
-    grades: "6-12",
-    category: "English",
-  },
-  {
-    name: "Ms. Sarah Kim",
-    subjects: ["SAT", "ACT"],
-    tagline: "Test-prep specialist",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    bio: "Expert in standardized test preparation with proven track record of score improvements. Uses data-driven strategies tailored to each student.",
-    experience: "10 years",
-    certifications: "Certified Test Prep Instructor, Perfect SAT Score",
-    funFact: "Loves solving logic puzzles",
-    grades: "9-12",
+    name: "Kody Kim",
+    subjects: ["Essay Writing", "Reading Comprehension", "Math", "SAT/ACT"],
+    tagline: "Founder with years of tutoring experience",
+    image: kodyImage,
+    bio: "Founder of KHM Tutoring with years of tutoring experience since 2016. Skilled educator focused on improving student scores, test-taking strategies, and understanding of material.",
+    achievements: [
+      "Financial Systems Analyst at HMSA",
+      "Attended Punahou School and University of California, Irvine",
+      "Strong track record of increasing student performance and comprehension",
+      "Specializes in essay writing, reading comprehension, mathematics, and SAT/ACT prep"
+    ],
+    experience: "Since 2016",
+    certifications: "Punahou School, University of California, Irvine",
+    funFact: "Founder of KHM Tutoring",
+    grades: "K-12",
     category: "Test Prep",
   },
   {
-    name: "Dr. Michael Torres",
-    subjects: ["AP Sciences", "Chemistry"],
-    tagline: "Making science fun",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
-    bio: "Research scientist turned educator. Brings real-world applications to every lesson and makes science engaging and accessible.",
-    experience: "18 years",
-    certifications: "PhD Chemistry, AP Science Instructor",
-    funFact: "Amateur astronomer",
-    grades: "9-12",
-    category: "AP Subjects",
+    name: "Andrew Holzman",
+    subjects: ["College Applications", "English", "SAT", "MCAT"],
+    tagline: "Medical student and former corporate lawyer",
+    image: andrewImage,
+    bio: "Medical student and former corporate lawyer with expertise in standardized testing and college admissions consulting.",
+    achievements: [
+      "Attended Phillips Exeter Academy and University of Chicago",
+      "Practiced law internationally (London, Dubai, Sydney, Australia)",
+      "Developed an SAT curriculum used by hundreds of students",
+      "MCAT score: 525/528 (top 0.5% nationwide)",
+      "Students have been accepted to Stanford, Yale, UC Berkeley, UC Irvine, and more",
+      "Specializes in creative nonfiction, verbal reasoning, and test-based performance"
+    ],
+    experience: "Years of experience",
+    certifications: "Phillips Exeter Academy, University of Chicago",
+    funFact: "MCAT score in top 0.5% nationwide",
+    grades: "9-12, College",
+    category: "Test Prep",
   },
   {
-    name: "Ms. Rachel Anderson",
-    subjects: ["K-8 All Subjects"],
-    tagline: "Nurturing young minds",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
-    bio: "Elementary education specialist with a gift for making learning fun. Creates positive, supportive environments where students feel confident to try.",
-    experience: "8 years",
-    certifications: "MA Elementary Education, Reading Specialist",
-    funFact: "Collects children's books",
-    grades: "K-8",
+    name: "Noah Agena",
+    subjects: ["Math", "Physics"],
+    tagline: "Aspiring mechanical engineer",
+    image: noahImage,
+    bio: "Aspiring mechanical engineer and experienced calculus and physics tutor with strong STEM background from Iolani School.",
+    achievements: [
+      "Pursuing a mechanical engineering degree",
+      "Integrates academic expertise with passion and encouragement",
+      "Strong emphasis on teamwork, discipline, perseverance, and mindset",
+      "Experienced in inspiring students to pursue academic and personal goals"
+    ],
+    experience: "Experienced tutor",
+    certifications: "Iolani School",
+    funFact: "Aspiring mechanical engineer",
+    grades: "9-12",
     category: "Math",
   },
   {
-    name: "Mr. David Patel",
-    subjects: ["Mathematics", "SSAT"],
-    tagline: "Building strong foundations",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
-    bio: "Former private school math department head. Specializes in private school admissions prep and advanced mathematics for middle school students.",
-    experience: "14 years",
-    certifications: "MA Mathematics Education, SSAT Expert",
-    funFact: "Marathon runner",
-    grades: "6-9",
+    name: "Peter Greenhill",
+    subjects: ["English", "College Essay Writing", "SAT"],
+    tagline: "Princeton University graduate",
+    image: peterImage,
+    bio: "Princeton University graduate in Philosophy with decades of teaching experience at Iolani School and international academic programs.",
+    achievements: [
+      "Taught English, Philosophy, and SAT at Iolani from 1986–2021",
+      "Director of the Iolani Peace Institute for 17 years",
+      "Program Dean and Dean of Faculty at Cambridge University summer program",
+      "Published writer and longtime educator with extensive global travel",
+      "20 years coaching experience and community involvement"
+    ],
+    experience: "1986-2021 at Iolani",
+    certifications: "Princeton University, Philosophy",
+    funFact: "Director of Iolani Peace Institute for 17 years",
+    grades: "9-12, College",
+    category: "English",
+  },
+  {
+    name: "Blythe Yangson",
+    subjects: ["Math", "SAT/ACT"],
+    tagline: "Experienced science and math tutor",
+    image: blytheImage,
+    bio: "Experienced science and math tutor dedicated to helping students succeed through engaging and approachable teaching.",
+    achievements: [
+      "Graduate of Damien Memorial School and current teacher at Damien",
+      "Teaches Calculus and Pre-Calculus",
+      "Focus on problem-solving, real-world connection, and curiosity-driven learning",
+      "Builds confidence, interaction, and academic skill in the classroom"
+    ],
+    experience: "Current teacher",
+    certifications: "Damien Memorial School",
+    funFact: "Current teacher at Damien Memorial School",
+    grades: "9-12",
     category: "Math",
   },
 ];
@@ -259,12 +285,29 @@ const Educators = memo(() => {
                 </div>
               </div>
 
+              {/* Achievements */}
+              {educators[selectedEducator].achievements && (
+                <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                  <div className="flex items-start gap-2">
+                    <Award className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <span className="font-semibold block mb-2">Achievements</span>
+                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                        {educators[selectedEducator].achievements.map((achievement, idx) => (
+                          <li key={idx}>{achievement}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Certifications */}
               <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
                 <div className="flex items-start gap-2">
                   <GraduationCap className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <span className="font-semibold block mb-1">Certifications</span>
+                    <span className="font-semibold block mb-1">Education & Background</span>
                     <p className="text-muted-foreground">{educators[selectedEducator].certifications}</p>
                   </div>
                 </div>
