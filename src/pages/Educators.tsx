@@ -206,21 +206,12 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-6 pb-24 flex flex-col flex-1 min-h-0">
+                <div className="p-6 pb-16 flex flex-col flex-1 min-h-0">
                   <h3 className="mb-2 font-semibold">
                     {educator.name}
                   </h3>
                   <p className="text-primary mb-2 text-sm">
                     {educator.subjects.join(" • ")}
-                  </p>
-                  <p className="text-muted-foreground italic text-sm mb-0 overflow-hidden" style={{ 
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    maxHeight: '3rem',
-                    lineHeight: '1.5rem'
-                  }}>
-                    "{educator.tagline}"
                   </p>
                 </div>
                 <div className="absolute bottom-4 right-4 left-4 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right pt-2 border-t border-border/50">
