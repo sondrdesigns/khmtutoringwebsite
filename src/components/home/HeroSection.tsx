@@ -75,7 +75,7 @@ export const HeroSection = memo(() => {
             }}
             className="absolute"
           >
-            <Sparkles className="w-4 h-4 text-secondary" />
+            <Sparkles className="w-4 h-4 fill-yellow-400 text-yellow-400" />
           </motion.div>
         ))}
       </div>
@@ -105,7 +105,7 @@ export const HeroSection = memo(() => {
                 }}
                 className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-secondary/30 to-primary/30 backdrop-blur-sm text-secondary-foreground rounded-full text-xs md:text-sm font-semibold border border-secondary/30 inline-flex items-center gap-2"
               >
-                <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
+                <Sparkles className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
                 Trusted by 500+ Students
               </motion.span>
             </motion.div>

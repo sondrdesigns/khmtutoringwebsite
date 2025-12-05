@@ -74,7 +74,7 @@ export const MissionSection = memo(() => {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.5 }}
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left"
+                  className="absolute bottom-[-6px] left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left"
                 />
               </span>
             </motion.h2>
