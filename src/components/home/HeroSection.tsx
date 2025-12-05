@@ -4,6 +4,7 @@ import { ArrowRight, Users, TrendingUp, Sparkles, Award } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
+import heroImage from "../../assets/khm-tutoring-students-learning-hawaii.jpg";
 
 // Memoize sparkle array to avoid recreating on every render
 const SPARKLE_COUNT = 15;
@@ -193,10 +194,10 @@ export const HeroSection = memo(() => {
               {/* Gradient Overlay for Mobile */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent z-10 md:hidden" />
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1654366698665-e6d611a9aaa9?w=800"
-                alt="Students learning together with KHM Tutoring in Hawaii and Honolulu"
+                src={heroImage}
+                alt="KHM Tutoring students learning together in Hawaii - Expert K-12 tutoring services in Honolulu and Oahu"
                 className="w-full h-auto"
-                loading="lazy"
+                loading="eager"
                 width={800}
                 height={600}
               />

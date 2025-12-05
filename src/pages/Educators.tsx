@@ -8,11 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/kody.jpg";
-import andrewImage from "../assets/andrew.jpg";
-import noahImage from "../assets/noah.jpg";
-import peterImage from "../assets/peter.jpg";
-import blytheImage from "../assets/blythe.jpg";
+import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
+import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
+import noahImage from "../assets/khm-tutoring-tutor-noah-agena.jpg";
+import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.jpg";
+import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.jpg";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];

@@ -31,7 +31,6 @@ Email: {{from_email}}
 Phone: {{phone}}
 Student Grade: {{grade}}
 Subject: {{subject}}
-
 Message:
 {{message}}
 

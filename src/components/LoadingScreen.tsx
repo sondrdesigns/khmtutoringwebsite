@@ -7,7 +7,6 @@ const PARTICLE_COUNT = 20;
 
 export const LoadingScreen = memo(() => {
   const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
 
   // Memoize window dimensions to avoid recalculating on every render
   const windowDimensions = useMemo(() => ({
@@ -26,19 +25,12 @@ export const LoadingScreen = memo(() => {
   );
 
   useEffect(() => {
-    // Simulate loading progress
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 500);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 30);
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -205,46 +197,6 @@ export const LoadingScreen = memo(() => {
               </motion.p>
             </motion.div>
 
-            {/* Progress Bar */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="w-64 md:w-80"
-            >
-              <div className="relative h-2 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  className="h-full bg-gradient-to-r from-white to-white/80 rounded-full relative"
-                >
-                  {/* Shimmer Effect */}
-                  <motion.div
-                    animate={{
-                      x: ["-100%", "200%"],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                  />
-                </motion.div>
-              </div>
-              <motion.p
-                className="text-white/80 text-center mt-3 text-sm font-medium"
-                animate={{
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                }}
-              >
-                {progress}%
-              </motion.p>
-            </motion.div>
           </div>
         </motion.div>
       )}
