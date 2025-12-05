@@ -3,6 +3,7 @@ import { Star, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAnimationConfig } from "../../hooks/use-animation-config";
 
 // Move static data outside component
 const testimonials = [
@@ -34,6 +35,7 @@ const testimonials = [
 ];
 
 export const TestimonialsSection = memo(() => {
+  const animationConfig = useAnimationConfig();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const nextTestimonial = useCallback(() => {
@@ -50,26 +52,28 @@ export const TestimonialsSection = memo(() => {
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
-      {/* Animated Background */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-      />
+      {/* Animated Background - disabled on mobile */}
+      {!animationConfig.shouldReduceAnimations && (
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: animationConfig.allowInfiniteAnimations ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+          className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        />
+      )}
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8 * animationConfig.durationMultiplier }}
           className="text-center mb-12 md:mb-16"
         >
           <motion.h2
@@ -84,7 +88,7 @@ export const TestimonialsSection = memo(() => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2 * animationConfig.durationMultiplier }}
             className="text-base md:text-lg text-muted-foreground"
           >
             Real results from real families
@@ -100,28 +104,30 @@ export const TestimonialsSection = memo(() => {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5 * animationConfig.durationMultiplier }}
                 className="px-4"
               >
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={!animationConfig.isMobile ? { scale: 1.02 } : undefined}
                   className="bg-gradient-to-br from-card via-card to-card/80 rounded-3xl shadow-2xl border border-border p-6 md:p-8 lg:p-12 relative overflow-hidden"
                 >
-                  {/* Quote Icon Background */}
-                  <motion.div
-                    animate={{
-                      rotate: [0, 5, -5, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute top-4 right-4 md:top-8 md:right-8 opacity-10"
-                  >
-                    <Quote className="w-24 h-24 md:w-32 md:h-32 text-primary" />
-                  </motion.div>
+                  {/* Quote Icon Background - disabled on mobile */}
+                  {animationConfig.allowInfiniteAnimations && (
+                    <motion.div
+                      animate={{
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 5 * animationConfig.durationMultiplier,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute top-4 right-4 md:top-8 md:right-8 opacity-10"
+                    >
+                      <Quote className="w-24 h-24 md:w-32 md:h-32 text-primary" />
+                    </motion.div>
+                  )}
 
                   {/* Stars */}
                   <div className="flex gap-1 mb-6 relative z-10">
@@ -143,7 +149,7 @@ export const TestimonialsSection = memo(() => {
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.2 * animationConfig.durationMultiplier }}
                     className="text-base md:text-lg text-foreground/90 mb-8 leading-relaxed relative z-10 italic"
                   >
                     "{activeTestimonial.content}"
@@ -153,12 +159,12 @@ export const TestimonialsSection = memo(() => {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
+                    transition={{ delay: 0.3 * animationConfig.durationMultiplier }}
                     className="flex items-center gap-4 relative z-10"
                   >
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ duration: 0.5 }}
+                      whileHover={!animationConfig.isMobile ? { scale: 1.1, rotate: 360 } : undefined}
+                      transition={{ duration: 0.5 * animationConfig.durationMultiplier }}
                       className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg md:text-xl"
                     >
                       {activeTestimonial.name.charAt(0)}
@@ -170,19 +176,21 @@ export const TestimonialsSection = memo(() => {
                     </div>
                   </motion.div>
 
-                  {/* Decorative Gradient */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.1, 0.2, 0.1],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"
-                  />
+                  {/* Decorative Gradient - disabled on mobile */}
+                  {animationConfig.allowInfiniteAnimations && (
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.1, 0.2, 0.1],
+                      }}
+                      transition={{
+                        duration: 4 * animationConfig.durationMultiplier,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"
+                    />
+                  )}
                 </motion.div>
               </motion.div>
             </AnimatePresence>
@@ -194,8 +202,8 @@ export const TestimonialsSection = memo(() => {
               <motion.button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                whileHover={{ scale: 1.3 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={!animationConfig.isMobile ? { scale: 1.3 } : undefined}
+                whileTap={!animationConfig.isMobile ? { scale: 0.9 } : undefined}
                 className={cn(
                   "h-2 rounded-full transition-all duration-300",
                   index === activeIndex
