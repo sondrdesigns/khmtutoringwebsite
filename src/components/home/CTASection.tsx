@@ -24,15 +24,15 @@ export const CTASection = memo(() => {
       <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-secondary/30 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight px-2">
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8 animate-fade-in flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
             Ready to Help Your Child <span className="text-gradient font-bold">Thrive Academically</span>?
           </h2>
-          <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto">
             Join hundreds of families across Hawaii and Honolulu who trust KHM Tutoring for personalized, results-driven education. Serving students throughout Oahu and all of Hawaii.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
             <Button
               onClick={handleContactClick}
               size="lg"
@@ -52,7 +52,7 @@ export const CTASection = memo(() => {
             </Button>
           </div>
 
-          <div className="pt-6 md:pt-8 flex flex-wrap justify-center items-center gap-6 md:gap-8 text-white/80 px-4">
+          <div className="pt-6 md:pt-8 flex flex-wrap justify-center items-center gap-6 md:gap-8 text-white/80 w-full">
             <div className="min-w-[100px] text-center">
               <p className="text-2xl md:text-3xl font-bold text-white">500+</p>
               <p className="text-sm md:text-base">Students Helped</p>
