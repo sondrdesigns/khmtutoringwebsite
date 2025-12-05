@@ -161,7 +161,7 @@ const Educators = memo(() => {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-background sticky top-20 z-40 border-b border-border">
+      <section className="py-8 bg-background border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-3">
             {subjects.map((subject) => (
@@ -190,14 +190,17 @@ const Educators = memo(() => {
               <button
                 key={index}
                 onClick={() => setSelectedEducator(index)}
-                className="relative h-[400px] group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                className="relative min-h-[480px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                <div className="relative aspect-[4/3] min-h-56 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0">
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                    className={cn(
+                      "w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300",
+                      educator.name === "Noah Agena" && "scale-110"
+                    )}
                     loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -206,16 +209,21 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-6 pb-16 flex flex-col flex-1 min-h-0">
-                  <h3 className="mb-2 font-semibold">
-                    {educator.name}
-                  </h3>
-                  <p className="text-primary mb-2 text-sm">
-                    {educator.subjects.join(" • ")}
-                  </p>
-                </div>
-                <div className="absolute bottom-4 right-4 left-4 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right pt-2 border-t border-border/50">
-                  Click for full bio →
+                <div className="p-6 flex flex-col flex-1 min-h-0 gap-3">
+                  <div className="flex-1">
+                    <h3 className="mb-2 text-xl font-semibold font-heading">
+                      {educator.name}
+                    </h3>
+                    <p className="text-primary mb-3 text-sm font-medium">
+                      {educator.subjects.join(" • ")}
+                    </p>
+                    <p className="text-muted-foreground italic text-sm leading-relaxed line-clamp-2">
+                      "{educator.tagline}"
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
+                    Click for full bio →
+                  </div>
                 </div>
               </button>
             ))}
@@ -238,23 +246,28 @@ const Educators = memo(() => {
             
             <div className="space-y-6">
               {/* Educator Image */}
-              <div className="relative h-64 rounded-xl overflow-hidden">
-                <img
-                  src={educators[selectedEducator].image}
-                  alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                <div className="flex items-center justify-center min-h-64 max-h-96 w-full">
+                  <img
+                    src={educators[selectedEducator].image}
+                    alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
+                    className={cn(
+                      "max-w-full max-h-96 w-auto h-auto object-contain",
+                      educators[selectedEducator].name === "Noah Agena" && "scale-110"
+                    )}
+                    loading="lazy"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-xl mb-1">
+                  <p className="text-white text-xl mb-1 drop-shadow-lg">
                     {educators[selectedEducator].subjects.join(" • ")}
                   </p>
-                  <p className="text-white/90 italic">
+                  <p className="text-white/90 italic drop-shadow-lg">
                     "{educators[selectedEducator].tagline}"
                   </p>
                 </div>
