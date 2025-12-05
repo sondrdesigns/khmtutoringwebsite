@@ -58,13 +58,13 @@ export const CTASection = memo(() => {
               <p className="text-sm md:text-base">Students Helped</p>
             </div>
             <div className="w-px bg-white/20 hidden sm:block self-stretch" />
-            <div className="min-w-[120px] md:min-w-[150px] text-center flex flex-col justify-center">
+            <div className="min-w-[120px] md:min-w-[150px] text-center flex flex-col justify-center ml-2 md:ml-4">
               <p className="text-xl md:text-2xl font-bold text-white leading-tight">Iolani & Punahou</p>
               <p className="text-xs md:text-sm mt-1">Alumni & Teaching Experience</p>
               <p className="text-xs md:text-sm text-white/70 mt-0.5">at Iolani, Damien & More</p>
             </div>
             <div className="w-px bg-white/20 hidden sm:block self-stretch" />
-            <div className="min-w-[100px] text-center flex flex-col justify-center">
+            <div className="min-w-[100px] text-center flex flex-col justify-center ml-1 md:ml-2">
               <p className="text-2xl md:text-3xl font-bold text-white">+250-400</p>
               <p className="text-sm md:text-base">Avg SAT Score Increase</p>
             </div>
