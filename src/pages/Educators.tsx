@@ -239,7 +239,7 @@ const Educators = memo(() => {
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
                       "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300",
-                      educator.name === "Peter Greenhill" && "scale-[1.05]"
+                      educator.name === "Peter Greenhill" && "scale-[1.10]"
                     )}
                     loading="lazy"
                     onError={(e) => {
@@ -294,7 +294,7 @@ const Educators = memo(() => {
                     className={cn(
                       "max-w-full max-h-96 w-auto h-auto object-contain",
                       educators[selectedEducator].name === "Noah Agena" && "scale-110",
-                      educators[selectedEducator].name === "Peter Greenhill" && "scale-[1.05]"
+                      educators[selectedEducator].name === "Peter Greenhill" && "scale-[1.10]"
                     )}
                     loading="lazy"
                     onError={(e) => {
