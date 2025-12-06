@@ -110,8 +110,8 @@ export const MissionSection = memo(() => {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={animationConfig.isMobile ? { opacity: 0, scale: 0.8 } : { opacity: 0, y: 50 }}
+                whileInView={animationConfig.isMobile ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 * animationConfig.durationMultiplier, delay: index * 0.1 * animationConfig.durationMultiplier }}
                 whileHover={!animationConfig.isMobile ? { y: -8, scale: 1.02 } : undefined}
