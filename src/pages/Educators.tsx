@@ -19,14 +19,19 @@ import iolaniLogo from "../assets/iolani-school-logo.png";
 import damienLogo from "../assets/damien-memorial-school-logo.webp";
 import pennStateLogo from "../assets/penn-state-logo.png";
 import princetonLogo from "../assets/princeton-university-logo.png";
+import punahouLogo from "../assets/punahou-school-logo.png";
+import uhLogo from "../assets/university-of-hawaii-logo.png";
+import lseLogo from "../assets/london-school-of-economics-logo.png";
+import ucIrvineLogo from "../assets/uc-irvine-logo.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
 
-// Logo mapping for educators
-const educatorLogos: Record<string, string> = {
-  "Andrew Holzman": chicagoLogo,
-  "Noah Agena": iolaniLogo, // Using Iolani for now - user mentioned UH but logo not found
+// Logo mapping for educators - can be a single logo or array for multiple logos
+const educatorLogos: Record<string, string | string[]> = {
+  "Kody Kim": punahouLogo,
+  "Andrew Holzman": [chicagoLogo, lseLogo],
+  "Noah Agena": uhLogo,
   "Peter Greenhill": princetonLogo,
   "Blythe Yangson": damienLogo,
   "Keenan Kim": pennStateLogo,
@@ -241,13 +246,28 @@ const Educators = memo(() => {
                     }}
                   />
                   {educatorLogos[educator.name] && (
-                    <div className="absolute top-3 right-3 z-20 bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
-                      <img
-                        src={educatorLogos[educator.name]}
-                        alt={`${educator.name} school logo`}
-                        className="h-8 w-auto object-contain"
-                        loading="lazy"
-                      />
+                    <div className="absolute top-3 right-3 z-20 flex gap-1.5">
+                      {Array.isArray(educatorLogos[educator.name]) ? (
+                        (educatorLogos[educator.name] as string[]).map((logo, idx) => (
+                          <div key={idx} className="bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
+                            <img
+                              src={logo}
+                              alt={`${educator.name} school logo ${idx + 1}`}
+                              className="h-8 w-auto object-contain"
+                              loading="lazy"
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
+                          <img
+                            src={educatorLogos[educator.name] as string}
+                            alt={`${educator.name} school logo`}
+                            className="h-8 w-auto object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
