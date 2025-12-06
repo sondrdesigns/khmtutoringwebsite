@@ -12,7 +12,7 @@ import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
 import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
-import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.jpg";
+import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
