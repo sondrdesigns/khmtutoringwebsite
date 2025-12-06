@@ -140,7 +140,9 @@ export const TestimonialsSection = memo(() => {
                         transition={{ delay: i * 0.1 }}
                       >
                         <Star
-                          className="w-5 h-5 md:w-6 md:h-6 fill-yellow-500 text-yellow-500"
+                          className="w-5 h-5 md:w-6 md:h-6"
+                          fill="#eab308"
+                          stroke="#eab308"
                         />
                       </motion.div>
                     ))}
