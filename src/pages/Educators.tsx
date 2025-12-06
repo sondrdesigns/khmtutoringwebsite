@@ -13,6 +13,7 @@ import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
 import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
+import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
@@ -108,6 +109,25 @@ const educators = [
     experience: "Current teacher",
     certifications: "Damien Memorial School",
     funFact: "Current teacher at Damien Memorial School",
+    grades: "9-12",
+    category: "Math",
+  },
+  {
+    name: "Keenan Kim",
+    subjects: ["Math", "Calculus"],
+    tagline: "Math tutor specializing in learning differences",
+    image: keenanImage,
+    bio: "Graduate of HBA Highschool currently studying Agricultural Engineering at Penn State. Specialized math tutor teaching up to calculus via Zoom, with experience supporting students with dyscalculia, dysgraphia, and other learning differences.",
+    achievements: [
+      "Graduated from HBA Highschool",
+      "Currently studying Agricultural Engineering at Penn State",
+      "Specializes in math tutoring up to calculus level",
+      "Experience working with students with dyscalculia and dysgraphia",
+      "Provides online tutoring via Zoom for flexible scheduling"
+    ],
+    experience: "Math tutor",
+    certifications: "HBA Highschool, Penn State (Agricultural Engineering)",
+    funFact: "Currently studying Agricultural Engineering at Penn State",
     grades: "9-12",
     category: "Math",
   },
