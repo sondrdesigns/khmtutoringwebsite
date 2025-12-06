@@ -246,38 +246,37 @@ const Educators = memo(() => {
                       target.style.display = 'none';
                     }}
                   />
-                  {educatorLogos[educator.name] && (
-                    <div className="absolute top-3 right-3 z-20 flex gap-1.5">
-                      {Array.isArray(educatorLogos[educator.name]) ? (
-                        (educatorLogos[educator.name] as string[]).map((logo, idx) => (
-                          <div key={idx} className="bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
-                            <img
-                              src={logo}
-                              alt={`${educator.name} school logo ${idx + 1}`}
-                              className="h-8 w-auto object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-                        ))
-                      ) : (
-                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
-                          <img
-                            src={educatorLogos[educator.name] as string}
-                            alt={`${educator.name} school logo`}
-                            className="h-8 w-auto object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
                   <div className="flex-1">
-                    <h3 className="mb-1 text-lg font-semibold font-heading">
-                      {educator.name}
-                    </h3>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-lg font-semibold font-heading">
+                        {educator.name}
+                      </h3>
+                      {educatorLogos[educator.name] && (
+                        <div className="flex gap-1.5 items-center">
+                          {Array.isArray(educatorLogos[educator.name]) ? (
+                            (educatorLogos[educator.name] as string[]).map((logo, idx) => (
+                              <img
+                                key={idx}
+                                src={logo}
+                                alt={`${educator.name} school logo ${idx + 1}`}
+                                className="h-5 w-auto object-contain opacity-80"
+                                loading="lazy"
+                              />
+                            ))
+                          ) : (
+                            <img
+                              src={educatorLogos[educator.name] as string}
+                              alt={`${educator.name} school logo`}
+                              className="h-5 w-auto object-contain opacity-80"
+                              loading="lazy"
+                            />
+                          )}
+                        </div>
+                      )}
+                    </div>
                     <p className="text-primary mb-2 text-xs font-medium">
                       {educator.subjects.join(" • ")}
                     </p>
