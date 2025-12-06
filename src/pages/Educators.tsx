@@ -185,20 +185,20 @@ const Educators = memo(() => {
       {/* Educators Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEducators.map((educator, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedEducator(index)}
-                className="relative min-h-[480px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative aspect-[4/3] min-h-56 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0">
+                <div className="relative aspect-[4/3] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
-                      "w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300",
+                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300",
                       educator.name === "Noah Agena" && "scale-110"
                     )}
                     loading="lazy"
@@ -209,19 +209,19 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-6 flex flex-col flex-1 min-h-0 gap-3">
+                <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
                   <div className="flex-1">
-                    <h3 className="mb-2 text-xl font-semibold font-heading">
+                    <h3 className="mb-1 text-lg font-semibold font-heading">
                       {educator.name}
                     </h3>
-                    <p className="text-primary mb-3 text-sm font-medium">
+                    <p className="text-primary mb-2 text-xs font-medium">
                       {educator.subjects.join(" • ")}
                     </p>
-                    <p className="text-muted-foreground italic text-sm leading-relaxed line-clamp-2">
+                    <p className="text-muted-foreground italic text-xs leading-relaxed line-clamp-2">
                       "{educator.tagline}"
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
+                  <div className="pt-2 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
                     Click for full bio →
                   </div>
                 </div>
