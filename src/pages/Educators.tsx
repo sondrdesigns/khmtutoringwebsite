@@ -23,6 +23,7 @@ import punahouLogo from "../assets/punahou-school-logo.png";
 import uhLogo from "../assets/university-of-hawaii-logo.png";
 import lseLogo from "../assets/london-school-of-economics-logo.png";
 import ucIrvineLogo from "../assets/uc-irvine-logo.png";
+import hbaLogo from "../assets/hba-logo.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
@@ -34,7 +35,7 @@ const educatorLogos: Record<string, string | string[]> = {
   "Noah Agena": uhLogo,
   "Peter Greenhill": princetonLogo,
   "Blythe Yangson": damienLogo,
-  "Keenan Kim": pennStateLogo,
+  "Keenan Kim": [hbaLogo, pennStateLogo],
 };
 
 const educators = [
