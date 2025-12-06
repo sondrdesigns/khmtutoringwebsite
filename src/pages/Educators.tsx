@@ -14,9 +14,23 @@ import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
 import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
+import chicagoLogo from "../assets/university-of-chicago-logo.png";
+import iolaniLogo from "../assets/iolani-school-logo.png";
+import damienLogo from "../assets/damien-memorial-school-logo.webp";
+import pennStateLogo from "../assets/penn-state-logo.png";
+import princetonLogo from "../assets/princeton-university-logo.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
+
+// Logo mapping for educators
+const educatorLogos: Record<string, string> = {
+  "Andrew Holzman": chicagoLogo,
+  "Noah Agena": iolaniLogo, // Using Iolani for now - user mentioned UH but logo not found
+  "Peter Greenhill": princetonLogo,
+  "Blythe Yangson": damienLogo,
+  "Keenan Kim": pennStateLogo,
+};
 
 const educators = [
   {
@@ -226,6 +240,16 @@ const Educators = memo(() => {
                       target.style.display = 'none';
                     }}
                   />
+                  {educatorLogos[educator.name] && (
+                    <div className="absolute top-3 right-3 z-20 bg-white/90 backdrop-blur-sm rounded-lg p-1.5 shadow-lg">
+                      <img
+                        src={educatorLogos[educator.name]}
+                        alt={`${educator.name} school logo`}
+                        className="h-8 w-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
                 <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
