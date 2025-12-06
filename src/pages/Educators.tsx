@@ -11,7 +11,7 @@ import {
 import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
 import noahImage from "../assets/khm-tutoring-tutor-noah-agena.jpg";
-import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.jpg";
+import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.jpg";
 
 // Move static data outside component
