@@ -10,7 +10,7 @@ import {
 } from "../components/ui/dialog";
 import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
-import noahImage from "../assets/khm-tutoring-tutor-noah-agena.jpg";
+import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.jpg";
 
@@ -201,8 +201,7 @@ const Educators = memo(() => {
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
-                      "w-full h-full object-contain group-hover:scale-110 transition-transform duration-300",
-                      educator.name === "Noah Agena" ? "object-bottom scale-110" : "object-center"
+                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300"
                     )}
                     loading="lazy"
                     onError={(e) => {
