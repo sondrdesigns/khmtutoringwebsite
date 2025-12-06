@@ -193,7 +193,10 @@ const Educators = memo(() => {
                 className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
+                <div className={cn(
+                  "relative min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center",
+                  educator.name === "Peter Greenhill" ? "aspect-[4/3]" : "aspect-[3/4]"
+                )}>
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
