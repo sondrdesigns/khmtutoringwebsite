@@ -238,7 +238,8 @@ const Educators = memo(() => {
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
-                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300"
+                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300",
+                      educator.name === "Peter Greenhill" && "scale-[1.05]"
                     )}
                     loading="lazy"
                     onError={(e) => {
@@ -292,7 +293,8 @@ const Educators = memo(() => {
                     alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
                     className={cn(
                       "max-w-full max-h-96 w-auto h-auto object-contain",
-                      educators[selectedEducator].name === "Noah Agena" && "scale-110"
+                      educators[selectedEducator].name === "Noah Agena" && "scale-110",
+                      educators[selectedEducator].name === "Peter Greenhill" && "scale-[1.05]"
                     )}
                     loading="lazy"
                     onError={(e) => {
