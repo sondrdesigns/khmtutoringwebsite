@@ -250,38 +250,9 @@ const Educators = memo(() => {
                 </div>
                 <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-lg font-semibold font-heading">
-                        {educator.name}
-                      </h3>
-                      {educatorLogos[educator.name] && (
-                        <div className="flex gap-1.5 items-center">
-                          {Array.isArray(educatorLogos[educator.name]) ? (
-                            (educatorLogos[educator.name] as string[]).map((logo, idx) => (
-                              <div key={idx} className="h-5 flex items-center bg-white rounded px-1">
-                                <img
-                                  src={logo}
-                                  alt={`${educator.name} school logo ${idx + 1}`}
-                                  className="h-full w-auto object-contain"
-                                  style={{ mixBlendMode: 'multiply' }}
-                                  loading="lazy"
-                                />
-                              </div>
-                            ))
-                          ) : (
-                            <div className="h-5 flex items-center bg-white rounded px-1">
-                              <img
-                                src={educatorLogos[educator.name] as string}
-                                alt={`${educator.name} school logo`}
-                                className="h-full w-auto object-contain"
-                                style={{ mixBlendMode: 'multiply' }}
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                    <h3 className="mb-1 text-lg font-semibold font-heading">
+                      {educator.name}
+                    </h3>
                     <p className="text-primary mb-2 text-xs font-medium">
                       {educator.subjects.join(" • ")}
                     </p>
@@ -389,9 +360,36 @@ const Educators = memo(() => {
               <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
                 <div className="flex items-start gap-2">
                   <GraduationCap className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <span className="font-semibold block mb-1">Education & Background</span>
-                    <p className="text-muted-foreground">{educators[selectedEducator].certifications}</p>
+                  <div className="flex-1">
+                    <span className="font-semibold block mb-2">Education & Background</span>
+                    <p className="text-muted-foreground mb-3">{educators[selectedEducator].certifications}</p>
+                    {educatorLogos[educators[selectedEducator].name] && (
+                      <div className="flex gap-2 items-center flex-wrap">
+                        {Array.isArray(educatorLogos[educators[selectedEducator].name]) ? (
+                          (educatorLogos[educators[selectedEducator].name] as string[]).map((logo, idx) => (
+                            <div key={idx} className="h-8 flex items-center bg-white rounded px-2 py-1 shadow-sm">
+                              <img
+                                src={logo}
+                                alt={`${educators[selectedEducator].name} school logo ${idx + 1}`}
+                                className="h-full w-auto object-contain max-w-24"
+                                style={{ mixBlendMode: 'multiply' }}
+                                loading="lazy"
+                              />
+                            </div>
+                          ))
+                        ) : (
+                          <div className="h-8 flex items-center bg-white rounded px-2 py-1 shadow-sm">
+                            <img
+                              src={educatorLogos[educators[selectedEducator].name] as string}
+                              alt={`${educators[selectedEducator].name} school logo`}
+                              className="h-full w-auto object-contain max-w-24"
+                              style={{ mixBlendMode: 'multiply' }}
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
