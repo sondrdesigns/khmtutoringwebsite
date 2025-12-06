@@ -90,7 +90,7 @@ const educators = [
       "Experienced in inspiring students to pursue academic and personal goals"
     ],
     experience: "Experienced tutor",
-    certifications: "Iolani School",
+    certifications: "Iolani School, University of Hawaii",
     funFact: "Aspiring mechanical engineer",
     grades: "9-12",
     category: "Math",
