@@ -55,16 +55,41 @@
       outDir: 'dist',
       minify: 'esbuild',
       cssMinify: true,
+      sourcemap: false, // Disable sourcemaps for production to reduce bundle size
       rollupOptions: {
         output: {
-          manualChunks: {
-            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-            'motion-vendor': ['motion/react', 'framer-motion'],
-            'ui-vendor': ['lucide-react'],
+          manualChunks: (id) => {
+            // Split node_modules into separate chunks
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                return 'react-vendor';
+              }
+              if (id.includes('motion') || id.includes('framer-motion')) {
+                return 'motion-vendor';
+              }
+              if (id.includes('lucide-react')) {
+                return 'ui-vendor';
+              }
+              if (id.includes('@radix-ui')) {
+                return 'radix-vendor';
+              }
+              return 'vendor';
+            }
+          },
+          // Optimize chunk names
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name?.endsWith('.css')) {
+              return 'css/[name]-[hash][extname]';
+            }
+            return 'assets/[name]-[hash][extname]';
           },
         },
       },
       chunkSizeWarningLimit: 1000,
+      // Improve build performance
+      reportCompressedSize: false, // Faster builds
     },
     server: {
       port: 3000,

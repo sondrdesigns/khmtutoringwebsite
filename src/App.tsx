@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useMemo } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
@@ -35,19 +35,18 @@ const App = () => {
 const AppContent = () => {
   const location = useLocation();
   
-  // Determine page type for SEO
-  const getPageType = () => {
+  // Memoize page type to avoid recalculation
+  const pageType = useMemo(() => {
     if (location.pathname === "/") return "home";
     if (location.pathname === "/about") return "about";
     if (location.pathname === "/educators") return "educators";
     if (location.pathname === "/contact") return "contact";
     return "home";
-  };
+  }, [location.pathname]);
 
-  // Get page-specific SEO data
-  const getSEOData = () => {
+  // Memoize SEO data to avoid recalculation on every render
+  const seoData = useMemo(() => {
     const baseUrl = "https://www.khmtutoring.com";
-    const currentUrl = `${baseUrl}${location.pathname}`;
     
     switch (location.pathname) {
       case "/":
@@ -81,14 +80,12 @@ const AppContent = () => {
           keywords: "tutors Hawaii, tutors Honolulu",
         };
     }
-  };
-
-  const seoData = getSEOData();
+  }, [location.pathname]);
 
   return (
     <>
       <SEO {...seoData} />
-      <StructuredData type={getPageType()} />
+      <StructuredData type={pageType} />
       <LoadingScreen />
       <ScrollToTop />
       <div className="min-h-screen bg-background w-full">

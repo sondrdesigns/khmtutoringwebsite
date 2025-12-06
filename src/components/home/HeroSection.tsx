@@ -4,7 +4,7 @@ import { ArrowRight, Users, TrendingUp, Sparkles, Award } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
-import heroImage from "../../assets/khm-tutoring-students-learning-hawaii.jpg";
+import heroImage from "../../assets/khm-tutoring-hero-IMG_5743-scaled.jpeg";
 import { useAnimationConfig } from "../../hooks/use-animation-config";
 
 // Memoize sparkle array to avoid recreating on every render
@@ -13,7 +13,18 @@ const SPARKLE_COUNT = 15;
 export const HeroSection = memo(() => {
   const navigate = useNavigate();
   const animationConfig = useAnimationConfig();
-  const sparkles = useMemo(() => Array.from({ length: SPARKLE_COUNT }, (_, i) => i), []);
+  
+  // Memoize sparkle positions and animation configs to prevent recalculation
+  const sparkles = useMemo(() => {
+    if (typeof window === 'undefined') return [];
+    return Array.from({ length: SPARKLE_COUNT }, (_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      delay: Math.random() * 3,
+      duration: 3 + Math.random() * 2,
+    }));
+  }, []);
 
   const handleConsultationClick = useCallback(() => {
     navigate("/contact");
@@ -42,6 +53,7 @@ export const HeroSection = memo(() => {
               ease: "easeInOut",
             }}
             className="absolute top-20 right-10 w-48 h-48 md:w-72 md:h-72 bg-secondary/20 rounded-full blur-3xl"
+            style={{ willChange: 'transform, opacity' }}
           />
           <motion.div 
             animate={{
@@ -54,33 +66,35 @@ export const HeroSection = memo(() => {
               ease: "easeInOut",
             }}
             className="absolute bottom-20 left-10 w-64 h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl"
+            style={{ willChange: 'transform, opacity' }}
           />
         </>
       )}
 
       {/* Floating Sparkles for Mobile Magic - disabled on mobile when reducing animations */}
-      {animationConfig.allowInfiniteAnimations && (
+      {animationConfig.allowInfiniteAnimations && sparkles.length > 0 && (
         <div className="absolute inset-0 md:hidden overflow-hidden pointer-events-none">
-          {sparkles.map((i) => (
+          {sparkles.map((sparkle) => (
             <motion.div
-              key={i}
+              key={sparkle.id}
               initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: sparkle.x,
+                y: sparkle.y,
                 opacity: 0,
               }}
               animate={{
-                y: [0, -50, 0],
+                y: [sparkle.y, sparkle.y - 50, sparkle.y],
                 opacity: [0, 1, 0],
                 scale: [0, 1, 0],
               }}
               transition={{
-                duration: (3 + Math.random() * 2) * animationConfig.durationMultiplier,
+                duration: sparkle.duration * animationConfig.durationMultiplier,
                 repeat: animationConfig.allowInfiniteAnimations ? Infinity : 0,
-                delay: Math.random() * 3,
+                delay: sparkle.delay,
                 ease: "easeInOut",
               }}
               className="absolute"
+              style={{ willChange: 'transform, opacity' }}
             >
               <Sparkles className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             </motion.div>
@@ -115,12 +129,12 @@ export const HeroSection = memo(() => {
                   className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-secondary/30 to-primary/30 backdrop-blur-sm text-secondary-foreground rounded-full text-xs md:text-sm font-semibold border border-secondary/30 inline-flex items-center gap-2"
                 >
                   <Sparkles className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
-                  Trusted by 500+ Students
+                  Trusted by 300+ Students
                 </motion.span>
               ) : (
                 <span className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-secondary/30 to-primary/30 backdrop-blur-sm text-secondary-foreground rounded-full text-xs md:text-sm font-semibold border border-secondary/30 inline-flex items-center gap-2">
                   <Sparkles className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
-                  Trusted by 500+ Students
+                  Trusted by 300+ Students
                 </span>
               )}
             </motion.div>
@@ -157,7 +171,7 @@ export const HeroSection = memo(() => {
               transition={{ duration: 0.8 * animationConfig.durationMultiplier, delay: 0.6 * animationConfig.durationMultiplier }}
               className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Expert tutoring in Hawaii and Honolulu. Specializing in Math, English, and Test Prep for students across Oahu. Take it higher with personalized learning that builds confidence and achieves academic excellence.
+              Expert tutoring in Hawaii and Honolulu. Specializing in Math, English, and SAT/SSAT prep for students across Oahu. Take it higher with personalized learning that builds confidence and achieves academic excellence.
             </motion.p>
             
             <motion.div 
@@ -217,8 +231,10 @@ export const HeroSection = memo(() => {
                 alt="KHM Tutoring students learning together in Hawaii - Expert K-12 tutoring services in Honolulu and Oahu"
                 className="w-full h-auto"
                 loading="eager"
+                fetchPriority="high"
                 width={800}
                 height={600}
+                sizes="(max-width: 1024px) 0vw, 50vw"
               />
             </motion.div>
             
@@ -263,11 +279,11 @@ export const HeroSection = memo(() => {
                       }}
                       className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
                     >
-                      500+
+                      300+
                     </motion.p>
                   ) : (
                     <p className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      500+
+                      300+
                     </p>
                   )}
                   <p className="text-xs md:text-sm text-muted-foreground">Students Helped</p>

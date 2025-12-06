@@ -10,7 +10,7 @@ export const ImageWithFallback = memo(function ImageWithFallback(props: React.Im
     setDidError(true)
   }, [])
 
-  const { src, alt, style, className, loading = 'lazy', ...rest } = props
+  const { src, alt, style, className, loading = 'lazy', fetchPriority, sizes, ...rest } = props
 
   return didError ? (
     <div
@@ -22,6 +22,16 @@ export const ImageWithFallback = memo(function ImageWithFallback(props: React.Im
       </div>
     </div>
   ) : (
-    <img src={src} alt={alt} className={className} style={style} loading={loading} {...rest} onError={handleError} />
+    <img 
+      src={src} 
+      alt={alt} 
+      className={className} 
+      style={style} 
+      loading={loading}
+      fetchPriority={fetchPriority}
+      sizes={sizes}
+      {...rest} 
+      onError={handleError} 
+    />
   )
 })

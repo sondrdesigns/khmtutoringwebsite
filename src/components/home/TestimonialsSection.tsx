@@ -110,6 +110,7 @@ export const TestimonialsSection = memo(() => {
                 <motion.div
                   whileHover={!animationConfig.isMobile ? { scale: 1.02 } : undefined}
                   className="bg-gradient-to-br from-card via-card to-card/80 rounded-3xl shadow-2xl border border-border p-6 md:p-8 lg:p-12 relative overflow-hidden"
+                  style={{ willChange: animationConfig.isMobile ? 'auto' : 'transform' }}
                 >
                   {/* Quote Icon Background - disabled on mobile */}
                   {animationConfig.allowInfiniteAnimations && (

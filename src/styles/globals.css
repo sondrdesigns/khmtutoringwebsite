@@ -237,4 +237,19 @@ All colors MUST be HSL.
       animation: none !important;
     }
   }
+
+  /* Performance optimizations */
+  @layer utilities {
+    /* GPU acceleration for animated elements */
+    [class*="motion-"] {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+
+    /* Optimize backdrop blur performance */
+    [class*="backdrop-blur"] {
+      will-change: backdrop-filter;
+    }
+  }
 }

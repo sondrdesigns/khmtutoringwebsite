@@ -64,6 +64,7 @@ export const LoadingScreen = memo(() => {
                   ease: "easeInOut",
                 }}
                 className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+                style={{ willChange: 'transform, opacity' }}
               />
               <motion.div
                 animate={{
@@ -77,6 +78,7 @@ export const LoadingScreen = memo(() => {
                   ease: "easeInOut",
                 }}
                 className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"
+                style={{ willChange: 'transform, opacity' }}
               />
             </div>
           )}
@@ -104,6 +106,7 @@ export const LoadingScreen = memo(() => {
               style={{
                 left: `${(particle.x / windowDimensions.width) * 100}%`,
                 top: `${(particle.y / windowDimensions.height) * 100}%`,
+                willChange: 'transform, opacity',
               }}
             />
           ))}

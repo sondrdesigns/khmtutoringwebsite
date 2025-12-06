@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const benefits = [
   "Personalized tutoring for all grade levels",
-  "Experienced and passionate educators",
-  "Flexible scheduling and convenient meeting options",
   "Proven improvement in grades, scores, confidence, and motivation",
+  "Flexible scheduling and convenient meeting options",
+  "Experienced and passionate educators",
 ];
 
 const About = () => {
