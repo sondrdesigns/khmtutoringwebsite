@@ -140,7 +140,7 @@ export const TestimonialsSection = memo(() => {
                         transition={{ delay: i * 0.1 }}
                       >
                         <Star
-                          className="w-5 h-5 md:w-6 md:h-6 fill-yellow-400 text-yellow-400"
+                          className="w-5 h-5 md:w-6 md:h-6 fill-yellow-500 text-yellow-500"
                         />
                       </motion.div>
                     ))}
@@ -161,20 +161,11 @@ export const TestimonialsSection = memo(() => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 * animationConfig.durationMultiplier }}
-                    className="flex items-center gap-4 relative z-10"
+                    className="relative z-10"
                   >
-                    <motion.div
-                      whileHover={!animationConfig.isMobile ? { scale: 1.1, rotate: 360 } : undefined}
-                      transition={{ duration: 0.5 * animationConfig.durationMultiplier }}
-                      className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg md:text-xl"
-                    >
-                      {activeTestimonial.name.charAt(0)}
-                    </motion.div>
-                    <div>
-                      <p className="font-semibold text-base md:text-lg">
-                        {activeTestimonial.name}
-                      </p>
-                    </div>
+                    <p className="font-semibold text-base md:text-lg">
+                      {activeTestimonial.name}
+                    </p>
                   </motion.div>
 
                   {/* Decorative Gradient - disabled on mobile */}
