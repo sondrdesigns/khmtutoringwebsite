@@ -201,8 +201,8 @@ const Educators = memo(() => {
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
-                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300",
-                      educator.name === "Noah Agena" && "scale-110"
+                      "w-full h-full object-contain group-hover:scale-110 transition-transform duration-300",
+                      educator.name === "Noah Agena" ? "object-bottom scale-110" : "object-center"
                     )}
                     loading="lazy"
                     onError={(e) => {
