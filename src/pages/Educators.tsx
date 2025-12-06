@@ -30,10 +30,10 @@ const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
 
 // Logo mapping for educators - can be a single logo or array for multiple logos
 const educatorLogos: Record<string, string | string[]> = {
-  "Kody Kim": punahouLogo,
+  "Kody Kim": [punahouLogo, ucIrvineLogo],
   "Andrew Holzman": [chicagoLogo, lseLogo],
-  "Noah Agena": uhLogo,
-  "Peter Greenhill": princetonLogo,
+  "Noah Agena": [uhLogo, iolaniLogo],
+  "Peter Greenhill": [princetonLogo, iolaniLogo],
   "Blythe Yangson": damienLogo,
   "Keenan Kim": [hbaLogo, pennStateLogo],
 };
@@ -258,21 +258,26 @@ const Educators = memo(() => {
                         <div className="flex gap-1.5 items-center">
                           {Array.isArray(educatorLogos[educator.name]) ? (
                             (educatorLogos[educator.name] as string[]).map((logo, idx) => (
-                              <img
-                                key={idx}
-                                src={logo}
-                                alt={`${educator.name} school logo ${idx + 1}`}
-                                className="h-5 w-auto object-contain opacity-80"
-                                loading="lazy"
-                              />
+                              <div key={idx} className="h-5 flex items-center bg-white rounded px-1">
+                                <img
+                                  src={logo}
+                                  alt={`${educator.name} school logo ${idx + 1}`}
+                                  className="h-full w-auto object-contain"
+                                  style={{ mixBlendMode: 'multiply' }}
+                                  loading="lazy"
+                                />
+                              </div>
                             ))
                           ) : (
-                            <img
-                              src={educatorLogos[educator.name] as string}
-                              alt={`${educator.name} school logo`}
-                              className="h-5 w-auto object-contain opacity-80"
-                              loading="lazy"
-                            />
+                            <div className="h-5 flex items-center bg-white rounded px-1">
+                              <img
+                                src={educatorLogos[educator.name] as string}
+                                alt={`${educator.name} school logo`}
+                                className="h-full w-auto object-contain"
+                                style={{ mixBlendMode: 'multiply' }}
+                                loading="lazy"
+                              />
+                            </div>
                           )}
                         </div>
                       )}
