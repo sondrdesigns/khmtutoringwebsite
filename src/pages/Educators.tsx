@@ -1,4 +1,4 @@
-import { useState, memo, useMemo } from "react";
+import { useState, memo, useMemo, useCallback } from "react";
 import { Award, BookOpen, GraduationCap, X } from "lucide-react";
 import { cn } from "../lib/utils";
 import {
@@ -8,35 +8,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
-import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
-import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
-import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
-import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
-import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
-import chicagoLogo from "../assets/university-of-chicago-logo.png";
-import iolaniLogo from "../assets/iolani-school-logo.png";
-import damienLogo from "../assets/damien-memorial-school-logo.webp";
-import pennStateLogo from "../assets/penn-state-logo.png";
-import princetonLogo from "../assets/princeton-university-logo.png";
-import punahouLogo from "../assets/punahou-school-logo.png";
-import uhLogo from "../assets/university-of-hawaii-logo.png";
-import lseLogo from "../assets/london-school-of-economics-logo.png";
-import ucIrvineLogo from "../assets/uc-irvine-logo.png";
-import hbaLogo from "../assets/hba-logo.png";
+import kodyImage from "../assets/kody.jpg";
+import andrewImage from "../assets/andrew.jpg";
+import noahImage from "../assets/noah.jpg";
+import peterImage from "../assets/peter.jpg";
+import blytheImage from "../assets/blythe.jpg";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
-
-// Logo mapping for educators - can be a single logo or array for multiple logos
-const educatorLogos: Record<string, string | string[]> = {
-  "Kody Kim": [punahouLogo, ucIrvineLogo],
-  "Andrew Holzman": [chicagoLogo, lseLogo],
-  "Noah Agena": [uhLogo, iolaniLogo],
-  "Peter Greenhill": [princetonLogo, iolaniLogo],
-  "Blythe Yangson": damienLogo,
-  "Keenan Kim": [hbaLogo, pennStateLogo],
-};
 
 const educators = [
   {
@@ -90,7 +69,7 @@ const educators = [
       "Experienced in inspiring students to pursue academic and personal goals"
     ],
     experience: "Experienced tutor",
-    certifications: "Iolani School, University of Hawaii",
+    certifications: "Iolani School",
     funFact: "Aspiring mechanical engineer",
     grades: "9-12",
     category: "Math",
@@ -132,30 +111,23 @@ const educators = [
     grades: "9-12",
     category: "Math",
   },
-  {
-    name: "Keenan Kim",
-    subjects: ["Math", "Calculus"],
-    tagline: "Math tutor specializing in learning differences",
-    image: keenanImage,
-    bio: "Graduate of HBA Highschool currently studying Agricultural Engineering at Penn State. Specialized math tutor teaching up to calculus via Zoom, with experience supporting students with dyscalculia, dysgraphia, and other learning differences.",
-    achievements: [
-      "Graduated from HBA Highschool",
-      "Currently studying Agricultural Engineering at Penn State",
-      "Specializes in math tutoring up to calculus level",
-      "Experience working with students with dyscalculia and dysgraphia",
-      "Provides online tutoring via Zoom for flexible scheduling"
-    ],
-    experience: "Math tutor",
-    certifications: "HBA Highschool, Penn State (Agricultural Engineering)",
-    funFact: "Currently studying Agricultural Engineering at Penn State",
-    grades: "9-12",
-    category: "Math",
-  },
 ];
 
 const Educators = memo(() => {
   const [selectedEducator, setSelectedEducator] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("All");
+
+  const handleFilterChange = useCallback((filter: string) => {
+    setActiveFilter(filter);
+  }, []);
+
+  const handleEducatorClick = useCallback((index: number) => {
+    setSelectedEducator(index);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setSelectedEducator(null);
+  }, []);
 
   const filteredEducators = useMemo(() => {
     if (activeFilter === "All") {
@@ -207,7 +179,7 @@ const Educators = memo(() => {
             {subjects.map((subject) => (
               <button
                 key={subject}
-                onClick={() => setActiveFilter(subject)}
+                onClick={() => handleFilterChange(subject)}
                 className={cn(
                   "px-6 py-2 rounded-full transition-all duration-300",
                   activeFilter === subject
@@ -225,23 +197,27 @@ const Educators = memo(() => {
       {/* Educators Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEducators.map((educator, index) => (
               <button
-                key={index}
-                onClick={() => setSelectedEducator(index)}
-                className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                key={`${educator.name}-${index}`}
+                onClick={() => handleEducatorClick(index)}
+                className="relative min-h-[480px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                style={{ animationDelay: `${index * 0.1}s`, willChange: 'transform' }}
               >
-                <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
+                <div className="relative aspect-[4/3] min-h-56 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0">
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className={cn(
-                      "w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300",
-                      educator.name === "Peter Greenhill" && "scale-[1.20]"
+                      "w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300",
+                      educator.name === "Noah Agena" && "scale-110"
                     )}
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                     loading="lazy"
+                    width={400}
+                    height={300}
+                    decoding="async"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
@@ -249,19 +225,19 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
+                <div className="p-6 flex flex-col flex-1 min-h-0 gap-3">
                   <div className="flex-1">
-                    <h3 className="mb-1 text-lg font-semibold font-heading">
+                    <h3 className="mb-2 text-xl font-semibold font-heading">
                       {educator.name}
                     </h3>
-                    <p className="text-primary mb-2 text-xs font-medium">
+                    <p className="text-primary mb-3 text-sm font-medium">
                       {educator.subjects.join(" • ")}
                     </p>
-                    <p className="text-muted-foreground italic text-xs leading-relaxed line-clamp-2">
+                    <p className="text-muted-foreground italic text-sm leading-relaxed line-clamp-2">
                       "{educator.tagline}"
                     </p>
                   </div>
-                  <div className="pt-2 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
+                  <div className="pt-3 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
                     Click for full bio →
                   </div>
                 </div>
@@ -272,141 +248,119 @@ const Educators = memo(() => {
       </section>
 
       {/* Educator Detail Modal */}
-      {selectedEducator !== null && (
-        <Dialog open={selectedEducator !== null} onOpenChange={() => setSelectedEducator(null)}>
-          <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-3xl font-heading font-bold">
-                {educators[selectedEducator].name}
-              </DialogTitle>
-              <DialogDescription className="sr-only">
-                Full bio and details for {educators[selectedEducator].name}
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="space-y-6">
-              {/* Educator Image */}
-              <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
-                <div className="flex items-center justify-center min-h-64 max-h-96 w-full">
-                  <img
-                    src={educators[selectedEducator].image}
-                    alt={`${educators[selectedEducator].name} - Expert tutor in Hawaii and Honolulu`}
-                    className={cn(
-                      "max-w-full max-h-96 w-auto h-auto object-contain",
-                      educators[selectedEducator].name === "Noah Agena" && "scale-110",
-                      educators[selectedEducator].name === "Peter Greenhill" && "scale-[1.20]"
-                    )}
-                    loading="lazy"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
-                  />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-xl mb-1 drop-shadow-lg">
-                    {educators[selectedEducator].subjects.join(" • ")}
-                  </p>
-                  <p className="text-white/90 italic drop-shadow-lg">
-                    "{educators[selectedEducator].tagline}"
-                  </p>
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div>
-                <h4 className="text-xl font-semibold mb-2">About</h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {educators[selectedEducator].bio}
-                </p>
-              </div>
-
-              {/* Details Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-muted/50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Award className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">Experience</span>
+      {selectedEducator !== null && (() => {
+        const educator = educators[selectedEducator];
+        return (
+          <Dialog open={selectedEducator !== null} onOpenChange={handleCloseModal}>
+            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-3xl font-heading font-bold">
+                  {educator.name}
+                </DialogTitle>
+                <DialogDescription className="sr-only">
+                  Full bio and details for {educator.name}
+                </DialogDescription>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                {/* Educator Image */}
+                <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                  <div className="flex items-center justify-center min-h-64 max-h-96 w-full">
+                    <img
+                      src={educator.image}
+                      alt={`${educator.name} - Expert tutor in Hawaii and Honolulu`}
+                      className={cn(
+                        "max-w-full max-h-96 w-auto h-auto object-contain",
+                        educator.name === "Noah Agena" && "scale-110"
+                      )}
+                      loading="eager"
+                      width={600}
+                      height={400}
+                      decoding="async"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
                   </div>
-                  <p className="text-muted-foreground">{educators[selectedEducator].experience}</p>
-                </div>
-                
-                <div className="bg-muted/50 rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <BookOpen className="w-5 h-5 text-primary" />
-                    <span className="font-semibold">Grades</span>
+                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-white text-xl mb-1 drop-shadow-lg">
+                      {educator.subjects.join(" • ")}
+                    </p>
+                    <p className="text-white/90 italic drop-shadow-lg">
+                      "{educator.tagline}"
+                    </p>
                   </div>
-                  <p className="text-muted-foreground">{educators[selectedEducator].grades}</p>
                 </div>
-              </div>
 
-              {/* Achievements */}
-              {educators[selectedEducator].achievements && (
+                {/* Bio */}
+                <div>
+                  <h4 className="text-xl font-semibold mb-2">About</h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {educator.bio}
+                  </p>
+                </div>
+
+                {/* Details Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Award className="w-5 h-5 text-primary" />
+                      <span className="font-semibold">Experience</span>
+                    </div>
+                    <p className="text-muted-foreground">{educator.experience}</p>
+                  </div>
+                  
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <BookOpen className="w-5 h-5 text-primary" />
+                      <span className="font-semibold">Grades</span>
+                    </div>
+                    <p className="text-muted-foreground">{educator.grades}</p>
+                  </div>
+                </div>
+
+                {/* Achievements */}
+                {educator.achievements && (
+                  <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                    <div className="flex items-start gap-2">
+                      <Award className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <span className="font-semibold block mb-2">Achievements</span>
+                        <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                          {educator.achievements.map((achievement, idx) => (
+                            <li key={idx}>{achievement}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Certifications */}
                 <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
                   <div className="flex items-start gap-2">
-                    <Award className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <GraduationCap className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <span className="font-semibold block mb-2">Achievements</span>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        {educators[selectedEducator].achievements.map((achievement, idx) => (
-                          <li key={idx}>{achievement}</li>
-                        ))}
-                      </ul>
+                      <span className="font-semibold block mb-1">Education & Background</span>
+                      <p className="text-muted-foreground">{educator.certifications}</p>
                     </div>
                   </div>
                 </div>
-              )}
 
-              {/* Certifications */}
-              <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
-                <div className="flex items-start gap-2">
-                  <GraduationCap className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div className="flex-1">
-                    <span className="font-semibold block mb-2">Education & Background</span>
-                    <p className="text-muted-foreground mb-3">{educators[selectedEducator].certifications}</p>
-                    {educatorLogos[educators[selectedEducator].name] && (
-                      <div className="flex gap-2 items-center flex-wrap">
-                        {Array.isArray(educatorLogos[educators[selectedEducator].name]) ? (
-                          (educatorLogos[educators[selectedEducator].name] as string[]).map((logo, idx) => (
-                            <div key={idx} className="h-8 flex items-center bg-white rounded px-2 py-1 shadow-sm">
-                              <img
-                                src={logo}
-                                alt={`${educators[selectedEducator].name} school logo ${idx + 1}`}
-                                className="h-full w-auto object-contain max-w-24"
-                                style={{ mixBlendMode: 'multiply' }}
-                                loading="lazy"
-                              />
-                            </div>
-                          ))
-                        ) : (
-                          <div className="h-8 flex items-center bg-white rounded px-2 py-1 shadow-sm">
-                            <img
-                              src={educatorLogos[educators[selectedEducator].name] as string}
-                              alt={`${educators[selectedEducator].name} school logo`}
-                              className="h-full w-auto object-contain max-w-24"
-                              style={{ mixBlendMode: 'multiply' }}
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                {/* Fun Fact */}
+                <div className="bg-accent/10 rounded-lg p-4 border border-accent/20">
+                  <p className="text-center">
+                    <span className="font-semibold">Fun Fact:</span>{" "}
+                    <span className="text-muted-foreground italic">{educator.funFact}</span>
+                  </p>
                 </div>
               </div>
-
-              {/* Fun Fact */}
-              <div className="bg-accent/10 rounded-lg p-4 border border-accent/20">
-                <p className="text-center">
-                  <span className="font-semibold">Fun Fact:</span>{" "}
-                  <span className="text-muted-foreground italic">{educators[selectedEducator].funFact}</span>
-                </p>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
+            </DialogContent>
+          </Dialog>
+        );
+      })()}
     </main>
   );
 });
