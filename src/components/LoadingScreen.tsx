@@ -150,7 +150,8 @@ export const LoadingScreen = memo(() => {
               style={{ 
                 willChange: 'transform',
                 transform: 'translateZ(0)',
-                backfaceVisibility: 'hidden'
+                backfaceVisibility: 'hidden',
+                contain: 'layout style paint'
               }}
             >
               {/* Simplified Pulsing Glow Ring - reduced blur */}
@@ -174,47 +175,27 @@ export const LoadingScreen = memo(() => {
                 />
               )}
               
-              {/* Logo */}
-              {animationConfig.allowInfiniteAnimations ? (
-                <motion.div
-                  animate={{
-                    y: [0, -8, 0],
-                  }}
-                  transition={{
-                    duration: 2.5 * animationConfig.durationMultiplier,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative bg-white p-8 rounded-3xl shadow-2xl"
-                  style={{
-                    willChange: 'transform',
-                    transform: 'translateZ(0)',
-                    backfaceVisibility: 'hidden'
-                  }}
-                >
-                  <img
-                    src={logoImage}
-                    alt="KHM Tutoring - Expert Tutors in Hawaii and Honolulu"
-                    className="w-24 h-24 object-contain"
-                    loading="eager"
-                    width={96}
-                    height={96}
-                    decoding="async"
-                  />
-                </motion.div>
-              ) : (
-                <div className="relative bg-white p-8 rounded-3xl shadow-2xl">
-                  <img
-                    src={logoImage}
-                    alt="KHM Tutoring - Expert Tutors in Hawaii and Honolulu"
-                    className="w-24 h-24 object-contain"
-                    loading="eager"
-                    width={96}
-                    height={96}
-                    decoding="async"
-                  />
-                </div>
-              )}
+              {/* Logo - using CSS animation for smoother performance */}
+              <div
+                className={`relative bg-white p-8 rounded-3xl shadow-2xl ${animationConfig.allowInfiniteAnimations ? 'loading-logo-float' : ''}`}
+                style={
+                  animationConfig.allowInfiniteAnimations
+                    ? ({
+                        '--float-duration': `${2.5 * animationConfig.durationMultiplier}s`,
+                      } as React.CSSProperties)
+                    : undefined
+                }
+              >
+                <img
+                  src={logoImage}
+                  alt="KHM Tutoring - Expert Tutors in Hawaii and Honolulu"
+                  className="w-24 h-24 object-contain"
+                  loading="eager"
+                  width={96}
+                  height={96}
+                  decoding="async"
+                />
+              </div>
 
               {/* Optimized Rotating Border - using CSS animation for better performance */}
               {animationConfig.allowInfiniteAnimations && (
