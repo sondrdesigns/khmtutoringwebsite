@@ -8,11 +8,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/kody.jpg";
-import andrewImage from "../assets/andrew.jpg";
-import noahImage from "../assets/noah.jpg";
-import peterImage from "../assets/peter.jpg";
-import blytheImage from "../assets/blythe.jpg";
+import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
+import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
+import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
+import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
+import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
+import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
@@ -111,6 +112,25 @@ const educators = [
     grades: "9-12",
     category: "Math",
   },
+  {
+    name: "Keenan Kim",
+    subjects: ["Math", "Calculus"],
+    tagline: "Math tutor specializing in learning differences",
+    image: keenanImage,
+    bio: "Graduate of HBA Highschool currently studying Agricultural Engineering at Penn State. Specialized math tutor teaching up to calculus via Zoom, with experience supporting students with dyscalculia, dysgraphia, and other learning differences.",
+    achievements: [
+      "Graduated from HBA Highschool",
+      "Currently studying Agricultural Engineering at Penn State",
+      "Specializes in math tutoring up to calculus level",
+      "Experience working with students with dyscalculia and dysgraphia",
+      "Provides online tutoring via Zoom for flexible scheduling"
+    ],
+    experience: "Math tutor",
+    certifications: "HBA Highschool, Penn State (Agricultural Engineering)",
+    funFact: "Currently studying Agricultural Engineering at Penn State",
+    grades: "9-12",
+    category: "Math",
+  },
 ];
 
 const Educators = memo(() => {
@@ -197,26 +217,23 @@ const Educators = memo(() => {
       {/* Educators Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEducators.map((educator, index) => (
               <button
                 key={`${educator.name}-${index}`}
                 onClick={() => handleEducatorClick(index)}
-                className="relative min-h-[480px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s`, willChange: 'transform' }}
               >
-                <div className="relative aspect-[4/3] min-h-56 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0">
+                <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
                   <img
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
-                    className={cn(
-                      "w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300",
-                      educator.name === "Noah Agena" && "scale-110"
-                    )}
+                    className="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300"
                     style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                     loading="lazy"
-                    width={400}
-                    height={300}
+                    width={300}
+                    height={400}
                     decoding="async"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -225,19 +242,19 @@ const Educators = memo(() => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="p-6 flex flex-col flex-1 min-h-0 gap-3">
+                <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
                   <div className="flex-1">
-                    <h3 className="mb-2 text-xl font-semibold font-heading">
+                    <h3 className="mb-1 text-lg font-semibold font-heading">
                       {educator.name}
                     </h3>
-                    <p className="text-primary mb-3 text-sm font-medium">
+                    <p className="text-primary mb-2 text-xs font-medium">
                       {educator.subjects.join(" • ")}
                     </p>
-                    <p className="text-muted-foreground italic text-sm leading-relaxed line-clamp-2">
+                    <p className="text-muted-foreground italic text-xs leading-relaxed line-clamp-2">
                       "{educator.tagline}"
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
+                  <div className="pt-2 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
                     Click for full bio →
                   </div>
                 </div>
@@ -265,16 +282,13 @@ const Educators = memo(() => {
               <div className="space-y-6">
                 {/* Educator Image */}
                 <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
-                  <div className="flex items-center justify-center min-h-64 max-h-96 w-full">
+                  <div className="flex items-center justify-center min-h-64 max-h-96 w-full aspect-[3/4]">
                     <img
                       src={educator.image}
                       alt={`${educator.name} - Expert tutor in Hawaii and Honolulu`}
-                      className={cn(
-                        "max-w-full max-h-96 w-auto h-auto object-contain",
-                        educator.name === "Noah Agena" && "scale-110"
-                      )}
+                      className="max-w-full max-h-96 w-auto h-auto object-contain"
                       loading="eager"
-                      width={600}
+                      width={300}
                       height={400}
                       decoding="async"
                       onError={(e) => {
