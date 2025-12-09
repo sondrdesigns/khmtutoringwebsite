@@ -3553,6 +3553,36 @@
       transform: scale(1);
     }
   }
+
+  @keyframes spin-border {
+    from {
+      transform: translateZ(0) rotate(0deg);
+    }
+
+    to {
+      transform: translateZ(0) rotate(360deg);
+    }
+  }
+
+  .loading-spin-border {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(255, 255, 255, 0.6) 120deg,
+      transparent 240deg,
+      rgba(255, 255, 255, 0.6) 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: spin-border var(--spin-duration, 4s) linear infinite;
+    pointer-events: none;
+    contain: layout style paint;
+  }
 }
 
 #root {

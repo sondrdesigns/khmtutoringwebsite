@@ -216,27 +216,13 @@ export const LoadingScreen = memo(() => {
                 </div>
               )}
 
-              {/* Simplified Rotating Border - optimized */}
+              {/* Optimized Rotating Border - using CSS animation for better performance */}
               {animationConfig.allowInfiniteAnimations && (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 4 * animationConfig.durationMultiplier,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0 rounded-3xl"
+                <div
+                  className="absolute inset-0 rounded-3xl loading-spin-border"
                   style={{
-                    background:
-                      "conic-gradient(from 0deg, transparent, rgba(255,255,255,0.3), transparent)",
-                    WebkitMask:
-                      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                    WebkitMaskComposite: "xor",
-                    padding: "2px",
-                    willChange: 'transform',
-                    transform: 'translateZ(0)',
-                    backfaceVisibility: 'hidden'
-                  }}
+                    '--spin-duration': `${4 * animationConfig.durationMultiplier}s`,
+                  } as React.CSSProperties}
                 />
               )}
             </motion.div>
