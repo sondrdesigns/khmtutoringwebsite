@@ -7,13 +7,18 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
+import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.png";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
 import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
 import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
+import coltonImage from "../assets/khm-tutoring-tutor-colton-inamine.png";
+import davidImage from "../assets/khm-tutoring-tutor-david-jones.png";
+import alecImage from "../assets/khm-tutoring-tutor-alec-wong.png";
+import aizenImage from "../assets/khm-tutoring-tutor-aizen-chung.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
@@ -131,6 +136,82 @@ const educators = [
     grades: "9-12",
     category: "Math",
   },
+  {
+    name: "Colton Inamine",
+    subjects: ["Math"],
+    tagline: "Hard worker dedicated to quality teaching",
+    image: coltonImage,
+    bio: "Graduate of Iolani School currently studying Electrical Computer Engineering at UH Manoa. Very hard worker, dedicated to quality teaching and understanding of mathematical topics.",
+    achievements: [
+      "Graduated from Iolani School",
+      "Currently studying Electrical Computer Engineering at UH Manoa",
+      "Dedicated to quality teaching and understanding of mathematical topics",
+      "Very hard worker with passion for education"
+    ],
+    experience: "Math tutor",
+    certifications: "Iolani School, UH Manoa (Electrical Computer Engineering)",
+    funFact: "Enjoys volleyball and traveling",
+    grades: "9-12",
+    category: "Math",
+  },
+  {
+    name: "David Jones",
+    subjects: ["Econ", "Math", "SAT/ACT"],
+    tagline: "Patience, clarity, understanding over memory",
+    image: davidImage,
+    bio: "Graduate of University of Connecticut with a double major in Math and Economics. Experience as a TA and tutor, currently a substitute teacher for Hawaii DOE. Believes in patience, clarity, and understanding over memory.",
+    achievements: [
+      "Graduate of University of Connecticut",
+      "Double majored in Math and Economics",
+      "Experience as a TA and tutor",
+      "Substitute teacher for Hawaii DOE",
+      "Enjoys helping students connect abstract concepts to real world"
+    ],
+    experience: "TA, Tutor, Substitute Teacher",
+    certifications: "University of Connecticut (Math and Economics)",
+    funFact: "Passionate about basketball, sports, teamwork, discipline, and love for learning",
+    grades: "9-12",
+    category: "Test Prep",
+  },
+  {
+    name: "Alec Wong",
+    subjects: ["Math", "English"],
+    tagline: "Punahou Junior with future med school goals",
+    image: alecImage,
+    bio: "Punahou Junior, artist, with future med school goals. Good with kids and patient, specializing in Math and English tutoring.",
+    achievements: [
+      "Punahou Junior",
+      "Artist",
+      "Future med school goals",
+      "Good with kids and patient",
+      "Specializes in Math and English"
+    ],
+    experience: "Tutor",
+    certifications: "Punahou School",
+    funFact: "Artist with future med school goals",
+    grades: "9-12",
+    category: "Math",
+  },
+  {
+    name: "Aizen Chung",
+    subjects: ["Math", "Physics"],
+    tagline: "Iolani Graduate and Provost Achievement Scholar",
+    image: aizenImage,
+    bio: "Iolani Graduate, currently a UHM Electrical Computer Engineering student. Founder of Web Design Agency Sondr Designs, co-founder of a startup - Blend Cafe app. Current Provost Achievement Scholar at UHM. Passionate about teaching Math and Physics.",
+    achievements: [
+      "Iolani Graduate",
+      "Current UHM Electrical Computer Engineering student",
+      "Founder of Web Design Agency Sondr Designs",
+      "Co-founder of startup - Blend Cafe app",
+      "Current Provost Achievement Scholar at UHM",
+      "Passion for teaching"
+    ],
+    experience: "Tutor",
+    certifications: "Iolani School, UHM (Electrical Computer Engineering)",
+    funFact: "Loves coffee, the gym, and learning",
+    grades: "9-12",
+    category: "Math",
+  },
 ];
 
 const Educators = memo(() => {
@@ -218,10 +299,12 @@ const Educators = memo(() => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredEducators.map((educator, index) => (
+            {filteredEducators.map((educator, index) => {
+              const originalIndex = educators.findIndex(e => e.name === educator.name);
+              return (
               <button
-                key={`${educator.name}-${index}`}
-                onClick={() => handleEducatorClick(index)}
+                key={educator.name}
+                onClick={() => handleEducatorClick(originalIndex)}
                 className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
                 style={{ animationDelay: `${index * 0.1}s`, willChange: 'transform' }}
               >
@@ -230,11 +313,12 @@ const Educators = memo(() => {
                     src={educator.image}
                     alt={`${educator.name} - Expert tutor in Hawaii and Honolulu specializing in ${educator.subjects.join(', ')}`}
                     className="w-full h-full object-contain object-center group-hover:scale-110 transition-transform duration-300"
-                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout style paint' }}
                     loading="lazy"
                     width={300}
                     height={400}
                     decoding="async"
+                    fetchPriority={index < 6 ? "high" : "low"}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
@@ -259,7 +343,8 @@ const Educators = memo(() => {
                   </div>
                 </div>
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -267,29 +352,26 @@ const Educators = memo(() => {
       {/* Educator Detail Modal */}
       {selectedEducator !== null && (() => {
         const educator = educators[selectedEducator];
+        if (!educator) return null;
         return (
           <Dialog open={selectedEducator !== null} onOpenChange={handleCloseModal}>
-            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle className="text-3xl font-heading font-bold">
-                  {educator.name}
-                </DialogTitle>
-                <DialogDescription className="sr-only">
-                  Full bio and details for {educator.name}
-                </DialogDescription>
+            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto p-0">
+              <DialogHeader className="sr-only">
+                <DialogTitle>{educator.name}</DialogTitle>
+                <DialogDescription>Full bio and details for {educator.name}</DialogDescription>
               </DialogHeader>
               
-              <div className="space-y-6">
-                {/* Educator Image */}
-                <div className="relative w-full rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
-                  <div className="flex items-center justify-center min-h-64 max-h-96 w-full aspect-[3/4]">
+              <div className="space-y-0">
+                {/* Educator Image - fills the card space */}
+                <div className="relative w-full rounded-t-xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20">
+                  <div className="flex items-center justify-center w-full aspect-[3/4] min-h-[400px] max-h-[500px]">
                     <img
                       src={educator.image}
                       alt={`${educator.name} - Expert tutor in Hawaii and Honolulu`}
-                      className="max-w-full max-h-96 w-auto h-auto object-contain"
+                      className="w-[90%] h-[90%] object-contain"
                       loading="eager"
-                      width={300}
-                      height={400}
+                      width={600}
+                      height={800}
                       decoding="async"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -299,7 +381,10 @@ const Educators = memo(() => {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white text-xl mb-1 drop-shadow-lg">
+                    <h2 className="text-white text-2xl md:text-3xl font-heading font-bold mb-1 drop-shadow-lg">
+                      {educator.name}
+                    </h2>
+                    <p className="text-white text-lg mb-1 drop-shadow-lg">
                       {educator.subjects.join(" • ")}
                     </p>
                     <p className="text-white/90 italic drop-shadow-lg">
@@ -307,6 +392,9 @@ const Educators = memo(() => {
                     </p>
                   </div>
                 </div>
+
+                {/* Scrollable Content */}
+                <div className="p-6 space-y-6">
 
                 {/* Bio */}
                 <div>
@@ -369,6 +457,7 @@ const Educators = memo(() => {
                     <span className="font-semibold">Fun Fact:</span>{" "}
                     <span className="text-muted-foreground italic">{educator.funFact}</span>
                   </p>
+                </div>
                 </div>
               </div>
             </DialogContent>
