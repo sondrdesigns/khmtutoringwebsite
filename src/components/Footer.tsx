@@ -79,6 +79,11 @@ export const Footer = memo(() => {
               </p>
             </div>
             <div>
+              <p className="text-white text-sm md:text-base">
+                Phone: (808) 123-4567
+              </p>
+            </div>
+            <div>
               <p className="text-white/80 text-sm md:text-base font-semibold">
                 Serving Honolulu, Oahu & All of Hawaii
               </p>
