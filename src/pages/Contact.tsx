@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { Mail, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, Clock, CheckCircle2, AlertCircle, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
@@ -149,6 +149,16 @@ const Contact = () => {
                   <div className="min-w-0">
                     <h3 className="mb-1 text-base md:text-lg font-semibold">Email</h3>
                     <p className="text-sm md:text-base text-muted-foreground break-all">khmtutoring1@gmail.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-card rounded-xl border border-border">
+                  <div className="p-2 md:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                    <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 text-base md:text-lg font-semibold">Phone</h3>
+                    <p className="text-sm md:text-base text-muted-foreground">(808) 381-7856</p>
                   </div>
                 </div>
 

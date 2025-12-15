@@ -27,7 +27,7 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
       "url": baseUrl,
       "logo": `${baseUrl}/khm-tutoring-logo.png`,
       "image": `${baseUrl}/og-image.jpg`,
-      "telephone": "+1-808-XXX-XXXX",
+      "telephone": "+1-808-381-7856",
       "email": "khmtutoring1@gmail.com",
       "address": {
         "@type": "PostalAddress",

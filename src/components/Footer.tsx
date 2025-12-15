@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
-import logoImage from "../assets/khm-tutoring-logo-footer.png";
+import logoImage from "../assets/51ab7cd8aba1e62a4cfa312f8af5d07e91449f85.png";
 
 // Move static data outside component
 const navLinks = [
@@ -80,7 +80,7 @@ export const Footer = memo(() => {
             </div>
             <div>
               <p className="text-white text-sm md:text-base">
-                Phone: (808) 123-4567
+                Phone: (808) 381-7856
               </p>
             </div>
             <div>
