@@ -145,9 +145,9 @@ export const HeroSection = memo(() => {
               transition={{ duration: 0.8 * animationConfig.durationMultiplier, delay: 0.4 * animationConfig.durationMultiplier }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight"
             >
-              Personalized{" "}
+              Turning{" "}
               <span className="text-gradient font-bold relative inline-block">
-                K-12 Tutoring
+                Potential
                 {animationConfig.allowInfiniteAnimations && (
                   <motion.span
                     animate={{
@@ -162,7 +162,7 @@ export const HeroSection = memo(() => {
                   />
                 )}
               </span>{" "}
-              for Success
+              into Performance
             </motion.h1>
             
             <motion.p 

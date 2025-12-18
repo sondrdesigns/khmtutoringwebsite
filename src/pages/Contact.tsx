@@ -108,18 +108,18 @@ const Contact = () => {
     }
   };
   return (
-    <main className="pt-20 md:pt-24">
+    <main className="pt-20">
       {/* Hero Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="mb-4 md:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold">
+            <h1 className="mb-3 md:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
               Get in{" "}
               <span className="text-gradient font-bold">
                 Touch
               </span>
             </h1>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
               Contact KHM Tutoring in Hawaii and Honolulu. Schedule a session or ask us anything about our tutoring services. Serving students across Oahu and all of Hawaii.
             </p>
           </div>
@@ -127,7 +127,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-12 md:py-16">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
             {/* Left - Contact Info */}

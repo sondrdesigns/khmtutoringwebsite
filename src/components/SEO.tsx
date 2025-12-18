@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 export const SEO = ({
-  title = "KHM Tutoring - Expert Tutors in Hawaii & Honolulu | K-12 Math, English & Test Prep",
-  description = "Top-rated tutoring services in Hawaii and Honolulu. Expert K-12 tutors for Math, English, SAT, SSAT, and AP prep. Personalized learning, flexible scheduling. Serving Honolulu, Oahu, and all of Hawaii.",
-  keywords = "tutors Hawaii, tutors Honolulu, tutoring services Hawaii, K-12 tutoring Honolulu, math tutor Hawaii, English tutor Honolulu, SAT prep Hawaii, SSAT prep Honolulu, AP tutoring Hawaii, private tutor Honolulu, in-home tutoring Hawaii, online tutoring Hawaii, best tutors Honolulu, tutoring near me Hawaii",
+  title = "KHM Tutoring - Expert K-12 Tutors | Math, English & Test Prep in Hawaii",
+  description = "Top-rated K-12 tutoring services with expert educators specializing in Math, English, SAT, SSAT, and AP prep. Personalized learning plans and flexible scheduling.",
+  keywords = "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test preparation, personalized tutoring, in-home tutoring, online tutoring",
   image = "https://www.khmtutoring.com/og-image.jpg",
   url,
   type = "website",

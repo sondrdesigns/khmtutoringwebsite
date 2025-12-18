@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { Award, Clock, Heart, Target } from "lucide-react";
 import { motion } from "framer-motion";
-import { useAnimationConfig } from "../../hooks/use-animation-config";
 
 // Move static data outside component
 const features = [
@@ -28,25 +27,21 @@ const features = [
 ];
 
 export const MissionSection = memo(() => {
-  const animationConfig = useAnimationConfig();
-
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Animated Background Elements - disabled on mobile */}
-      {!animationConfig.shouldReduceAnimations && (
-        <motion.div
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: animationConfig.allowInfiniteAnimations ? Infinity : 0,
-            ease: "easeInOut",
-          }}
-          className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
-        />
-      )}
+      {/* Animated Background Elements */}
+      <motion.div
+        animate={{
+          x: [0, 50, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+      />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -55,11 +50,11 @@ export const MissionSection = memo(() => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 * animationConfig.durationMultiplier }}
+            transition={{ duration: 0.8 }}
             className="space-y-6"
           >
             <motion.div
-              whileHover={!animationConfig.isMobile ? { scale: 1.05 } : undefined}
+              whileHover={{ scale: 1.05 }}
               className="inline-block px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20"
             >
               <span className="text-primary font-semibold">Our Mission</span>
@@ -68,28 +63,26 @@ export const MissionSection = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 * animationConfig.durationMultiplier, delay: 0.2 * animationConfig.durationMultiplier }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold"
             >
               Empowering Students to{" "}
               <span className="text-gradient font-bold relative inline-block">
                 Reach Their Full Potential
-                {!animationConfig.shouldReduceAnimations && (
-                  <motion.span
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 * animationConfig.durationMultiplier, delay: 0.5 * animationConfig.durationMultiplier }}
-                    className="absolute bottom-[-6px] left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left"
-                  />
-                )}
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left"
+                />
               </span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 * animationConfig.durationMultiplier, delay: 0.4 * animationConfig.durationMultiplier }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
               At KHM Tutoring, Hawaii's trusted tutoring service, we believe every student deserves personalized attention and the tools to succeed. Our mission is to build confidence, foster critical thinking, and create a solid academic foundation that lasts a lifetime for students across Honolulu and all of Hawaii.
@@ -98,7 +91,7 @@ export const MissionSection = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 * animationConfig.durationMultiplier, delay: 0.6 * animationConfig.durationMultiplier }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
               We partner with families throughout Oahu and Hawaii to provide exceptional one-on-one instruction that adapts to each student's learning style, helping them not just understand concepts, but truly master them.
@@ -110,26 +103,24 @@ export const MissionSection = memo(() => {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={animationConfig.isMobile ? { opacity: 0, scale: 0.8 } : { opacity: 0, y: 50 }}
-                whileInView={animationConfig.isMobile ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 * animationConfig.durationMultiplier, delay: index * 0.1 * animationConfig.durationMultiplier }}
-                whileHover={!animationConfig.isMobile ? { y: -8, scale: 1.02 } : undefined}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 className="group bg-gradient-to-br from-card to-card/50 backdrop-blur-sm rounded-2xl p-5 md:p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl relative overflow-hidden"
               >
                 {/* Hover Gradient Effect */}
-                {!animationConfig.isMobile && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl"
-                  />
-                )}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl"
+                />
                 
                 <div className="relative z-10">
                   <motion.div
-                    whileHover={!animationConfig.isMobile ? { rotate: 360, scale: 1.1 } : undefined}
-                    transition={{ duration: 0.6 * animationConfig.durationMultiplier }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
                     className="mb-4 p-3 bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl w-fit group-hover:bg-gradient-to-br group-hover:from-primary/20 group-hover:to-secondary/10 transition-all duration-300 shadow-lg"
                   >
                     <feature.icon className="w-6 h-6 text-primary" />
@@ -142,21 +133,19 @@ export const MissionSection = memo(() => {
                   </p>
                 </div>
 
-                {/* Corner Decoration - disabled on mobile */}
-                {animationConfig.allowInfiniteAnimations && (
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 3 * animationConfig.durationMultiplier,
-                      repeat: Infinity,
-                      delay: index * 0.5,
-                    }}
-                    className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl"
-                  />
-                )}
+                {/* Corner Decoration */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.5,
+                  }}
+                  className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl"
+                />
               </motion.div>
             ))}
           </div>

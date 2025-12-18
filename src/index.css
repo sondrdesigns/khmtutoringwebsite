@@ -417,8 +417,8 @@
     --shadow-elevated: 0 10px 40px -10px #2a476f26;
     --shadow-glow: 0 0 40px #f0c4424d;
     --transition-smooth: all .3s cubic-bezier(.4, 0, .2, 1);
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -3552,53 +3552,6 @@
       opacity: 1;
       transform: scale(1);
     }
-  }
-
-  @keyframes spin-border {
-    from {
-      transform: translateZ(0) rotate(0deg);
-    }
-
-    to {
-      transform: translateZ(0) rotate(360deg);
-    }
-  }
-
-  .loading-spin-border {
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      rgba(255, 255, 255, 0.6) 120deg,
-      transparent 240deg,
-      rgba(255, 255, 255, 0.6) 360deg
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    padding: 2px;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    animation: spin-border var(--spin-duration, 4s) linear infinite;
-    pointer-events: none;
-    contain: layout style paint;
-  }
-
-  @keyframes logo-float {
-    0%, 100% {
-      transform: translateZ(0) translateY(0);
-    }
-    50% {
-      transform: translateZ(0) translateY(-8px);
-    }
-  }
-
-  .loading-logo-float {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    animation: logo-float var(--float-duration, 2.5s) ease-in-out infinite;
-    contain: layout style paint;
   }
 }
 

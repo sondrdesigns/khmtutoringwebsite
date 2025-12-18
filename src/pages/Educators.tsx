@@ -9,9 +9,9 @@ import {
   DialogTitle,
   DialogClose,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.png";
+import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
-import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
+import noahImage from "../assets/khm-tutoring-tutor-noah-agena.jpg";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
 import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";
@@ -255,18 +255,18 @@ const Educators = memo(() => {
   }, [activeFilter]);
 
   return (
-    <main className="pt-24">
+    <main className="pt-20">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="mb-6 text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+            <h1 className="mb-3 md:mb-4 text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
               Meet Our{" "}
               <span className="text-gradient font-bold">
                 Expert Educators
               </span>
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
               Experienced, passionate tutors in Hawaii and Honolulu dedicated to your child's success. Serving students across Oahu and all of Hawaii.
             </p>
           </div>
@@ -274,7 +274,7 @@ const Educators = memo(() => {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-background border-b border-border">
+      <section className="py-4 md:py-6 bg-background border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-3">
             {subjects.map((subject) => (

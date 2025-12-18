@@ -11,18 +11,18 @@ const benefits = [
 
 const About = () => {
   return (
-    <main className="pt-24">
+    <main className="pt-20">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-8 md:py-10 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="mb-6 text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+            <h1 className="mb-3 md:mb-4 text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
               About{" "}
               <span className="text-gradient font-bold">
                 KHM | Expert Tutoring
               </span>
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-xl">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
               Empowering Students to Reach Their Full Potential
             </p>
           </div>
@@ -30,7 +30,7 @@ const About = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16">
+      <section className="py-10 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
             <div className="text-center mb-8">
@@ -39,17 +39,17 @@ const About = () => {
               </div>
             </div>
             <p className="text-xl text-foreground leading-relaxed text-center">
-              At KHM Tutoring, Hawaii's premier tutoring service, we believe that every student has the ability to succeed with the right guidance, support, and mindset. Our mission is to empower students across Honolulu and all of Hawaii to achieve academic excellence and confidence through personalized, high-quality tutoring.
+              At KHM Tutoring, we believe that every student has the ability to succeed with the right tutor match. Our mission is to empower students across Honolulu and all of Hawaii to achieve academic excellence through personalized, one-on-one tutoring with quality educators who truly understand their needs.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed text-center">
-              Founded on the belief that education should be both effective and inspiring, KHM Tutoring provides one-on-one and small group tutoring throughout Hawaii — from Honolulu to all of Oahu. We cover a wide range of academic subjects, from core areas like math, English, and science to test preparation and enrichment courses designed to challenge advanced learners.
+              Founded by Kody Kim with over 10 years of tutoring experience, KHM Tutoring has built a team of exceptional tutors through a rigorous vetting process. We don't just match students with any tutor—we use our own proven methods to find the perfect fit between each child and their tutor, ensuring a personal connection that leads to real results. Our quality tutors bring expertise, dedication, and a genuine commitment to each student's success.
             </p>
           </div>
         </div>
       </section>
 
       {/* Story, Team, and Approach - Three Columns */}
-      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
             <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-4">
@@ -70,7 +70,7 @@ const About = () => {
                 Our Story
               </h3>
               <p className="text-muted-foreground leading-relaxed text-base">
-                KHM Tutoring began with a simple vision: to create affordable, high quality tutoring in Hawaii where students not only improve their grades but also rediscover their motivation to learn. What started as a local Honolulu tutoring service has grown into a trusted academic partner for families across Oahu and all of Hawaii seeking meaningful, results-driven instruction.
+                KHM Tutoring began when founder Kody Kim started tutoring in 2016, driven by a vision to create a more personal, quality-focused tutoring experience in Hawaii. Over 10+ years, Kody and his carefully selected team of tutors have developed our own unique methods for matching students with the right tutor—considering not just academic needs, but personality, learning style, and communication preferences. What started as a local Honolulu service has grown into a trusted partner for families across Oahu, built on the foundation of quality tutors and proven results.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ const About = () => {
                 Our Team
               </h3>
               <p className="text-muted-foreground leading-relaxed text-base">
-                Our team of tutors in Hawaii consists of experienced educators and subject specialists who share one goal — helping each student succeed. Every tutor serving Honolulu and the surrounding areas is carefully vetted for expertise, communication skills, and dedication. We take pride in matching Hawaii students with tutors who best fit their learning style, ensuring a productive and comfortable learning experience.
+                Quality tutors are at the heart of everything we do. Our team consists of experienced educators with 10+ years of combined experience, each carefully selected through our rigorous vetting process. We evaluate not just academic qualifications, but teaching ability, communication skills, personality, and genuine dedication to student success. This strong vetting process ensures that every tutor on our team meets our high standards for quality and personal connection with students.
               </p>
             </div>
 
@@ -102,7 +102,7 @@ const About = () => {
                 Our Approach
               </h3>
               <p className="text-muted-foreground leading-relaxed text-base">
-                We use a personalized learning model. We begin with an academic assessment to understand each student's strengths, challenges, and objectives. From there, we design a customized learning plan that includes structured lessons, ongoing feedback, and measurable milestones. Our approach emphasizes understanding over memorization — building the critical thinking and study habits that last long after tutoring ends.
+                We've developed our own methods to best fit each child with their ideal tutor. This personal matching process considers academic needs, learning style, personality, and communication preferences. We begin with a thorough assessment to understand each student's strengths, challenges, and goals. From there, we carefully match them with a tutor who not only has the right expertise, but also the right teaching style and personal connection. This personalized approach ensures a productive, comfortable learning experience that leads to real academic growth.
               </p>
             </div>
           </div>
@@ -110,7 +110,7 @@ const About = () => {
       </section>
 
       {/* Location Flexibility */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
+      <section className="py-10 md:py-12 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-6">
@@ -124,14 +124,14 @@ const About = () => {
       </section>
 
       {/* Why Families Choose Us */}
-      <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
+            <div className="text-center mb-8 md:mb-12 animate-fade-in">
               <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-6">
                 <span className="text-primary">The KHM Advantage</span>
               </div>
-              <h2 className="mb-4 text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
+              <h2 className="mb-3 md:mb-4 text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
                 Why Families{" "}
                 <span className="text-gradient font-bold">
                   Choose Us
@@ -163,14 +163,14 @@ const About = () => {
       </section>
 
       {/* Join Us CTA */}
-      <section className="py-24">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <div className="bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/5 rounded-3xl p-12 md:p-16 border border-border shadow-xl">
               <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <span className="text-primary">Ready to Get Started?</span>
               </div>
-              <h2 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
+              <h2 className="mb-4 md:mb-6 text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
                 Join{" "}
                 <span className="text-gradient font-bold">
                   Us

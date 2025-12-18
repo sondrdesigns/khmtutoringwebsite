@@ -51,33 +51,33 @@ const AppContent = () => {
     switch (location.pathname) {
       case "/":
         return {
-          title: "KHM Tutoring - Expert Tutors in Hawaii & Honolulu | K-12 Math, English & Test Prep",
-          description: "Top-rated tutoring services in Hawaii and Honolulu. Expert K-12 tutors for Math, English, SAT, SSAT, and AP prep. Personalized learning, flexible scheduling. Serving Honolulu, Oahu, and all of Hawaii. Book your free consultation today!",
-          keywords: "tutors Hawaii, tutors Honolulu, tutoring services Hawaii, K-12 tutoring Honolulu, math tutor Hawaii, English tutor Honolulu, SAT prep Hawaii, SSAT prep Honolulu, AP tutoring Hawaii, private tutor Honolulu, in-home tutoring Hawaii, online tutoring Hawaii, best tutors Honolulu, tutoring near me Hawaii",
+          title: "KHM Tutoring - Expert K-12 Tutors | Math, English & Test Prep in Hawaii",
+          description: "Top-rated K-12 tutoring services with expert educators specializing in Math, English, SAT, SSAT, and AP prep. Personalized learning plans and flexible scheduling. Book your free consultation today!",
+          keywords: "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test preparation, personalized tutoring, in-home tutoring, online tutoring, Honolulu, Oahu, Hawaii",
         };
       case "/about":
         return {
-          title: "About KHM Tutoring - Expert Tutors in Hawaii & Honolulu",
-          description: "Learn about KHM Tutoring, Hawaii's premier tutoring service. Experienced educators, personalized learning plans, and proven results. Serving Honolulu, Oahu, and all of Hawaii since 2010.",
-          keywords: "about KHM Tutoring, tutoring company Hawaii, educational services Honolulu, tutoring history Hawaii, tutoring mission Honolulu",
+          title: "About KHM Tutoring - Premier Tutoring Service Since 2010",
+          description: "Learn about KHM Tutoring's mission to empower students through personalized education. Experienced educators, proven results, and a commitment to academic excellence across all grade levels.",
+          keywords: "about KHM Tutoring, tutoring company, educational services, tutoring history, tutoring mission, experienced educators, personalized learning",
         };
       case "/educators":
         return {
-          title: "Meet Our Expert Tutors in Hawaii & Honolulu | KHM Tutoring",
-          description: "Meet our team of expert tutors in Hawaii and Honolulu. Experienced educators specializing in Math, English, SAT, SSAT, and AP prep. All tutors are certified and background-checked.",
-          keywords: "tutors Hawaii, educators Honolulu, math tutors Hawaii, English tutors Honolulu, SAT tutors Hawaii, AP tutors Honolulu, certified tutors Hawaii",
+          title: "Meet Our Expert Tutors | KHM Tutoring",
+          description: "Meet our team of certified, experienced educators specializing in Math, English, SAT, SSAT, and AP prep. All tutors are background-checked and dedicated to student success.",
+          keywords: "tutors, educators, math tutors, English tutors, SAT tutors, AP tutors, certified tutors, experienced teachers, test prep specialists",
         };
       case "/contact":
         return {
-          title: "Contact KHM Tutoring - Book Your Free Consultation in Hawaii",
-          description: "Contact KHM Tutoring in Hawaii and Honolulu. Schedule your free consultation today. Flexible scheduling, in-home or online tutoring available. Serving all of Oahu and Hawaii.",
-          keywords: "contact KHM Tutoring, tutoring consultation Hawaii, book tutor Honolulu, tutoring inquiry Hawaii, tutoring contact Honolulu",
+          title: "Contact KHM Tutoring - Book Your Free Consultation",
+          description: "Schedule your free consultation today. Flexible scheduling available with in-home or online tutoring options. Get started on your academic journey.",
+          keywords: "contact KHM Tutoring, tutoring consultation, book tutor, tutoring inquiry, free consultation, schedule tutoring",
         };
       default:
         return {
-          title: "KHM Tutoring - Expert Tutors in Hawaii & Honolulu",
-          description: "Top-rated tutoring services in Hawaii and Honolulu.",
-          keywords: "tutors Hawaii, tutors Honolulu",
+          title: "KHM Tutoring - Expert K-12 Tutors",
+          description: "Top-rated tutoring services with expert educators.",
+          keywords: "tutoring, tutors, K-12 education",
         };
     }
   }, [location.pathname]);
