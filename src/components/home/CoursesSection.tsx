@@ -42,7 +42,7 @@ const courses = [
     id: "ap",
     name: "AP Subjects",
     icon: Target,
-    description: "Advanced Placement exam preparation",
+    description: "Advanced Placement exam prep",
     points: [
       "In-depth subject knowledge",
       "Practice with AP-style questions",
@@ -53,7 +53,7 @@ const courses = [
     id: "sat",
     name: "SAT",
     icon: TrendingUp,
-    description: "Comprehensive SAT test preparation",
+    description: "Comprehensive SAT prep",
     points: [
       "Math and Evidence-Based Reading & Writing",
       "Full-length practice tests",

@@ -9,9 +9,9 @@ import {
   DialogTitle,
   DialogClose,
 } from "../components/ui/dialog";
-import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.jpg";
+import kodyImage from "../assets/khm-tutoring-tutor-kody-kim.png";
 import andrewImage from "../assets/khm-tutoring-tutor-andrew-holzman.jpg";
-import noahImage from "../assets/khm-tutoring-tutor-noah-agena.jpg";
+import noahImage from "../assets/khm-tutoring-tutor-noah-agena.png";
 import peterImage from "../assets/khm-tutoring-tutor-peter-greenhill.png";
 import blytheImage from "../assets/khm-tutoring-tutor-blythe-yangson.png";
 import keenanImage from "../assets/khm-tutoring-tutor-keenan-kim.png";

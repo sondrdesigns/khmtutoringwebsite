@@ -97,7 +97,7 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "SAT Prep",
-              "description": "Comprehensive SAT test preparation"
+              "description": "Comprehensive SAT prep"
             }
           },
           {
@@ -113,7 +113,7 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "AP Subject Tutoring",
-              "description": "Advanced Placement exam preparation"
+              "description": "Advanced Placement exam prep"
             }
           }
         ]

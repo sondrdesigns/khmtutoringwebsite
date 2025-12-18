@@ -3,6 +3,7 @@
       "version": "0.1.0",
       "private": true,
       "dependencies": {
+            "@anthropic-ai/sdk": "^0.71.2",
             "@emailjs/browser": "^4.4.1",
             "@eslint/js": "*",
             "@radix-ui/react-accordion": "^1.2.3",
@@ -63,12 +64,18 @@
             "vite": "*"
       },
       "devDependencies": {
-            "@types/node": "^20.10.0",
+            "@types/node": "^20.19.27",
+            "@vercel/node": "^5.5.15",
             "@vitejs/plugin-react-swc": "^3.10.2",
+            "concurrently": "^9.2.1",
+            "dotenv": "^17.2.3",
+            "express": "^5.2.1",
             "vite": "6.3.5"
       },
       "scripts": {
             "dev": "vite",
+            "dev:server": "node server.js",
+            "dev:full": "concurrently \"npm run dev:server\" \"npm run dev\"",
             "build": "vite build"
       }
 }

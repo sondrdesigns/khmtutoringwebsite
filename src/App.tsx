@@ -53,7 +53,7 @@ const AppContent = () => {
         return {
           title: "KHM Tutoring - Expert K-12 Tutors | Math, English & Test Prep in Hawaii",
           description: "Top-rated K-12 tutoring services with expert educators specializing in Math, English, SAT, SSAT, and AP prep. Personalized learning plans and flexible scheduling. Book your free consultation today!",
-          keywords: "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test preparation, personalized tutoring, in-home tutoring, online tutoring, Honolulu, Oahu, Hawaii",
+          keywords: "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring, Honolulu, Oahu, Hawaii",
         };
       case "/about":
         return {

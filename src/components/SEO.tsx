@@ -13,7 +13,7 @@ interface SEOProps {
 export const SEO = ({
   title = "KHM Tutoring - Expert K-12 Tutors | Math, English & Test Prep in Hawaii",
   description = "Top-rated K-12 tutoring services with expert educators specializing in Math, English, SAT, SSAT, and AP prep. Personalized learning plans and flexible scheduling.",
-  keywords = "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test preparation, personalized tutoring, in-home tutoring, online tutoring",
+  keywords = "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring",
   image = "https://www.khmtutoring.com/og-image.jpg",
   url,
   type = "website",
