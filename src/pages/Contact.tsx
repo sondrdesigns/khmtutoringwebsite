@@ -12,11 +12,21 @@ import {
 } from "../components/ui/select";
 import { Mail, Clock, CheckCircle2, AlertCircle, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../components/ui/dialog";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -76,7 +86,10 @@ const Contact = () => {
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
+      // Store the name before resetting
+      setSubmittedName(formData.name);
       setSubmitStatus("success");
+      setShowSuccessDialog(true);
       setFormData({
         name: "",
         email: "",
@@ -302,6 +315,33 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Success Confirmation Dialog */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-full">
+                <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
+              </div>
+            </div>
+            <DialogTitle className="text-center text-xl">
+              Message Sent Successfully!
+            </DialogTitle>
+            <DialogDescription className="text-center pt-2">
+              Thank you for contacting us{submittedName ? `, ${submittedName}` : ""}! We've received your message and will get back to you within 24 hours.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="justify-center">
+            <Button
+              onClick={() => setShowSuccessDialog(false)}
+              className="w-full sm:w-auto"
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 };

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typography Preview - KHM Tutoring</title>
+  
+  <!-- Google Fonts: Inter (body) and Poppins (headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px -2px rgba(42, 71, 111, 0.08);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #2a476f;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    
+    h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.875rem;
+      font-weight: 600;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .section:last-child {
+      border-bottom: none;
+    }
+    
+    .font-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .example {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #2a476f;
+    }
+    
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .text-5xl { font-size: 3rem; }
+    
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .comparison-item {
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 0.5rem;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #2a476f;
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(to right, #2a476f, #7092c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="gradient-text">Typography Preview</h1>
+    <p class="text-lg" style="color: #64748b; margin-bottom: 2rem;">
+      Preview of the new typography system using <strong>Inter</strong> for body text and <strong>Poppins</strong> for headings.
+    </p>
+    
+    <!-- Headings Section -->
+    <div class="section">
+      <div class="font-label">Headings (Poppins)</div>
+      <h1>Heading 1 - Main Page Title</h1>
+      <h2>Heading 2 - Section Title</h2>
+      <h3>Heading 3 - Subsection Title</h3>
+      <h4>Heading 4 - Card Title</h4>
+    </div>
+    
+    <!-- Body Text Section -->
+    <div class="section">
+      <div class="font-label">Body Text (Inter)</div>
+      <div class="example">
+        <p class="text-base">
+          This is regular body text using Inter font. At KHM Tutoring, Hawaii's premier tutoring service, we believe that every student has the ability to succeed with the right guidance, support, and mindset. Our mission is to empower students across Honolulu and all of Hawaii to achieve academic excellence.
+        </p>
+      </div>
+      <div class="example">
+        <p class="text-lg font-medium">
+          This is large body text with medium weight. Perfect for important paragraphs and call-to-action sections.
+        </p>
+      </div>
+      <div class="example">
+        <p class="text-base font-semibold">
+          This is semibold text, great for emphasizing key points in your content.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Typography Scale -->
+    <div class="section">
+      <div class="font-label">Typography Scale</div>
+      <div class="example">
+        <p class="text-xs">Extra Small (12px) - Captions, labels</p>
+        <p class="text-sm">Small (14px) - Secondary text</p>
+        <p class="text-base">Base (16px) - Body text</p>
+        <p class="text-lg">Large (18px) - Large body text</p>
+        <p class="text-xl">Extra Large (20px) - Subheadings</p>
+        <p class="text-2xl">2XL (24px) - Section headings</p>
+        <p class="text-3xl">3XL (30px) - Page headings</p>
+        <p class="text-4xl">4XL (36px) - Large headings</p>
+        <p class="text-5xl">5XL (48px) - Hero headings</p>
+      </div>
+    </div>
+    
+    <!-- Real Content Examples -->
+    <div class="section">
+      <div class="font-label">Real Content Examples</div>
+      
+      <div class="example">
+        <h2 style="margin-top: 0;">Personalized Tutoring for Success</h2>
+        <p class="text-lg" style="margin-bottom: 1rem;">
+          Top-rated tutoring services in Hawaii and Honolulu. Expert K-12 tutors for Math, English, SAT, SSAT, and AP prep.
+        </p>
+        <div>
+          <span class="badge">Trusted by 300+ Students</span>
+          <span class="badge">Expert Tutors</span>
+          <span class="badge">Flexible Scheduling</span>
+        </div>
+      </div>
+      
+      <div class="example">
+        <h3 style="margin-top: 0;">About KHM Tutoring</h3>
+        <p class="text-base">
+          At KHM Tutoring, Hawaii's premier tutoring service, we believe that every student has the ability to succeed with the right guidance, support, and mindset. Our mission is to empower students across Honolulu and all of Hawaii to achieve academic excellence and confidence through personalized, high-quality tutoring.
+        </p>
+        <p class="text-base" style="margin-top: 1rem; color: #64748b;">
+          Founded on the belief that education should be both effective and inspiring, KHM Tutoring provides one-on-one and small group tutoring throughout Hawaii — from Honolulu to all of Oahu.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Font Comparison -->
+    <div class="section">
+      <div class="font-label">Font Comparison</div>
+      <div class="comparison">
+        <div class="comparison-item">
+          <h4 style="margin-top: 0;">Body Font: Inter</h4>
+          <p class="text-base">
+            Inter is a clean, modern sans-serif typeface designed specifically for computer screens. It features excellent readability at all sizes and is optimized for UI design.
+          </p>
+          <p class="text-sm" style="margin-top: 1rem; color: #64748b;">
+            Weights: 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+          </p>
+        </div>
+        <div class="comparison-item">
+          <h4 style="margin-top: 0;">Heading Font: Poppins</h4>
+          <p class="text-base">
+            Poppins is a geometric sans-serif typeface that brings a modern, friendly feel to headings. Its rounded forms create visual interest while maintaining excellent legibility.
+          </p>
+          <p class="text-sm" style="margin-top: 1rem; color: #64748b;">
+            Weights: 500 (medium), 600 (semibold), 700 (bold), 800 (extrabold)
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Weight Examples -->
+    <div class="section">
+      <div class="font-label">Font Weights</div>
+      <div class="example">
+        <p class="text-lg font-medium">Medium (500) - Subtle emphasis</p>
+        <p class="text-lg font-semibold">Semibold (600) - Strong emphasis</p>
+        <p class="text-lg font-bold">Bold (700) - Maximum emphasis</p>
+      </div>
+    </div>
+    
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e2e8f0; text-align: center; color: #64748b;">
+      <p class="text-sm">This preview shows the new typography system. Changes have been applied to your site files.</p>
+      <p class="text-sm" style="margin-top: 0.5rem;">Run <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">npm run dev</code> to see the changes live.</p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+

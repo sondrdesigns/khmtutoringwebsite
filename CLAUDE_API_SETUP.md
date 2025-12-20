@@ -190,3 +190,5 @@ If you encounter any issues:
 2. Check Vercel function logs (Vercel Dashboard → Your Project → Functions)
 3. Verify your API key is correct and active
 4. Make sure you've redeployed after adding environment variables
+
+

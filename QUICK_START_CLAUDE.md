@@ -68,3 +68,5 @@ See `CLAUDE_API_SETUP.md` for complete setup instructions and examples.
 
 **Need help?**
 → Check `CLAUDE_API_SETUP.md` for detailed troubleshooting
+
+

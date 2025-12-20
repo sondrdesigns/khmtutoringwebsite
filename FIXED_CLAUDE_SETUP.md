@@ -77,3 +77,5 @@ function MyComponent() {
 The `api/claude.ts` file will automatically work on Vercel. Just make sure to:
 1. Add `ANTHROPIC_API_KEY` in Vercel Dashboard → Settings → Environment Variables
 2. Redeploy your application
+
+

@@ -68,3 +68,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Claude API server running on http://localhost:${PORT}`);
   console.log(`📝 Make sure ANTHROPIC_API_KEY is set in your .env file`);
 });
+
+
