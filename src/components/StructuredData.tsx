@@ -16,40 +16,62 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
       existingScript.remove();
     }
 
-    // Base LocalBusiness schema
+    // Base LocalBusiness schema with enhanced information
     const localBusinessSchema = {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
       "@id": `${baseUrl}#organization`,
       "name": "KHM Tutoring",
       "alternateName": "KHM Tutoring Hawaii",
-      "description": "Expert K-12 tutoring services specializing in Math, English, SAT, SSAT, and AP prep with personalized learning plans and proven results.",
+      "description": "Expert K-12 tutoring services in Hawaii specializing in Math, English, SAT, SSAT, and AP prep with personalized learning plans and proven results. Serving Honolulu, Oahu, and all of Hawaii.",
       "url": baseUrl,
-      "logo": `${baseUrl}/khm-tutoring-logo.png`,
-      "image": `${baseUrl}/og-image.jpg`,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/khm-tutoring-logo.png`,
+        "width": 300,
+        "height": 300
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/og-image.jpg`,
+        "width": 1200,
+        "height": 630
+      },
       "telephone": "+1-808-381-7856",
       "email": "khmtutoring1@gmail.com",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Honolulu",
         "addressLocality": "Honolulu",
         "addressRegion": "HI",
-        "addressCountry": "US",
-        "addressArea": "Oahu"
+        "postalCode": "96815",
+        "addressCountry": "US"
       },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "21.3099",
         "longitude": "-157.8581"
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Honolulu"
-      },
-      "serviceArea": {
-        "@type": "State",
-        "name": "Hawaii"
-      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Honolulu"
+        },
+        {
+          "@type": "City",
+          "name": "Oahu"
+        },
+        {
+          "@type": "State",
+          "name": "Hawaii"
+        }
+      ],
       "priceRange": "$$",
+      "foundingDate": "2010",
+      "founder": {
+        "@type": "Person",
+        "name": "KHM Tutoring"
+      },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -66,14 +88,22 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Tutoring Services",
+        "name": "K-12 Tutoring Services in Hawaii",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "K-12 Tutoring",
-              "description": "Comprehensive support across all grade levels"
+              "description": "Comprehensive support across all grade levels from elementary to high school",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              },
+              "areaServed": {
+                "@type": "State",
+                "name": "Hawaii"
+              }
             }
           },
           {
@@ -81,7 +111,11 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "Mathematics Tutoring",
-              "description": "From basic arithmetic to advanced calculus"
+              "description": "From basic arithmetic to advanced calculus and statistics",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              }
             }
           },
           {
@@ -89,7 +123,11 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "English Tutoring",
-              "description": "Reading, writing, and language arts excellence"
+              "description": "Reading comprehension, writing skills, and language arts excellence",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              }
             }
           },
           {
@@ -97,7 +135,11 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "SAT Prep",
-              "description": "Comprehensive SAT prep"
+              "description": "Comprehensive SAT test preparation with proven strategies and practice tests",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              }
             }
           },
           {
@@ -105,7 +147,11 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "SSAT Prep",
-              "description": "Secondary School Admission Test prep"
+              "description": "Secondary School Admission Test preparation for private school admissions",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              }
             }
           },
           {
@@ -113,7 +159,11 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "AP Subject Tutoring",
-              "description": "Advanced Placement exam prep"
+              "description": "Advanced Placement exam preparation across multiple subjects",
+              "provider": {
+                "@type": "EducationalOrganization",
+                "name": "KHM Tutoring"
+              }
             }
           }
         ]
@@ -141,6 +191,15 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
         "@type": "WebSite",
         "name": "KHM Tutoring",
         "url": baseUrl,
+        "description": "Expert K-12 tutoring services in Hawaii",
+        "publisher": {
+          "@type": "EducationalOrganization",
+          "name": "KHM Tutoring",
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${baseUrl}/khm-tutoring-logo.png`
+          }
+        },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -148,6 +207,23 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "urlTemplate": `${baseUrl}/search?q={search_term_string}`
           },
           "query-input": "required name=search_term_string"
+        }
+      });
+      
+      // Add Organization schema for better recognition
+      additionalSchemas.push({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KHM Tutoring",
+        "url": baseUrl,
+        "logo": `${baseUrl}/khm-tutoring-logo.png`,
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-808-381-7856",
+          "contactType": "Customer Service",
+          "email": "khmtutoring1@gmail.com",
+          "areaServed": "US-HI",
+          "availableLanguage": "English"
         }
       });
     }
@@ -158,11 +234,39 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
         "@type": "ContactPage",
         "name": "Contact KHM Tutoring",
         "url": `${baseUrl}/contact`,
+        "description": "Contact KHM Tutoring to schedule your free consultation for expert K-12 tutoring services in Hawaii",
         "mainEntity": {
           "@type": "EducationalOrganization",
           "name": "KHM Tutoring",
-          "email": "khmtutoring1@gmail.com"
+          "email": "khmtutoring1@gmail.com",
+          "telephone": "+1-808-381-7856",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Honolulu",
+            "addressRegion": "HI",
+            "addressCountry": "US"
+          }
         }
+      });
+    }
+    
+    if (type === "educators") {
+      additionalSchemas.push({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Meet Our Expert Tutors",
+        "url": `${baseUrl}/educators`,
+        "description": "Meet our team of certified, experienced educators specializing in Math, English, SAT, SSAT, and AP prep in Hawaii"
+      });
+    }
+    
+    if (type === "about") {
+      additionalSchemas.push({
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About KHM Tutoring",
+        "url": `${baseUrl}/about`,
+        "description": "Learn about KHM Tutoring's mission to empower students through personalized education in Hawaii since 2010"
       });
     }
 

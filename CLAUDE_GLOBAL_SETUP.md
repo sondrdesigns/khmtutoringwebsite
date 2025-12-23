@@ -38,3 +38,4 @@ I'll create a template you can copy to any new project. See `CLAUDE_TEMPLATE/` f
 Create a global npm package that provides Claude utilities.
 
 
+

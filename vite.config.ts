@@ -55,6 +55,15 @@
       sourcemap: false,
       chunkSizeWarningLimit: 1000,
       reportCompressedSize: false,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            'ui-vendor': ['framer-motion'],
+          },
+        },
+      },
+      minify: 'esbuild',
     },
     server: {
       port: 3000,
