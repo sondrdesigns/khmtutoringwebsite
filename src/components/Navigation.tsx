@@ -66,6 +66,7 @@ export const Navigation = memo(() => {
           ? "bg-background/95 backdrop-blur-lg shadow-md py-3"
           : "bg-background/95 backdrop-blur-md py-5 md:bg-transparent md:backdrop-blur-none"
       )}
+      style={{ willChange: isScrolled ? 'transform, backdrop-filter' : 'auto' }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">

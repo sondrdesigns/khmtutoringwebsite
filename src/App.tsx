@@ -1,6 +1,5 @@
-import { lazy, Suspense, useMemo } from "react";
+import { lazy, Suspense, useMemo, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -18,7 +17,10 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Use requestAnimationFrame for smooth, non-blocking scroll
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
   }, [pathname]);
 
   return null;
@@ -34,6 +36,17 @@ const App = () => {
 
 const AppContent = () => {
   const location = useLocation();
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
+  // Only show loading screen on initial load
+  useEffect(() => {
+    if (isInitialLoad) {
+      const timer = setTimeout(() => {
+        setIsInitialLoad(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isInitialLoad]);
   
   // Memoize page type to avoid recalculation
   const pageType = useMemo(() => {
@@ -87,7 +100,7 @@ const AppContent = () => {
     <>
       <SEO {...seoData} />
       <StructuredData type={pageType} />
-      <LoadingScreen />
+      {isInitialLoad && <LoadingScreen />}
       <ScrollToTop />
       <div className="min-h-screen bg-background w-full">
         <Navigation />

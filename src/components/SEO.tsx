@@ -23,48 +23,55 @@ export const SEO = ({
   const currentUrl = url || `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
-    // Update document title
-    document.title = title;
+    // Use requestIdleCallback for non-blocking updates, fallback to setTimeout
+    const updateMeta = () => {
+      // Update document title immediately (critical)
+      document.title = title;
 
-    // Update or create meta tags
-    const updateMetaTag = (name: string, content: string, isProperty = false) => {
-      const attribute = isProperty ? "property" : "name";
-      let element = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement;
-      
-      if (!element) {
-        element = document.createElement("meta");
-        element.setAttribute(attribute, name);
-        document.head.appendChild(element);
+      // Update or create meta tags
+      const updateMetaTag = (name: string, content: string, isProperty = false) => {
+        const attribute = isProperty ? "property" : "name";
+        let element = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement;
+        
+        if (!element) {
+          element = document.createElement("meta");
+          element.setAttribute(attribute, name);
+          document.head.appendChild(element);
+        }
+        element.content = content;
+      };
+
+      // Batch DOM updates
+      updateMetaTag("description", description);
+      updateMetaTag("keywords", keywords);
+      updateMetaTag("title", title);
+      updateMetaTag("og:title", title, true);
+      updateMetaTag("og:description", description, true);
+      updateMetaTag("og:image", image, true);
+      updateMetaTag("og:url", currentUrl, true);
+      updateMetaTag("og:type", type, true);
+      updateMetaTag("og:site_name", "KHM Tutoring", true);
+      updateMetaTag("twitter:card", "summary_large_image");
+      updateMetaTag("twitter:title", title);
+      updateMetaTag("twitter:description", description);
+      updateMetaTag("twitter:image", image);
+
+      // Update canonical URL
+      let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        document.head.appendChild(canonical);
       }
-      element.content = content;
+      canonical.href = currentUrl;
     };
 
-    // Update basic meta tags
-    updateMetaTag("description", description);
-    updateMetaTag("keywords", keywords);
-    // Update title meta tag for consistency
-    updateMetaTag("title", title);
-    // Open Graph tags
-    updateMetaTag("og:title", title, true);
-    updateMetaTag("og:description", description, true);
-    updateMetaTag("og:image", image, true);
-    updateMetaTag("og:url", currentUrl, true);
-    updateMetaTag("og:type", type, true);
-    updateMetaTag("og:site_name", "KHM Tutoring", true);
-    // Twitter Card tags
-    updateMetaTag("twitter:card", "summary_large_image");
-    updateMetaTag("twitter:title", title);
-    updateMetaTag("twitter:description", description);
-    updateMetaTag("twitter:image", image);
-
-    // Update canonical URL
-    let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.rel = "canonical";
-      document.head.appendChild(canonical);
+    // Use requestIdleCallback if available, otherwise use setTimeout with 0 delay
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(updateMeta, { timeout: 100 });
+    } else {
+      setTimeout(updateMeta, 0);
     }
-    canonical.href = currentUrl;
   }, [title, description, keywords, image, currentUrl, type]);
 
   return null;

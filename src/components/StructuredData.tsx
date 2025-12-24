@@ -10,11 +10,13 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
   const baseUrl = "https://www.khmtutoring.com";
 
   useEffect(() => {
-    // Remove existing structured data script
-    const existingScript = document.getElementById("structured-data");
-    if (existingScript) {
-      existingScript.remove();
-    }
+    // Use requestIdleCallback for non-blocking structured data updates
+    const updateStructuredData = () => {
+      // Remove existing structured data script
+      const existingScript = document.getElementById("structured-data");
+      if (existingScript) {
+        existingScript.remove();
+      }
 
     // Base LocalBusiness schema with enhanced information
     const localBusinessSchema = {
@@ -273,14 +275,26 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
     // Combine all schemas
     const allSchemas = [localBusinessSchema, ...additionalSchemas];
 
-    // Create and append script tag
-    const script = document.createElement("script");
-    script.id = "structured-data";
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(allSchemas.length === 1 ? allSchemas[0] : allSchemas);
-    document.head.appendChild(script);
+      // Create and append script tag
+      const script = document.createElement("script");
+      script.id = "structured-data";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(allSchemas.length === 1 ? allSchemas[0] : allSchemas);
+      document.head.appendChild(script);
+    };
+
+    // Use requestIdleCallback if available, otherwise use setTimeout
+    let idleCallbackId: number | null = null;
+    if ('requestIdleCallback' in window) {
+      idleCallbackId = requestIdleCallback(updateStructuredData, { timeout: 200 }) as unknown as number;
+    } else {
+      setTimeout(updateStructuredData, 0);
+    }
 
     return () => {
+      if (idleCallbackId !== null && 'cancelIdleCallback' in window) {
+        cancelIdleCallback(idleCallbackId);
+      }
       const scriptToRemove = document.getElementById("structured-data");
       if (scriptToRemove) {
         scriptToRemove.remove();
