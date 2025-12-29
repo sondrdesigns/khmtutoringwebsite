@@ -40,7 +40,7 @@ export const TestimonialsSection = memo(() => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000);
+    const interval = setInterval(nextTestimonial, 8000);
     return () => clearInterval(interval);
   }, [nextTestimonial]);
 

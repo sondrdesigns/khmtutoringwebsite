@@ -154,36 +154,44 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="space-y-4 md:space-y-6">
-                <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-card rounded-xl border border-border">
-                  <div className="p-2 md:p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Mail className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+              <div className="space-y-3 md:space-y-4">
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
+                  <div 
+                    className="p-1.5 md:p-2 rounded-lg flex-shrink-0" 
+                    style={{ backgroundColor: '#DBEAFE' }}
+                  >
+                    <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="mb-1 text-base md:text-lg font-semibold">Email</h3>
-                    <p className="text-sm md:text-base text-muted-foreground break-all">khmtutoring1@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-card rounded-xl border border-border">
-                  <div className="p-2 md:p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Phone className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="mb-1 text-base md:text-lg font-semibold">Phone</h3>
-                    <p className="text-sm md:text-base text-muted-foreground">(808) 381-7856</p>
+                  <div className="text-center">
+                    <h3 className="mb-0.5 text-sm md:text-base font-semibold">Email</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground break-all">khmtutoring1@gmail.com</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-card rounded-xl border border-border">
-                  <div className="p-2 md:p-3 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Clock className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
+                  <div 
+                    className="p-1.5 md:p-2 rounded-lg flex-shrink-0" 
+                    style={{ backgroundColor: '#DBEAFE' }}
+                  >
+                    <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="mb-1 text-base md:text-lg font-semibold">Office Hours</h3>
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      Monday – Friday: 3 pm – 9 pm<br />
-                      Saturday – Sunday: 10 am – 10 pm
+                  <div className="text-center">
+                    <h3 className="mb-0.5 text-sm md:text-base font-semibold">Phone</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">(808) 381-7856</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
+                  <div 
+                    className="p-1.5 md:p-2 rounded-lg flex-shrink-0" 
+                    style={{ backgroundColor: '#DBEAFE' }}
+                  >
+                    <Clock className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="mb-0.5 text-sm md:text-base font-semibold">Office Hours</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      9am-10pm
                     </p>
                   </div>
                 </div>

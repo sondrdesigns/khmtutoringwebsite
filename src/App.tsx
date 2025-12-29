@@ -67,31 +67,31 @@ const AppContent = () => {
         return {
           title: "KHM Tutoring | Expert K-12 Tutors in Hawaii | Math, English & Test Prep",
           description: "Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Certified tutors, personalized learning, proven results. Serving Honolulu & Oahu. Free consultation!",
-          keywords: "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring, Honolulu, Oahu, Hawaii",
+          keywords: "SAT tutoring Hawaii, SSAT Tutor hawaii, math tutor hawaii, best tutor near me, K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring, Honolulu, Oahu, Hawaii, SAT prep Hawaii, SSAT prep Hawaii, math tutoring Hawaii, tutors near me Hawaii, best tutors Hawaii",
         };
       case "/about":
         return {
-          title: "About KHM Tutoring | Premier Tutoring Service Since 2010",
-          description: "Learn about KHM Tutoring's mission to empower students through personalized education. Experienced educators, proven results, commitment to academic excellence. Serving Hawaii since 2010.",
+          title: "About KHM Tutoring | Premier Tutoring Service",
+          description: "Learn about KHM Tutoring's mission to empower students through personalized education. Experienced educators, proven results, commitment to academic excellence. Serving Hawaii.",
           keywords: "about KHM Tutoring, tutoring company, educational services, tutoring history, tutoring mission, experienced educators, personalized learning, Hawaii tutoring",
         };
       case "/educators":
         return {
           title: "Meet Our Expert Tutors | KHM Tutoring Hawaii",
           description: "Meet our team of certified, experienced educators specializing in Math, English, SAT, SSAT, and AP prep. All tutors are background-checked and dedicated to student success in Hawaii.",
-          keywords: "tutors, educators, math tutors, English tutors, SAT tutors, AP tutors, certified tutors, experienced teachers, test prep specialists, Hawaii tutors",
+          keywords: "SAT tutoring Hawaii, SSAT Tutor hawaii, math tutor hawaii, best tutor near me, tutors, educators, math tutors, English tutors, SAT tutors, AP tutors, certified tutors, experienced teachers, test prep specialists, Hawaii tutors, best tutors Hawaii",
         };
       case "/contact":
         return {
           title: "Contact KHM Tutoring | Book Your Free Consultation",
           description: "Schedule your free consultation today. Flexible scheduling available with in-home or online tutoring options. Get started on your academic journey with expert tutors in Hawaii.",
-          keywords: "contact KHM Tutoring, tutoring consultation, book tutor, tutoring inquiry, free consultation, schedule tutoring, Hawaii tutoring",
+          keywords: "SAT tutoring Hawaii, SSAT Tutor hawaii, math tutor hawaii, best tutor near me, contact KHM Tutoring, tutoring consultation, book tutor, tutoring inquiry, free consultation, schedule tutoring, Hawaii tutoring",
         };
       default:
         return {
           title: "KHM Tutoring | Expert K-12 Tutors in Hawaii",
           description: "Expert K-12 tutoring services in Hawaii. Certified tutors, personalized learning, proven results. Math, English, SAT, SSAT & AP prep. Free consultation!",
-          keywords: "tutoring, tutors, K-12 education, Hawaii tutoring",
+          keywords: "SAT tutoring Hawaii, SSAT Tutor hawaii, math tutor hawaii, best tutor near me, tutoring, tutors, K-12 education, Hawaii tutoring",
         };
     }
   }, [location.pathname]);

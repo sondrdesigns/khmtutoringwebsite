@@ -13,7 +13,7 @@ interface SEOProps {
 export const SEO = ({
   title = "KHM Tutoring | Expert K-12 Tutors in Hawaii | Math, English & Test Prep",
   description = "Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Certified tutors, personalized learning, proven results. Serving Honolulu & Oahu. Free consultation!",
-  keywords = "K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring, Hawaii, Honolulu",
+  keywords = "SAT tutoring Hawaii, SSAT Tutor hawaii, math tutor hawaii, best tutor near me, K-12 tutoring, math tutor, English tutor, SAT prep, SSAT prep, AP tutoring, test prep, personalized tutoring, in-home tutoring, online tutoring, Hawaii, Honolulu, SAT prep Hawaii, SSAT prep Hawaii, math tutoring Hawaii, tutors near me Hawaii, best tutors Hawaii",
   image = "https://www.khmtutoring.com/og-image.jpg",
   url,
   type = "website",
@@ -45,12 +45,23 @@ export const SEO = ({
       updateMetaTag("description", description);
       updateMetaTag("keywords", keywords);
       updateMetaTag("title", title);
+      
+      // Additional SEO meta tags for location-based searches
+      updateMetaTag("geo.region", "US-HI");
+      updateMetaTag("geo.placename", "Hawaii");
+      updateMetaTag("geo.position", "21.3099;-157.8581");
+      updateMetaTag("ICBM", "21.3099, -157.8581");
+      
+      // Open Graph tags
       updateMetaTag("og:title", title, true);
       updateMetaTag("og:description", description, true);
       updateMetaTag("og:image", image, true);
       updateMetaTag("og:url", currentUrl, true);
       updateMetaTag("og:type", type, true);
       updateMetaTag("og:site_name", "KHM Tutoring", true);
+      updateMetaTag("og:locale", "en_US", true);
+      
+      // Twitter tags
       updateMetaTag("twitter:card", "summary_large_image");
       updateMetaTag("twitter:title", title);
       updateMetaTag("twitter:description", description);

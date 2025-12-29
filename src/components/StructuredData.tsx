@@ -69,7 +69,6 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
         }
       ],
       "priceRange": "$$",
-      "foundingDate": "2010",
       "founder": {
         "@type": "Person",
         "name": "KHM Tutoring"
@@ -113,10 +112,15 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "Mathematics Tutoring",
-              "description": "From basic arithmetic to advanced calculus and statistics",
+              "alternateName": "math tutor hawaii",
+              "description": "From basic arithmetic to advanced calculus and statistics. Expert math tutor hawaii providing personalized instruction",
               "provider": {
                 "@type": "EducationalOrganization",
                 "name": "KHM Tutoring"
+              },
+              "areaServed": {
+                "@type": "State",
+                "name": "Hawaii"
               }
             }
           },
@@ -137,10 +141,15 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "SAT Prep",
-              "description": "Comprehensive SAT test preparation with proven strategies and practice tests",
+              "alternateName": "SAT tutoring Hawaii",
+              "description": "Comprehensive SAT tutoring Hawaii with proven strategies and practice tests. Expert SAT prep services",
               "provider": {
                 "@type": "EducationalOrganization",
                 "name": "KHM Tutoring"
+              },
+              "areaServed": {
+                "@type": "State",
+                "name": "Hawaii"
               }
             }
           },
@@ -149,10 +158,15 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
             "itemOffered": {
               "@type": "Service",
               "name": "SSAT Prep",
-              "description": "Secondary School Admission Test preparation for private school admissions",
+              "alternateName": "SSAT Tutor hawaii",
+              "description": "Secondary School Admission Test preparation. Expert SSAT Tutor hawaii for private school admissions",
               "provider": {
                 "@type": "EducationalOrganization",
                 "name": "KHM Tutoring"
+              },
+              "areaServed": {
+                "@type": "State",
+                "name": "Hawaii"
               }
             }
           },
@@ -184,8 +198,103 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
       ]
     };
 
+    // Add specific Service schemas for target keywords (hidden from visible content)
+    const tutorServices: any[] = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "SAT tutoring Hawaii",
+        "description": "Expert SAT tutoring Hawaii. Comprehensive SAT prep with personalized instruction and proven strategies",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "@id": `${baseUrl}#organization`,
+          "name": "KHM Tutoring"
+        },
+        "areaServed": {
+          "@type": "State",
+          "name": "Hawaii"
+        },
+        "serviceType": "SAT Test Preparation",
+        "offers": {
+          "@type": "Offer",
+          "availabilityStarts": "2010-01-01",
+          "priceCurrency": "USD",
+          "priceRange": "$$"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "SSAT Tutor hawaii",
+        "description": "Expert SSAT Tutor hawaii for Secondary School Admission Test preparation. Specialized SSAT prep services",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "@id": `${baseUrl}#organization`,
+          "name": "KHM Tutoring"
+        },
+        "areaServed": {
+          "@type": "State",
+          "name": "Hawaii"
+        },
+        "serviceType": "SSAT Test Preparation",
+        "offers": {
+          "@type": "Offer",
+          "availabilityStarts": "2010-01-01",
+          "priceCurrency": "USD",
+          "priceRange": "$$"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "math tutor hawaii",
+        "description": "Expert math tutor hawaii providing personalized mathematics instruction from basic arithmetic to advanced calculus",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "@id": `${baseUrl}#organization`,
+          "name": "KHM Tutoring"
+        },
+        "areaServed": {
+          "@type": "State",
+          "name": "Hawaii"
+        },
+        "serviceType": "Mathematics Tutoring",
+        "offers": {
+          "@type": "Offer",
+          "availabilityStarts": "2010-01-01",
+          "priceCurrency": "USD",
+          "priceRange": "$$"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "best tutor near me",
+        "alternateName": "best tutor near me Hawaii",
+        "description": "Best tutor near me Hawaii. Expert tutoring services with personalized instruction and proven results",
+        "url": baseUrl,
+        "telephone": "+1-808-381-7856",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Honolulu",
+          "addressRegion": "HI",
+          "postalCode": "96815",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "21.3099",
+          "longitude": "-157.8581"
+        },
+        "areaServed": {
+          "@type": "State",
+          "name": "Hawaii"
+        }
+      }
+    ];
+
     // Add page-specific schemas
-    let additionalSchemas: any[] = [];
+    let additionalSchemas: any[] = tutorServices;
 
     if (type === "home") {
       additionalSchemas.push({
@@ -268,7 +377,7 @@ export const StructuredData = ({ type = "home" }: StructuredDataProps) => {
         "@type": "AboutPage",
         "name": "About KHM Tutoring",
         "url": `${baseUrl}/about`,
-        "description": "Learn about KHM Tutoring's mission to empower students through personalized education in Hawaii since 2010"
+        "description": "Learn about KHM Tutoring's mission to empower students through personalized education in Hawaii"
       });
     }
 

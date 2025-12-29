@@ -285,7 +285,7 @@ const Educators = memo(() => {
                   "px-6 py-2 rounded-full transition-all duration-300",
                   activeFilter === subject
                     ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-card hover:bg-muted border border-border"
+                    : "bg-card hover:bg-primary/10 border border-border"
                 )}
               >
                 {subject}
@@ -406,7 +406,7 @@ const Educators = memo(() => {
 
                 {/* Details Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-muted/50 rounded-lg p-4">
+                  <div className="bg-card rounded-lg p-4 border border-border">
                     <div className="flex items-center gap-2 mb-2">
                       <Award className="w-5 h-5 text-primary" />
                       <span className="font-semibold">Experience</span>
@@ -414,7 +414,7 @@ const Educators = memo(() => {
                     <p className="text-muted-foreground">{educator.experience}</p>
                   </div>
                   
-                  <div className="bg-muted/50 rounded-lg p-4">
+                  <div className="bg-card rounded-lg p-4 border border-border">
                     <div className="flex items-center gap-2 mb-2">
                       <BookOpen className="w-5 h-5 text-primary" />
                       <span className="font-semibold">Grades</span>

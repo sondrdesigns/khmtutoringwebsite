@@ -75,7 +75,7 @@ export const Navigation = memo(() => {
             <img 
               src={logoImage} 
               alt="KHM Tutoring Logo - Expert Tutors in Hawaii and Honolulu" 
-              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
               loading="eager"
               width={64}
               height={64}
@@ -98,7 +98,8 @@ export const Navigation = memo(() => {
                 to={item.to}
                 end
                 className="px-4 py-2 rounded-lg text-foreground/80 hover:text-primary hover:bg-primary/10 transition-all duration-200 font-medium border border-transparent hover:border-primary/20"
-                activeClassName="text-primary bg-gradient-to-r from-primary/20 to-primary/10 border-primary/30 shadow-lg"
+                activeClassName="text-primary border-primary/30 shadow-lg"
+                activeStyle={{ backgroundColor: '#DBEAFE' }}
               >
                 {item.label}
               </NavLink>
@@ -108,7 +109,7 @@ export const Navigation = memo(() => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors z-50"
+            className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors z-50"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -131,7 +132,8 @@ export const Navigation = memo(() => {
                     end
                     onClick={closeMobileMenu}
                     className="px-4 py-3 rounded-lg text-foreground/80 hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-primary/5 transition-all duration-200 font-medium text-lg border border-transparent hover:border-primary/20"
-                    activeClassName="text-primary bg-gradient-to-r from-primary/20 to-primary/10 border-primary/30 shadow-lg"
+                    activeClassName="text-primary border-primary/30 shadow-lg"
+                    activeStyle={{ backgroundColor: '#DBEAFE' }}
                   >
                     {item.label}
                   </NavLink>

@@ -79,7 +79,7 @@ export const CoursesSection = memo(() => {
   const activeCourse = useMemo(() => courses.find((c) => c.id === activeTab)!, [activeTab]);
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-muted/30 to-primary/5 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
       {/* Animated Background - Blue themed */}
       <motion.div
         animate={{

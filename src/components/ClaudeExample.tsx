@@ -73,7 +73,7 @@ export function ClaudeExample() {
         )}
 
         {response && (
-          <div className="mt-4 p-4 bg-muted rounded-lg">
+          <div className="mt-4 p-4 bg-card rounded-lg border border-border">
             <h3 className="font-semibold mb-2">Response:</h3>
             <p className="text-sm whitespace-pre-wrap">{response}</p>
           </div>
