@@ -32,6 +32,7 @@ const Contact = () => {
     email: "",
     phone: "",
     grade: "",
+    school: "",
     subject: "",
     message: "",
   });
@@ -79,6 +80,7 @@ const Contact = () => {
         from_email: formData.email,
         phone: formData.phone || "Not provided",
         grade: formData.grade || "Not provided",
+        school: formData.school || "Not provided",
         subject: formData.subject,
         message: formData.message,
         reply_to: formData.email,
@@ -95,6 +97,7 @@ const Contact = () => {
         email: "",
         phone: "",
         grade: "",
+        school: "",
         subject: "",
         message: "",
       });
@@ -253,6 +256,18 @@ const Contact = () => {
                     value={formData.grade}
                     onChange={handleChange}
                     placeholder="e.g., 10th Grade"
+                    className="h-11 md:h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="school" className="text-sm md:text-base">School (Optional)</Label>
+                  <Input
+                    id="school"
+                    name="school"
+                    value={formData.school}
+                    onChange={handleChange}
+                    placeholder="e.g., Punahou School, Iolani School"
                     className="h-11 md:h-12"
                   />
                 </div>
