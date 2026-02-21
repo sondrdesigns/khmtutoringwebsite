@@ -19,6 +19,7 @@ import coltonImage from "../assets/khm-tutoring-tutor-colton-inamine.png";
 import davidImage from "../assets/khm-tutoring-tutor-david-jones.png";
 import alecImage from "../assets/khm-tutoring-tutor-alec-wong.png";
 import aizenImage from "../assets/khm-tutoring-tutor-aizen-chung.png";
+import shweImage from "../assets/khm-tutoring-tutor-shwe-win.png";
 
 // Move static data outside component
 const subjects = ["All", "Math", "English", "Test Prep", "AP Subjects"];
@@ -211,6 +212,25 @@ const educators = [
     funFact: "Loves coffee, the gym, and learning",
     grades: "9-12",
     category: "Math",
+  },
+  {
+    name: "Shwe Win",
+    subjects: ["Science", "Chemistry", "Biology", "College Counseling", "Essay Writing"],
+    tagline: "Harvard Magna Cum Laude | Fulbright Scholar | Neuroscience & Global Health",
+    image: shweImage,
+    bio: "Harvard graduate with a 3.97 GPA and Highest Honors in Neuroscience. Founder of Kūlia College Pathways, a nonprofit that has guided 140+ Hawaii students into top universities including Stanford, Princeton, and Harvard. Passionate about personalized mentorship and helping students reach their full potential.",
+    achievements: [
+      "Harvard University — B.A. Neuroscience, Magna Cum Laude with Highest Honors (GPA: 3.957)",
+      "Fulbright Scholar, U.S. Department of State (2025)",
+      "Founded Kūlia College Pathways, serving 140+ students and 100+ volunteer mentors",
+      "Harvard Teaching Assistant & Academic Coach for Introductory Chemistry and Life Sciences",
+      "Undergraduate researcher on neural encoding and cardiac interoception at Harvard MCB"
+    ],
+    experience: "Since 2023",
+    certifications: "Harvard University, Fulbright Scholar",
+    funFact: "Founder of a college access nonprofit recognized by Hawaii Governor Josh Green",
+    grades: "K-12, College Prep",
+    category: "College Counseling",
   },
 ];
 
