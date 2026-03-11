@@ -19,7 +19,7 @@ const educators = [
     name: 'Kody Kim',
     subjects: ['Essay Writing', 'Reading Comprehension', 'Math', 'SAT/ACT'],
     tagline: 'Founder with years of tutoring experience',
-    image: '/images/tutors/kody-kim.png',
+    image: '/images/tutors/kody-kim.jpg',
     bio: 'Founder of KHM Tutoring with years of tutoring experience since 2016. Skilled educator focused on improving student scores, test-taking strategies, and understanding of material.',
     achievements: [
       'Financial Systems Analyst at HMSA',
@@ -56,7 +56,7 @@ const educators = [
     name: 'Noah Agena',
     subjects: ['Math', 'Physics'],
     tagline: 'Aspiring mechanical engineer',
-    image: '/images/tutors/noah-agena.png',
+    image: '/images/tutors/noah-agena.jpg',
     bio: 'Aspiring mechanical engineer and experienced calculus and physics tutor with strong STEM background from Iolani School.',
     achievements: [
       'Pursuing a mechanical engineering degree',
@@ -73,7 +73,7 @@ const educators = [
     name: 'Peter Greenhill',
     subjects: ['English', 'College Essay Writing', 'SAT'],
     tagline: 'Princeton University graduate',
-    image: '/images/tutors/peter-greenhill.png',
+    image: '/images/tutors/peter-greenhill.jpg',
     bio: 'Princeton University graduate in Philosophy with decades of teaching experience at Iolani School and international academic programs.',
     achievements: [
       'Taught English, Philosophy, and SAT at Iolani from 1986–2021',
@@ -90,7 +90,7 @@ const educators = [
     name: 'Blythe Yangson',
     subjects: ['Math', 'SAT/ACT'],
     tagline: 'Experienced science and math tutor',
-    image: '/images/tutors/blythe-yangson.png',
+    image: '/images/tutors/blythe-yangson.jpg',
     bio: 'Experienced science and math tutor dedicated to helping students succeed through engaging and approachable teaching.',
     achievements: [
       'Graduate of Damien Memorial School and current teacher at Damien',
@@ -107,7 +107,7 @@ const educators = [
     name: 'Keenan Kim',
     subjects: ['Math', 'Calculus'],
     tagline: 'Math tutor specializing in learning differences',
-    image: '/images/tutors/keenan-kim.png',
+    image: '/images/tutors/keenan-kim.jpg',
     bio: 'Graduate of HBA Highschool currently studying Architectural Engineering at Penn State. Specialized math tutor teaching up to calculus via Zoom.',
     achievements: [
       'Graduated from HBA Highschool',
@@ -125,7 +125,7 @@ const educators = [
     name: 'Colton Inamine',
     subjects: ['Math'],
     tagline: 'Hard worker dedicated to quality teaching',
-    image: '/images/tutors/colton-inamine.png',
+    image: '/images/tutors/colton-inamine.jpg',
     bio: 'Graduate of Iolani School currently studying Electrical Computer Engineering at UH Manoa. Very hard worker, dedicated to quality teaching.',
     achievements: [
       'Graduated from Iolani School',
@@ -142,7 +142,7 @@ const educators = [
     name: 'David Jones',
     subjects: ['Econ', 'Math', 'SAT/ACT'],
     tagline: 'Patience, clarity, understanding over memory',
-    image: '/images/tutors/david-jones.png',
+    image: '/images/tutors/david-jones.jpg',
     bio: 'Graduate of University of Connecticut with a double major in Math and Economics. Experience as a TA and tutor, currently a substitute teacher for Hawaii DOE.',
     achievements: [
       'Graduate of University of Connecticut',
@@ -160,7 +160,7 @@ const educators = [
     name: 'Alec Wong',
     subjects: ['Math', 'English'],
     tagline: 'Punahou Junior with future med school goals',
-    image: '/images/tutors/alec-wong.png',
+    image: '/images/tutors/alec-wong.jpg',
     bio: 'Punahou Junior, artist, with future med school goals. Good with kids and patient, specializing in Math and English tutoring.',
     achievements: [
       'Punahou Junior',
@@ -178,7 +178,7 @@ const educators = [
     name: 'Aizen Chung',
     subjects: ['Math', 'Physics'],
     tagline: 'Iolani Graduate and Provost Achievement Scholar',
-    image: '/images/tutors/aizen-chung.png',
+    image: '/images/tutors/aizen-chung.jpg',
     bio: 'Iolani Graduate, currently a UHM Electrical Computer Engineering student. Founder of Web Design Agency Sondr Designs.',
     achievements: [
       'Iolani Graduate',
@@ -197,7 +197,7 @@ const educators = [
     name: 'Shwe Win',
     subjects: ['Science', 'Chemistry', 'Biology', 'College Counseling', 'Essay Writing'],
     tagline: 'Harvard Magna Cum Laude | Fulbright Scholar | Neuroscience & Global Health',
-    image: '/images/tutors/shwe-win.png',
+    image: '/images/tutors/shwe-win.jpg',
     bio: 'Harvard graduate with a 3.97 GPA and Highest Honors in Neuroscience. Founder of Kūlia College Pathways.',
     achievements: [
       'Harvard University — B.A. Neuroscience, Magna Cum Laude with Highest Honors (GPA: 3.957)',
