@@ -63,10 +63,10 @@ export function Navigation() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
         isScrolled
-          ? 'bg-background/95 backdrop-blur-lg shadow-md py-3 border-b border-primary/10'
-          : 'bg-background/95 backdrop-blur-md py-5 md:bg-transparent md:backdrop-blur-none border-b border-primary/5'
+          ? 'bg-background shadow-md py-3 border-b border-border'
+          : 'bg-background py-5 border-b border-transparent'
       )}
     >
       <div className="container mx-auto px-4">
@@ -127,7 +127,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background/98 backdrop-blur-xl shadow-2xl border-t border-primary/20 bg-gradient-to-b from-background to-primary/5 animate-fade-in max-h-[calc(100vh-72px)] overflow-y-auto">
+          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background shadow-lg border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto">
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-2">
                 {navItems.map((item) => {

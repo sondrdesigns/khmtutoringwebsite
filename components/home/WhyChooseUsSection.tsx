@@ -1,7 +1,6 @@
 'use client';
 
 import { CheckCircle, MapPin, Clock, Users, Award, BookOpen } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const reasons = [
   {
@@ -38,60 +37,27 @@ const reasons = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
-      <motion.div
-        animate={{
-          x: [0, 40, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
-      />
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <div className="hidden md:block absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4"
-          >
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
             Why Families Choose{' '}
             <span className="text-gradient font-bold">Tutoring in Honolulu</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
             KHM Tutoring has helped hundreds of students across Hawaii achieve their academic goals. 
             From Honolulu math tutors to SAT prep specialists, discover why we&apos;re Oahu&apos;s 
             trusted choice for personalized education.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {reasons.map((reason, index) => (
-            <motion.div
+          {reasons.map((reason) => (
+            <div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
+              className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-colors duration-200 hover:shadow-lg"
             >
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
@@ -102,17 +68,11 @@ export function WhyChooseUsSection() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 md:mt-16 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-6 md:p-8 border border-primary/20"
-        >
+        <div className="mt-12 md:mt-16 bg-primary/5 rounded-2xl p-6 md:p-8 border border-primary/10">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-xl md:text-2xl font-heading font-bold mb-4">
               Serving All of Oahu: Honolulu, Kailua, Kapolei &amp; Beyond
@@ -127,7 +87,7 @@ export function WhyChooseUsSection() {
               Hawaii&apos;s premier tutoring service.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
