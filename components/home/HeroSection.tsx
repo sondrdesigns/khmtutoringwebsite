@@ -1,27 +1,21 @@
 'use client';
 
-import { useMemo, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Users, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, Users, TrendingUp, GraduationCap, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const SPARKLE_COUNT = 15;
+const stats = [
+  { icon: Users, value: '300+', label: 'Students Helped', color: 'text-primary' },
+  { icon: TrendingUp, value: '+15%', label: 'Avg. Score Boost', color: 'text-emerald-500' },
+  { icon: GraduationCap, value: '10+', label: 'Expert Tutors', color: 'text-secondary' },
+  { icon: Star, value: '5.0', label: 'Parent Rating', color: 'text-yellow-500' },
+];
 
 export function HeroSection() {
   const router = useRouter();
-  
-  const sparkles = useMemo(() => {
-    if (typeof window === 'undefined') return [];
-    return Array.from({ length: SPARKLE_COUNT }, (_, i) => ({
-      id: i,
-      x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-      y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-      delay: Math.random() * 3,
-      duration: 3 + Math.random() * 2,
-    }));
-  }, []);
 
   const handleConsultationClick = useCallback(() => {
     router.push('/contact');
@@ -61,33 +55,6 @@ export function HeroSection() {
         className="absolute bottom-20 left-10 w-64 h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl"
       />
 
-      <div className="absolute inset-0 md:hidden overflow-hidden pointer-events-none">
-        {sparkles.map((sparkle) => (
-          <motion.div
-            key={sparkle.id}
-            initial={{
-              x: sparkle.x,
-              y: sparkle.y,
-              opacity: 0,
-            }}
-            animate={{
-              y: [sparkle.y, sparkle.y - 50, sparkle.y],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: sparkle.duration,
-              repeat: Infinity,
-              delay: sparkle.delay,
-              ease: 'easeInOut',
-            }}
-            className="absolute"
-          >
-            <Sparkles className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-          </motion.div>
-        ))}
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6 md:space-y-8 text-center lg:text-left mb-8 lg:mb-0">
@@ -111,8 +78,8 @@ export function HeroSection() {
                 }}
                 className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-secondary/30 to-primary/30 backdrop-blur-sm text-secondary-foreground rounded-full text-xs md:text-sm font-semibold border border-secondary/30 inline-flex items-center gap-2"
               >
-                <Sparkles className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
-                Trusted by 300+ Students
+                <Star className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
+                Hawaii&apos;s Trusted Tutoring Service
               </motion.span>
             </motion.div>
             
@@ -183,20 +150,45 @@ export function HeroSection() {
                 </Button>
               </motion.div>
             </motion.div>
+
+            {/* Stats Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 md:pt-8"
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                  className="text-center lg:text-left"
+                >
+                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
+                    <stat.icon className={`w-4 h-4 md:w-5 md:h-5 ${stat.color}`} />
+                    <span className={`text-xl md:text-2xl font-bold ${stat.color}`}>
+                      {stat.value}
+                    </span>
+                  </div>
+                  <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative mt-8 lg:mt-0 hidden lg:block overflow-visible"
+            className="relative mt-8 lg:mt-0 hidden lg:block"
           >
             <motion.div 
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
               className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent z-10 md:hidden" />
               <Image
                 src="/images/khm-tutoring-hero.jpeg"
                 alt="KHM Tutoring students learning together in Hawaii - Expert K-12 tutoring services in Honolulu and Oahu"
@@ -206,87 +198,7 @@ export function HeroSection() {
                 priority
                 sizes="(max-width: 1024px) 0vw, 50vw"
               />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              whileHover={{ scale: 1.1, rotate: -2 }}
-              className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-gradient-to-br from-card to-card/90 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-2xl p-3 md:p-6 border border-border max-w-[160px] md:max-w-[200px]"
-            >
-              <div className="flex items-center gap-2 md:gap-3">
-                <motion.div 
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="p-2 md:p-3 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg md:rounded-xl"
-                >
-                  <Users className="w-4 h-4 md:w-6 md:h-6 text-primary" />
-                </motion.div>
-                <div>
-                  <motion.p 
-                    animate={{
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    }}
-                    className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-                  >
-                    300+
-                  </motion.p>
-                  <p className="text-xs md:text-sm text-muted-foreground">Students Helped</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              whileHover={{ scale: 1.1, rotate: 2 }}
-              className="absolute -top-4 -right-4 md:-top-6 md:-right-6 bg-card/95 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-2xl p-3 md:p-6 border-2 border-border/80 max-w-[160px] md:max-w-[200px] z-10"
-            >
-              <div className="flex items-center gap-2 md:gap-3">
-                <motion.div 
-                  animate={{
-                    rotate: [0, -10, 10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="p-2 md:p-3 bg-secondary/20 rounded-lg md:rounded-xl"
-                >
-                  <TrendingUp className="w-4 h-4 md:w-6 md:h-6 text-secondary" />
-                </motion.div>
-                <div>
-                  <motion.p 
-                    animate={{
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                      delay: 0.5,
-                    }}
-                    className="text-lg md:text-2xl font-bold text-secondary"
-                  >
-                    +15%
-                  </motion.p>
-                  <p className="text-xs md:text-sm text-foreground/80 font-medium">Avg. Improvement</p>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </motion.div>
           </motion.div>
         </div>
