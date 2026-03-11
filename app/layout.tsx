@@ -1,0 +1,113 @@
+import type { Metadata, Viewport } from 'next';
+import { Inter, Poppins } from 'next/font/google';
+import './globals.css';
+import { Navigation } from '@/components/Navigation';
+import { Footer } from '@/components/Footer';
+import { StructuredData } from '@/components/StructuredData';
+import Script from 'next/script';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#2a476f',
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.khmtutoring.com'),
+  title: {
+    default: 'KHM Tutoring | Expert K-12 Tutors in Hawaii | Math, English & Test Prep',
+    template: '%s | KHM Tutoring',
+  },
+  description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Certified tutors, personalized learning, proven results. Serving Honolulu & Oahu. Free consultation!',
+  keywords: ['SAT tutoring Hawaii', 'SSAT Tutor hawaii', 'math tutor hawaii', 'best tutor near me', 'K-12 tutoring', 'math tutor', 'English tutor', 'SAT prep', 'SSAT prep', 'AP tutoring', 'test prep', 'personalized tutoring', 'in-home tutoring', 'online tutoring', 'Honolulu', 'Oahu', 'Hawaii'],
+  authors: [{ name: 'KHM Tutoring' }],
+  creator: 'KHM Tutoring',
+  publisher: 'KHM Tutoring',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.khmtutoring.com',
+    siteName: 'KHM Tutoring',
+    title: 'KHM Tutoring | Expert K-12 Tutors in Hawaii',
+    description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Free consultation!',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'KHM Tutoring - Expert Tutors in Hawaii',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KHM Tutoring | Expert K-12 Tutors in Hawaii',
+    description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep.',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://www.khmtutoring.com',
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
+      <body className="min-h-screen bg-background antialiased">
+        <StructuredData type="organization" />
+        <Navigation />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17881935420"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17881935420');
+          `}
+        </Script>
+      </body>
+    </html>
+  );
+}
