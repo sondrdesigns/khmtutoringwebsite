@@ -28,11 +28,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.khmtutoring.com'),
   title: {
-    default: 'KHM Tutoring | Expert K-12 Tutors in Hawaii | Math, English & Test Prep',
-    template: '%s | KHM Tutoring',
+    default: 'Hawaii Tutoring | Math & SAT Prep | Honolulu, Oahu',
+    template: '%s | KHM Tutoring Hawaii',
   },
-  description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Certified tutors, personalized learning, proven results. Serving Honolulu & Oahu. Free consultation!',
-  keywords: ['SAT tutoring Hawaii', 'SSAT Tutor hawaii', 'math tutor hawaii', 'best tutor near me', 'K-12 tutoring', 'math tutor', 'English tutor', 'SAT prep', 'SSAT prep', 'AP tutoring', 'test prep', 'personalized tutoring', 'in-home tutoring', 'online tutoring', 'Honolulu', 'Oahu', 'Hawaii'],
+  description: 'Expert tutoring in Hawaii & Honolulu. Math, SAT, SSAT prep with proven results. 300+ students helped. Book your free consultation today!',
+  keywords: ['hawaii tutoring', 'tutoring hawaii', 'honolulu tutoring', 'math tutoring honolulu', 'hawaii tutors', 'tutors in hawaii', 'oahu tutoring', 'honolulu math tutor', 'SAT prep hawaii', 'SSAT tutor honolulu', 'math tutor oahu', 'english tutor hawaii'],
   authors: [{ name: 'KHM Tutoring' }],
   creator: 'KHM Tutoring',
   publisher: 'KHM Tutoring',
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.khmtutoring.com',
     siteName: 'KHM Tutoring',
-    title: 'KHM Tutoring | Expert K-12 Tutors in Hawaii',
-    description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep. Free consultation!',
+    title: 'Hawaii Tutoring | Math & SAT Prep | Honolulu',
+    description: 'Expert tutoring in Hawaii & Honolulu. Math, SAT, SSAT prep. 300+ students helped. Free consultation!',
     images: [
       {
         url: '/og-image.png',
@@ -65,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KHM Tutoring | Expert K-12 Tutors in Hawaii',
-    description: 'Expert K-12 tutoring in Hawaii. Math, English, SAT, SSAT & AP prep.',
+    title: 'Hawaii Tutoring | Math & SAT Prep | Honolulu',
+    description: 'Expert tutoring in Hawaii & Honolulu. Math, SAT prep. 300+ students helped.',
     images: ['/og-image.png'],
   },
   alternates: {

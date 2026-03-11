@@ -89,9 +89,8 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight"
             >
-              Turning{' '}
               <span className="text-gradient font-bold relative inline-block">
-                Potential
+                Hawaii Tutoring
                 <motion.span
                   animate={{
                     scaleX: [0, 1, 0],
@@ -104,7 +103,7 @@ export function HeroSection() {
                   className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary origin-left"
                 />
               </span>{' '}
-              into Performance
+              That Gets Results
             </motion.h1>
             
             <motion.p 
@@ -113,7 +112,9 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Expert tutoring in Hawaii and Honolulu. Specializing in Math, English, and SAT/SSAT prep for students across Oahu. Take it higher with personalized learning that builds confidence and achieves academic excellence.
+              Looking for a math tutor in Honolulu? KHM Tutoring provides expert tutoring services across Oahu, 
+              specializing in Math, English, SAT, and SSAT prep. Our experienced Hawaii tutors deliver personalized 
+              one-on-one instruction that builds confidence and achieves academic excellence for K-12 students.
             </motion.p>
             
             <motion.div 

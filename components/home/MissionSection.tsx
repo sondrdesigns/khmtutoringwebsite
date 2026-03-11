@@ -64,9 +64,9 @@ export function MissionSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold"
             >
-              Empowering Students to{' '}
+              Honolulu&apos;s Trusted{' '}
               <span className="text-gradient font-bold relative inline-block">
-                Reach Their Full Potential
+                Math Tutors &amp; Test Prep
                 <motion.span
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -83,7 +83,9 @@ export function MissionSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              At KHM Tutoring, Hawaii&apos;s trusted tutoring service, we believe every student deserves personalized attention and the tools to succeed. Our mission is to build confidence, foster critical thinking, and create a solid academic foundation that lasts a lifetime.
+              At KHM Tutoring, we&apos;ve helped over 300 students across Honolulu and Oahu achieve their academic goals. 
+              Whether your child needs a math tutor for algebra and calculus, help with SAT prep, or support with 
+              reading comprehension, our experienced Hawaii tutors deliver results you can measure.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -92,7 +94,9 @@ export function MissionSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              We partner with families throughout Oahu and Hawaii to provide exceptional one-on-one instruction that adapts to each student&apos;s learning style, helping them not just understand concepts, but truly master them.
+              Our tutoring in Hawaii focuses on personalized one-on-one instruction that adapts to each student&apos;s 
+              learning style. From elementary students building foundational skills to high schoolers preparing for 
+              college entrance exams, KHM Tutoring is Oahu&apos;s trusted choice for academic excellence.
             </motion.p>
           </motion.div>
 

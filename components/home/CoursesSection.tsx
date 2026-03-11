@@ -119,7 +119,7 @@ export function CoursesSection() {
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-3 md:mb-4"
           >
-            <span className="text-gradient font-bold">Courses</span> We Offer
+            <span className="text-gradient font-bold">Tutoring Services</span> in Oahu
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -128,7 +128,7 @@ export function CoursesSection() {
             transition={{ delay: 0.2 }}
             className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4"
           >
-            Expert tutoring tailored to your academic goals
+            Expert math tutoring, SAT prep, and academic support for K-12 students across Hawaii
           </motion.p>
         </motion.div>
 
