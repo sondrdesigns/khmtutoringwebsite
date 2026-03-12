@@ -85,8 +85,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/khm-tutoring-favicon.png" />
       </head>
       <body className="min-h-screen bg-background antialiased">
         <StructuredData type="organization" />
