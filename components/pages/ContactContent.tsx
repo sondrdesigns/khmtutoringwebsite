@@ -118,7 +118,7 @@ export function ContactContent() {
       {/* Hero Section */}
       <section className="py-8 md:py-10 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+          <div className="max-w-3xl mx-auto text-center">
             <h1 className="mb-3 md:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
               Get in{' '}
               <span className="text-gradient font-bold">Touch</span>
@@ -135,7 +135,7 @@ export function ContactContent() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
             {/* Left - Contact Info */}
-            <div className="space-y-6 md:space-y-8 animate-fade-in">
+            <div className="space-y-6 md:space-y-8">
               <div>
                 <h2 className="mb-4 md:mb-6 text-2xl md:text-3xl">
                   Let&apos;s Start Your Learning Journey
@@ -179,7 +179,7 @@ export function ContactContent() {
             </div>
 
             {/* Right - Form */}
-            <div className="animate-fade-in">
+            <div>
               <form 
                 ref={formRef}
                 onSubmit={handleSubmit}

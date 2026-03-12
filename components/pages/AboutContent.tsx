@@ -15,7 +15,7 @@ export function AboutContent() {
       {/* Hero Section */}
       <section className="py-8 md:py-10 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+          <div className="max-w-3xl mx-auto text-center">
             <div className="inline-block px-6 py-2 bg-primary/10 rounded-full mb-6 border border-primary/20">
               <span className="text-primary font-semibold">Our Story</span>
             </div>
@@ -35,7 +35,7 @@ export function AboutContent() {
       {/* Introduction Section */}
       <section className="py-10 md:py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+          <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center mb-8">
               <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-4 border border-primary/20 shadow-sm">
                 <span className="text-primary font-semibold text-lg">Our Mission</span>
@@ -56,7 +56,7 @@ export function AboutContent() {
       {/* Story, Team, and Approach - Three Columns */}
       <section className="py-12 md:py-16 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-12">
             <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-4 border border-primary/20 shadow-sm">
               <span className="text-primary font-semibold text-lg">What Makes Us Different</span>
             </div>
@@ -114,7 +114,7 @@ export function AboutContent() {
       {/* Location Flexibility */}
       <section className="py-10 md:py-12 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-6 border border-primary/20 shadow-sm">
               <span className="text-primary font-semibold text-lg">Flexible Learning</span>
             </div>
@@ -131,7 +131,7 @@ export function AboutContent() {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-8 md:mb-12 animate-fade-in">
+            <div className="text-center mb-8 md:mb-12">
               <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-6 border border-primary/20">
                 <span className="text-primary">The KHM Advantage</span>
               </div>
@@ -144,7 +144,7 @@ export function AboutContent() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 animate-fade-in">
+            <div className="grid md:grid-cols-2 gap-6">
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
@@ -166,7 +166,7 @@ export function AboutContent() {
       {/* Join Us CTA */}
       <section className="py-12 md:py-16 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="bg-white rounded-3xl p-12 md:p-16 border border-primary/20 shadow-sm relative overflow-hidden">
               <div className="relative z-10">
                 <div className="inline-block px-6 py-3 bg-primary/10 rounded-full mb-6 border border-primary/20 shadow-sm">

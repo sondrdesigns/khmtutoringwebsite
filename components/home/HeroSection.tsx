@@ -29,7 +29,7 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="space-y-6 md:space-y-8 text-center lg:text-left mb-8 lg:mb-0 animate-fade-in">
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left mb-8 lg:mb-0">
             <div className="inline-block">
               <span className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-secondary/30 to-primary/30 text-secondary-foreground rounded-full text-xs md:text-sm font-semibold border border-secondary/30 inline-flex items-center gap-2">
                 <Star className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />

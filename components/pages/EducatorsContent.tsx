@@ -256,7 +256,7 @@ export function EducatorsContent() {
       {/* Hero Section */}
       <section className="py-8 md:py-10 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
+          <div className="max-w-3xl mx-auto text-center">
             <h1 className="mb-3 md:mb-4 text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
               Meet Our{' '}
               <span className="text-gradient font-bold">Expert Educators</span>
