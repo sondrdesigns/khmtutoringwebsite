@@ -21,8 +21,8 @@
   --color-input: hsl(210 30% 88%);
   --color-ring: hsl(215 45% 30%);
   --radius: 0.75rem;
-  --font-family-body: 'Inter', system-ui, sans-serif;
-  --font-family-heading: 'Poppins', system-ui, sans-serif;
+  --font-family-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-family-heading: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 @layer base {

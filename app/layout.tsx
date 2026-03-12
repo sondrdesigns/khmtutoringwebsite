@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -10,13 +10,7 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
+  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -83,10 +77,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/khm-tutoring-favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className="min-h-screen bg-background antialiased">
         <StructuredData type="organization" />
