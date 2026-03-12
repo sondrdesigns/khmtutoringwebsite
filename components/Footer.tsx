@@ -1,6 +1,3 @@
-'use client';
-
-import { useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,7 +9,7 @@ const navLinks = [
 ];
 
 export function Footer() {
-  const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-primary text-white w-full" style={{ width: '100vw', maxWidth: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>

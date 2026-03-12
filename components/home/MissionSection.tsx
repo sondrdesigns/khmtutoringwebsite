@@ -1,5 +1,3 @@
-'use client';
-
 import { Award, Clock, Heart, Target } from 'lucide-react';
 
 const features = [
