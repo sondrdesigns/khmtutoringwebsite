@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -14,43 +14,9 @@ const navItems = [
   { href: '/contact', label: 'Contact Us' },
 ];
 
-function throttle<T extends (...args: Parameters<T>) => ReturnType<T>>(func: T, wait: number): T {
-  let timeout: NodeJS.Timeout | null = null;
-  let previous = 0;
-  return ((...args: Parameters<T>) => {
-    const now = Date.now();
-    const remaining = wait - (now - previous);
-    if (remaining <= 0 || remaining > wait) {
-      if (timeout) {
-        clearTimeout(timeout);
-        timeout = null;
-      }
-      previous = now;
-      func(...args);
-    } else if (!timeout) {
-      timeout = setTimeout(() => {
-        previous = Date.now();
-        timeout = null;
-        func(...args);
-      }, remaining);
-    }
-  }) as T;
-}
-
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 20);
-  }, []);
-
-  useEffect(() => {
-    const throttledHandleScroll = throttle(handleScroll, 100);
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', throttledHandleScroll);
-  }, [handleScroll]);
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(prev => !prev);
@@ -61,14 +27,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
-        isScrolled
-          ? 'bg-background shadow-md py-3 border-b border-border'
-          : 'bg-background py-5 border-b border-transparent'
-      )}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background shadow-sm py-3 border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -100,10 +59,11 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'px-4 py-2 rounded-lg text-foreground/80 hover:text-primary hover:bg-primary/10 transition-all duration-200 font-medium border border-transparent hover:border-primary/20',
-                    isActive && 'text-primary border-primary/30 shadow-lg'
+                    'px-4 py-2 rounded-lg font-medium',
+                    isActive 
+                      ? 'text-primary bg-primary/10' 
+                      : 'text-foreground/80 hover:text-primary'
                   )}
-                  style={isActive ? { backgroundColor: '#DBEAFE' } : undefined}
                 >
                   {item.label}
                 </Link>
@@ -127,9 +87,9 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background shadow-lg border-t border-border max-h-[calc(100vh-72px)] overflow-y-auto">
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex flex-col space-y-2">
+          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background shadow-lg border-t border-border">
+            <div className="px-4 py-4">
+              <div className="flex flex-col space-y-1">
                 {navItems.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -138,10 +98,11 @@ export function Navigation() {
                       href={item.href}
                       onClick={closeMobileMenu}
                       className={cn(
-                        'px-4 py-3 rounded-lg text-foreground/80 hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-primary/5 transition-all duration-200 font-medium text-lg border border-transparent hover:border-primary/20',
-                        isActive && 'text-primary border-primary/30 shadow-lg'
+                        'px-4 py-3 rounded-lg font-medium text-lg',
+                        isActive 
+                          ? 'text-primary bg-primary/10' 
+                          : 'text-foreground/80'
                       )}
-                      style={isActive ? { backgroundColor: '#DBEAFE' } : undefined}
                     >
                       {item.label}
                     </Link>
