@@ -63,7 +63,7 @@ export function TestimonialsSection() {
         <div className="relative max-w-4xl mx-auto">
           <div className="overflow-hidden">
             <div className="px-4">
-              <div className="bg-card rounded-3xl shadow-xl border border-border p-6 md:p-8 lg:p-12 relative overflow-hidden transition-all duration-300">
+              <div className="bg-card rounded-3xl shadow-xl border border-border p-6 md:p-8 lg:p-12 relative overflow-hidden">
                 <div className="absolute top-4 right-4 md:top-8 md:right-8 opacity-10">
                   <Quote className="w-24 h-24 md:w-32 md:h-32 text-primary" />
                 </div>
@@ -106,10 +106,10 @@ export function TestimonialsSection() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  'h-2 rounded-full transition-all duration-200',
+                  'h-2 rounded-full',
                   index === activeIndex
                     ? 'bg-primary w-8'
-                    : 'bg-border w-2 hover:bg-primary/50'
+                    : 'bg-border w-2 md:hover:bg-primary/50'
                 )}
               />
             ))}

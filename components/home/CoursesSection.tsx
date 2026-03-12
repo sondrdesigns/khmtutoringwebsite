@@ -98,10 +98,10 @@ export function CoursesSection() {
               key={course.id}
               onClick={() => setActiveTab(course.id)}
               className={cn(
-                'px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold transition-all duration-200 flex items-center gap-2 text-sm md:text-base',
+                'px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold flex items-center gap-2 text-sm md:text-base',
                 activeTab === course.id
                   ? 'bg-primary text-white shadow-lg'
-                  : 'bg-card hover:bg-primary/10 border border-border hover:border-primary/40'
+                  : 'bg-card md:hover:bg-primary/10 border border-border md:hover:border-primary/40'
               )}
             >
               <course.icon className="w-4 h-4 md:w-5 md:h-5" />

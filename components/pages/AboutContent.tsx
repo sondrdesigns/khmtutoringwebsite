@@ -67,9 +67,9 @@ export function AboutContent() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Our Story */}
             <div 
-              className="group bg-white rounded-3xl p-8 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2 animate-fade-in"
+              className="group bg-white rounded-3xl p-8 border border-primary/20 md:hover:border-primary md:hover:shadow-lg"
             >
-              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary/20 transition-all">
+              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit">
                 <BookOpen className="w-8 h-8 text-primary" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-primary">
@@ -82,9 +82,9 @@ export function AboutContent() {
 
             {/* Our Team */}
             <div 
-              className="group bg-white rounded-3xl p-8 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2 animate-fade-in"
+              className="group bg-white rounded-3xl p-8 border border-primary/20 md:hover:border-primary md:hover:shadow-lg"
             >
-              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary/20 transition-all">
+              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit">
                 <Users className="w-8 h-8 text-primary" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-primary">
@@ -97,9 +97,9 @@ export function AboutContent() {
 
             {/* Our Approach */}
             <div 
-              className="group bg-white rounded-3xl p-8 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-2 animate-fade-in"
+              className="group bg-white rounded-3xl p-8 border border-primary/20 md:hover:border-primary md:hover:shadow-lg"
             >
-              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary/20 transition-all">
+              <div className="mb-6 p-4 bg-primary/10 rounded-2xl w-fit">
                 <Target className="w-8 h-8 text-primary" />
               </div>
               <h3 className="mb-4 text-2xl font-bold text-primary">
@@ -150,9 +150,9 @@ export function AboutContent() {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="group flex items-start gap-4 p-8 bg-white rounded-2xl border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 animate-scale-in"
+                  className="group flex items-start gap-4 p-8 bg-white rounded-2xl border border-primary/20 md:hover:border-primary md:hover:shadow-lg"
                 >
-                  <div className="flex-shrink-0 p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 group-hover:scale-110 transition-all">
+                  <div className="flex-shrink-0 p-3 bg-primary/10 rounded-full">
                     <Check className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-gray-800 leading-relaxed pt-2 text-lg">
@@ -187,10 +187,10 @@ export function AboutContent() {
                 <Link href="/contact">
                   <Button
                     size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-12 py-7 rounded-xl shadow-xl hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105 group"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-12 py-7 rounded-xl shadow-xl"
                   >
                     Schedule a Consultation
-                    <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-3 w-5 h-5" />
                   </Button>
                 </Link>
               </div>

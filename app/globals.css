@@ -97,9 +97,36 @@
 }
 
 @media (max-width: 767px) {
-  .animate-fade-in {
-    animation: none;
-    opacity: 1;
+  .animate-fade-in,
+  .animate-scale-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    backface-visibility: hidden;
+  }
+
+  *:hover {
+    transform: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+  }
+
+  img, video {
+    content-visibility: auto;
   }
 }
 

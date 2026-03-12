@@ -277,10 +277,10 @@ export function EducatorsContent() {
                 key={subject}
                 onClick={() => handleFilterChange(subject)}
                 className={cn(
-                  'px-6 py-2 rounded-full transition-all duration-300',
+                  'px-6 py-2 rounded-full',
                   activeFilter === subject
                     ? 'bg-primary text-primary-foreground shadow-lg'
-                    : 'bg-card hover:bg-primary/10 border border-border'
+                    : 'bg-card md:hover:bg-primary/10 border border-border'
                 )}
               >
                 {subject}
@@ -300,14 +300,14 @@ export function EducatorsContent() {
                 <button
                   key={educator.name}
                   onClick={() => handleEducatorClick(originalIndex)}
-                  className="relative min-h-[380px] flex flex-col group animate-fade-in rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card hover:shadow-xl hover:border-primary transition-all duration-300 cursor-pointer text-left"
+                  className="relative min-h-[380px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-shadow cursor-pointer text-left"
                 >
                   <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
                     <Image
                       src={educator.image}
                       alt={`${educator.name} - Expert tutor in Hawaii`}
                       fill
-                      className="object-contain object-center group-hover:scale-110 transition-transform duration-300"
+                      className="object-contain object-center"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 6}
                     />
@@ -325,7 +325,7 @@ export function EducatorsContent() {
                         &quot;{educator.tagline}&quot;
                       </p>
                     </div>
-                    <div className="pt-2 border-t border-border/50 text-muted-foreground group-hover:text-primary transition-colors text-xs font-medium text-right">
+                    <div className="pt-2 border-t border-border/50 text-muted-foreground md:group-hover:text-primary text-xs font-medium text-right">
                       Click for full bio →
                     </div>
                   </div>

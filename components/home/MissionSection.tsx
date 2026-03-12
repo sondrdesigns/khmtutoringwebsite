@@ -56,7 +56,7 @@ export function MissionSection() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="group bg-card rounded-2xl p-5 md:p-6 border border-border hover:border-primary/30 transition-colors duration-200 hover:shadow-lg"
+                className="group bg-card rounded-2xl p-5 md:p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg"
               >
                 <div className="mb-4 p-3 bg-primary/10 rounded-xl w-fit">
                   <feature.icon className="w-6 h-6 text-primary" />

@@ -52,10 +52,10 @@ export function HeroSection() {
               <Button
                 size="lg"
                 onClick={handleConsultationClick}
-                className="bg-accent hover:bg-accent/90 text-accent-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group w-full sm:w-auto"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg w-full sm:w-auto"
               >
                 Book Free Consultation
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2" />
               </Button>
             </div>
 

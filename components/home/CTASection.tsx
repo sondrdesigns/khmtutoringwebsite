@@ -36,16 +36,16 @@ export function CTASection() {
             <Button
               onClick={handleContactClick}
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 px-6 py-5 md:px-8 md:py-6 rounded-full shadow-xl transition-all duration-200 group w-full sm:w-auto"
+              className="bg-white text-primary hover:bg-white/90 px-6 py-5 md:px-8 md:py-6 rounded-full shadow-xl w-full sm:w-auto"
             >
               Contact Us
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2" />
             </Button>
             <Button
               onClick={handleEducatorsClick}
               size="lg"
               variant="outline"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-5 md:px-8 md:py-6 rounded-full transition-all duration-200 w-full sm:w-auto"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-5 md:px-8 md:py-6 rounded-full w-full sm:w-auto"
             >
               <Users className="mr-2" />
               View Educators

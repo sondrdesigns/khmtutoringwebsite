@@ -25,7 +25,7 @@ export function Footer() {
               <div key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white/80 hover:text-white transition-colors duration-200 flex items-center gap-1.5 justify-center md:justify-start text-sm"
+                  className="text-white/80 hover:text-white flex items-center gap-1.5 justify-center md:justify-start text-sm"
                 >
                   <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
                   {link.label}
@@ -89,7 +89,7 @@ export function Footer() {
                 href="https://www.sondrdesigns.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/80 hover:text-white transition-colors underline underline-offset-2"
+                className="text-white/80 hover:text-white underline underline-offset-2"
               >
                 Sondr Designs
               </a>

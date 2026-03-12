@@ -57,7 +57,7 @@ export function WhyChooseUsSection() {
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 transition-colors duration-200 hover:shadow-lg"
+              className="bg-card rounded-2xl p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg"
             >
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
