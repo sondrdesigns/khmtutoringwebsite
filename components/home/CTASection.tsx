@@ -19,7 +19,7 @@ export function CTASection() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary" />
-      
+
       <div className="hidden md:block absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full opacity-50" />
       <div className="hidden md:block absolute bottom-0 right-0 w-96 h-96 bg-secondary/20 rounded-full opacity-50" />
 
@@ -31,7 +31,7 @@ export function CTASection() {
           <p className="text-base md:text-lg text-white/90 max-w-2xl mx-auto">
             Join hundreds of families across Hawaii and Honolulu who trust KHM Tutoring for personalized, results-driven education.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
             <Button
               onClick={handleContactClick}

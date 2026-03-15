@@ -19,7 +19,7 @@ const reasons = [
   {
     icon: Clock,
     title: 'Flexible Scheduling',
-    description: 'We offer in-home tutoring throughout Honolulu, online sessions, and flexible scheduling to fit your family\'s busy lifestyle. Whether you\'re in Kailua, Kapolei, or downtown Honolulu, quality tutoring is accessible.',
+    description: 'We offer in-home tutoring throughout Honolulu, online sessions, and flexible scheduling to fit your family\'s busy lifestyle. Quality tutoring is always accessible.',
   },
   {
     icon: BookOpen,
@@ -42,7 +42,7 @@ export function WhyChooseUsSection() {
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
             Why Families Choose{' '}
-            <span className="text-gradient font-bold">Tutoring in Honolulu</span>
+            <span className="text-gradient font-bold">Us</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
             KHM Tutoring has helped hundreds of students across Hawaii achieve their academic goals. 
@@ -55,7 +55,7 @@ export function WhyChooseUsSection() {
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="bg-card rounded-2xl p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg"
+              className="bg-card rounded-2xl p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg md:transition-all md:duration-300 md:hover:-translate-y-1"
             >
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-primary/10 rounded-xl flex-shrink-0">
@@ -73,15 +73,12 @@ export function WhyChooseUsSection() {
         <div className="mt-12 md:mt-16 bg-primary/5 rounded-2xl p-6 md:p-8 border border-primary/10">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-xl md:text-2xl font-heading font-bold mb-4">
-              Serving All of Oahu: Honolulu, Kailua, Kapolei &amp; Beyond
+              Serving Honolulu &amp; Online
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Whether you&apos;re looking for a math tutor in Honolulu, SAT prep in Kailua, or 
-              English tutoring in Kapolei, KHM Tutoring brings expert Hawaii tutors to your 
-              neighborhood. Our tutoring services extend across Oahu, including Hawaii Kai, 
-              Aiea, Pearl City, Mililani, and Ewa Beach. We offer both in-person tutoring 
-              sessions and convenient online tutoring for families throughout the Hawaiian islands.
-              Join the 300+ students who have improved their grades and test scores with 
+              KHM Tutoring brings expert tutors to your home in Honolulu. We also offer
+              convenient online tutoring sessions for families who prefer remote learning.
+              Join the 300+ students who have improved their grades and test scores with
               Hawaii&apos;s premier tutoring service.
             </p>
           </div>

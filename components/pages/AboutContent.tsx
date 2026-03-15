@@ -182,15 +182,16 @@ export function AboutContent() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
                   Contact us today to schedule a consultation and discover how we can help your student achieve their academic goals.
                 </p>
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-12 py-7 rounded-xl shadow-xl"
-                  >
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold px-12 py-7 rounded-xl shadow-xl"
+                >
+                  <Link href="/contact">
                     Schedule a Consultation
                     <ArrowRight className="ml-3 w-5 h-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>

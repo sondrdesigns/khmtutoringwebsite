@@ -27,7 +27,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background shadow-sm py-3 border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background shadow-sm py-2.5 border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -35,16 +35,16 @@ export function Navigation() {
             <Image 
               src="/images/khm-tutoring-logo.png"
               alt="KHM Tutoring Logo - Expert Tutors in Hawaii and Honolulu" 
-              width={96}
-              height={96}
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+              width={40}
+              height={40}
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
               priority
             />
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-xl sm:text-2xl md:text-2xl text-foreground leading-tight">
+              <span className="font-heading font-bold text-base sm:text-lg text-foreground leading-tight">
                 KHM Tutoring
               </span>
-              <span className="text-xs sm:text-sm text-muted-foreground italic hidden sm:inline">
+              <span className="text-[11px] sm:text-xs text-muted-foreground italic hidden sm:inline">
                 Take it higher
               </span>
             </div>
@@ -87,7 +87,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background shadow-lg border-t border-border">
+          <div className="md:hidden fixed inset-x-0 top-[60px] bg-background shadow-lg border-t border-border">
             <div className="px-4 py-4">
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => {

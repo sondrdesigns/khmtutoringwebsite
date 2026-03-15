@@ -36,7 +36,7 @@ export function MissionSection() {
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
               Honolulu&apos;s Trusted{' '}
-              <span className="text-gradient font-bold">Math Tutors &amp; Test Prep</span>
+              <span className="text-gradient font-bold">Test Prep (SAT &amp; SSAT) and Math Tutors</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               At KHM Tutoring, we&apos;ve helped over 300 students across Honolulu and Oahu achieve their academic goals. 
@@ -54,7 +54,7 @@ export function MissionSection() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="group bg-card rounded-2xl p-5 md:p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg"
+                className="group bg-card rounded-2xl p-5 md:p-6 border border-border md:hover:border-primary/30 md:hover:shadow-lg md:transition-all md:duration-300 md:hover:-translate-y-1"
               >
                 <div className="mb-4 p-3 bg-primary/10 rounded-xl w-fit">
                   <feature.icon className="w-6 h-6 text-primary" />

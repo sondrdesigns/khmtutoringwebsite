@@ -85,7 +85,7 @@ export function CoursesSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-3 md:mb-4">
-            <span className="text-gradient font-bold">Tutoring Services</span> in Oahu
+            <span className="text-gradient font-bold">Services</span> Offered
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Expert math tutoring, SAT prep, and academic support for K-12 students across Hawaii

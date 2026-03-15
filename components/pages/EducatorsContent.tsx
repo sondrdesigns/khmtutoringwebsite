@@ -139,24 +139,6 @@ const educators = [
     category: 'Math',
   },
   {
-    name: 'David Jones',
-    subjects: ['Econ', 'Math', 'SAT/ACT'],
-    tagline: 'Patience, clarity, understanding over memory',
-    image: '/images/tutors/david-jones.jpg',
-    bio: 'Graduate of University of Connecticut with a double major in Math and Economics. Experience as a TA and tutor, currently a substitute teacher for Hawaii DOE.',
-    achievements: [
-      'Graduate of University of Connecticut',
-      'Double majored in Math and Economics',
-      'Experience as a TA and tutor',
-      'Substitute teacher for Hawaii DOE'
-    ],
-    experience: 'TA, Tutor, Substitute Teacher',
-    certifications: 'University of Connecticut (Math and Economics)',
-    funFact: 'Passionate about basketball, sports, teamwork, discipline, and love for learning',
-    grades: '9-12',
-    category: 'Test Prep',
-  },
-  {
     name: 'Alec Wong',
     subjects: ['Math', 'English'],
     tagline: 'Punahou Junior with future med school goals',
@@ -300,14 +282,14 @@ export function EducatorsContent() {
                 <button
                   key={educator.name}
                   onClick={() => handleEducatorClick(originalIndex)}
-                  className="relative min-h-[380px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-shadow cursor-pointer text-left"
+                  className="relative min-h-[380px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-all md:duration-300 md:hover:-translate-y-1 cursor-pointer text-left"
                 >
                   <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
                     <Image
                       src={educator.image}
                       alt={`${educator.name} - Expert tutor in Hawaii`}
                       fill
-                      className="object-contain object-center"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 6}
                     />
@@ -355,7 +337,7 @@ export function EducatorsContent() {
                       src={educator.image}
                       alt={`${educator.name} - Expert tutor in Hawaii`}
                       fill
-                      className="object-contain"
+                      className="object-cover object-top"
                       sizes="600px"
                       priority
                     />

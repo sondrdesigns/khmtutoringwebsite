@@ -1,12 +1,10 @@
-import Script from 'next/script';
-
 interface StructuredDataProps {
   type: 'organization' | 'home' | 'about' | 'educators' | 'contact';
 }
 
 export function StructuredData({ type }: StructuredDataProps) {
   const baseUrl = 'https://www.khmtutoring.com';
-  
+
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
@@ -103,8 +101,7 @@ export function StructuredData({ type }: StructuredDataProps) {
   };
 
   return (
-    <Script
-      id={`structured-data-${type}`}
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
     />

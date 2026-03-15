@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 md:pt-20 overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent" />
-      
+
       <div className="hidden md:block absolute top-20 right-10 w-72 h-72 bg-secondary/10 rounded-full opacity-50" />
       <div className="hidden md:block absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full opacity-50" />
 
@@ -36,23 +36,23 @@ export function HeroSection() {
                 Hawaii&apos;s Trusted Tutoring Service
               </span>
             </div>
-            
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight">
               <span className="text-gradient font-bold">Hawaii Tutoring</span>{' '}
               That Gets Results
             </h1>
-            
+
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              Looking for a math tutor in Honolulu? KHM Tutoring provides expert tutoring services across Oahu, 
-              specializing in Math, English, SAT, and SSAT prep. Our experienced Hawaii tutors deliver personalized 
+              Looking for a math tutor in Honolulu? KHM Tutoring provides expert tutoring services across Oahu,
+              specializing in Math, English, SAT, and SSAT prep. Our experienced Hawaii tutors deliver personalized
               one-on-one instruction that builds confidence and achieves academic excellence for K-12 students.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
                 onClick={handleConsultationClick}
-                className="bg-accent hover:bg-accent/90 text-accent-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg w-full sm:w-auto"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg w-full sm:w-auto"
               >
                 Book Free Consultation
                 <ArrowRight className="ml-2" />

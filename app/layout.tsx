@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'KHM Tutoring' }],
   creator: 'KHM Tutoring',
   publisher: 'KHM Tutoring',
+  icons: {
+    icon: { url: '/favicon.png', type: 'image/png' },
+    apple: '/khm-tutoring-favicon.png',
+  },
   robots: {
     index: true,
     follow: true,
@@ -66,9 +70,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.khmtutoring.com',
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
 };
 
 export default function RootLayout({
@@ -79,8 +80,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/khm-tutoring-favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -90,7 +89,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
-        
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17881935420"
