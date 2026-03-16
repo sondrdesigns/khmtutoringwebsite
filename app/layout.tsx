@@ -79,13 +79,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-      </head>
       <body className="min-h-screen bg-background antialiased">
-        <StructuredData type="organization" />
+        <StructuredData type="home" />
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />

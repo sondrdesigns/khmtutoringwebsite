@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ContactContent } from '@/components/pages/ContactContent';
+import { StructuredData } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'Contact KHM Tutoring | Book Your Free Consultation',
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactContent />;
+  return (
+    <>
+      <StructuredData type="contact" />
+      <ContactContent />
+    </>
+  );
 }

@@ -35,18 +35,23 @@ export function MissionSection() {
               <span className="text-primary font-semibold">Our Mission</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
-              Honolulu&apos;s Trusted{' '}
-              <span className="text-gradient font-bold">Test Prep (SAT &amp; SSAT) and Math Tutors</span>
+              What Makes KHM Tutoring{' '}
+              <span className="text-gradient font-bold">Different?</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              At KHM Tutoring, we&apos;ve helped over 300 students across Honolulu and Oahu achieve their academic goals. 
-              Whether your child needs a math tutor for algebra and calculus, help with SAT prep, or support with 
-              reading comprehension, our experienced Hawaii tutors deliver results you can measure.
+              KHM Tutoring is a Honolulu-based K-12 tutoring service founded in 2016 by Kody Kim, a Punahou School
+              and UC Irvine graduate. With a team of 10+ expert tutors — including graduates from Harvard University
+              (Magna Cum Laude), Princeton University, and Phillips Exeter Academy — KHM has helped over 300 students
+              across Oahu achieve measurable academic improvement. The service specializes in personalized one-on-one
+              tutoring in Mathematics (arithmetic through AP Calculus), English, SAT and SSAT test preparation, AP
+              subjects, and college counseling. Unlike franchise tutoring centers, KHM tutors meet students in their
+              homes, at local libraries, or online via Zoom. KHM maintains a 5.0 parent rating and offers free
+              initial consultations.
             </p>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Our tutoring in Hawaii focuses on personalized one-on-one instruction that adapts to each student&apos;s 
-              learning style. From elementary students building foundational skills to high schoolers preparing for 
-              college entrance exams, KHM Tutoring is Oahu&apos;s trusted choice for academic excellence.
+              Our Hawaii tutors have direct experience with top private schools including Punahou School and Iolani
+              School. From elementary students building foundational skills to high schoolers preparing for college
+              entrance exams, KHM Tutoring is Oahu&apos;s trusted choice for academic excellence.
             </p>
           </div>
 

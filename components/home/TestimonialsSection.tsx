@@ -56,10 +56,10 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
-            What Our <span className="text-gradient font-bold">Students &amp; Parents</span> Say
+            What Do <span className="text-gradient font-bold">Parents &amp; Students</span> Say About KHM Tutoring?
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Real results from real families
+            Real results from real families in Honolulu and across Hawaii
           </p>
         </div>
 
@@ -131,6 +131,16 @@ export function TestimonialsSection() {
               />
             ))}
           </div>
+        </div>
+
+        {/* All testimonials rendered in HTML for AI crawlers (visually hidden when JS active) */}
+        <div className="sr-only" aria-hidden="true">
+          {testimonials.map((testimonial, index) => (
+            <blockquote key={index}>
+              <p>{testimonial.content}</p>
+              <cite>{testimonial.name}, {testimonial.role}</cite>
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>

@@ -41,8 +41,8 @@ export function WhyChooseUsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4">
-            Why Families Choose{' '}
-            <span className="text-gradient font-bold">Us</span>
+            Why Do Honolulu Parents Choose{' '}
+            <span className="text-gradient font-bold">KHM Tutoring?</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
             KHM Tutoring has helped hundreds of students across Hawaii achieve their academic goals. 

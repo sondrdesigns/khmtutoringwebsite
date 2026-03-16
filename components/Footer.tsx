@@ -6,13 +6,14 @@ const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/educators', label: 'Educators' },
   { href: '/contact', label: 'Contact Us' },
+  { href: '/privacy', label: 'Privacy Policy' },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white w-full" style={{ width: '100vw', maxWidth: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
+    <footer className="bg-primary text-white w-full">
       {/* Main Footer Content */}
       <div className="w-full container mx-auto px-4 py-6 md:py-8">
         <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-start text-center md:text-left">
@@ -61,12 +62,7 @@ export function Footer() {
             </div>
             <div>
               <p className="text-white/80 text-xs md:text-sm">
-                Monday – Friday: 3 pm – 9 pm
-              </p>
-            </div>
-            <div>
-              <p className="text-white/80 text-xs md:text-sm">
-                Saturday – Sunday: 10 am – 10 pm
+                Open Daily: 8 AM – 10 PM
               </p>
             </div>
           </div>

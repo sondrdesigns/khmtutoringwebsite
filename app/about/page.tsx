@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { AboutContent } from '@/components/pages/AboutContent';
+import { StructuredData } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'About KHM Tutoring | Premier Tutoring Service',
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutContent />;
+  return (
+    <>
+      <StructuredData type="about" />
+      <AboutContent />
+    </>
+  );
 }

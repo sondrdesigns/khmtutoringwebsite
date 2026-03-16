@@ -243,8 +243,15 @@ export function EducatorsContent() {
               Meet Our{' '}
               <span className="text-gradient font-bold">Expert Educators</span>
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
+            <h2 className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base font-normal">
               Experienced, passionate tutors in Hawaii and Honolulu dedicated to your child&apos;s success.
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-xs md:text-sm mt-3 leading-relaxed">
+              KHM Tutoring employs 10+ tutors with credentials from Harvard University (Magna Cum Laude),
+              Princeton University, Phillips Exeter Academy, Penn State, and University of Hawaii. Our team
+              includes a Fulbright Scholar, a medical student with a top-0.5% MCAT score (525/528), a 35-year
+              Iolani School teaching veteran, and current teachers at Damien Memorial School. All tutors are
+              vetted for subject expertise and teaching ability.
             </p>
           </div>
         </div>
@@ -279,39 +286,62 @@ export function EducatorsContent() {
             {filteredEducators.map((educator, index) => {
               const originalIndex = educators.findIndex(e => e.name === educator.name);
               return (
-                <button
+                <div
                   key={educator.name}
-                  onClick={() => handleEducatorClick(originalIndex)}
                   className="relative min-h-[380px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-all md:duration-300 md:hover:-translate-y-1 cursor-pointer text-left"
                 >
-                  <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
-                    <Image
-                      src={educator.image}
-                      alt={`${educator.name} - Expert tutor in Hawaii`}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 6}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-                  <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
-                    <div className="flex-1">
-                      <h3 className="mb-1 text-lg font-semibold font-heading">
-                        {educator.name}
-                      </h3>
-                      <p className="text-primary mb-2 text-xs font-medium">
-                        {educator.subjects.join(' • ')}
-                      </p>
-                      <p className="text-muted-foreground italic text-xs leading-relaxed line-clamp-2">
-                        &quot;{educator.tagline}&quot;
-                      </p>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => handleEducatorClick(originalIndex)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleEducatorClick(originalIndex); } }}
+                    className="flex-1 flex flex-col"
+                  >
+                    <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
+                      <Image
+                        src={educator.image}
+                        alt={`${educator.name} - Expert tutor in Hawaii`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index < 2}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
-                    <div className="pt-2 border-t border-border/50 text-muted-foreground md:group-hover:text-primary text-xs font-medium text-right">
-                      Click for full bio →
+                    <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
+                      <div className="flex-1">
+                        <h3 className="mb-1 text-lg font-semibold font-heading">
+                          {educator.name}
+                        </h3>
+                        <p className="text-primary mb-2 text-xs font-medium">
+                          {educator.subjects.join(' • ')}
+                        </p>
+                        <p className="text-muted-foreground italic text-xs leading-relaxed line-clamp-2">
+                          &quot;{educator.tagline}&quot;
+                        </p>
+                      </div>
+                      <div className="pt-2 border-t border-border/50 text-muted-foreground md:group-hover:text-primary text-xs font-medium text-right">
+                        Click for full bio →
+                      </div>
                     </div>
                   </div>
-                </button>
+                  {/* Crawlable bio content for SEO - visually collapsed */}
+                  <details className="text-xs text-muted-foreground px-4 pb-4" onClick={(e) => e.stopPropagation()}>
+                    <summary className="pt-2 border-t border-border/50 font-medium cursor-pointer">
+                      Read bio
+                    </summary>
+                    <p className="mt-2 leading-relaxed">{educator.bio}</p>
+                    {educator.achievements && (
+                      <ul className="mt-1 list-disc list-inside space-y-0.5">
+                        {educator.achievements.map((a, i) => (
+                          <li key={i}>{a}</li>
+                        ))}
+                      </ul>
+                    )}
+                    <p className="mt-1"><strong>Education:</strong> {educator.certifications}</p>
+                    <p><strong>Grades:</strong> {educator.grades}</p>
+                  </details>
+                </div>
               );
             })}
           </div>

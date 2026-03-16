@@ -172,7 +172,7 @@ export function ContactContent() {
                   </div>
                   <div className="text-center">
                     <h3 className="mb-0.5 text-sm md:text-base font-semibold">Office Hours</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground">9am-10pm</p>
+                    <p className="text-xs md:text-sm text-muted-foreground">8 AM – 10 PM, 7 days a week</p>
                   </div>
                 </div>
               </div>
@@ -310,6 +310,14 @@ export function ContactContent() {
                 <p className="text-xs md:text-sm text-muted-foreground text-center">
                   We&apos;ll respond within 24 hours
                 </p>
+
+                <noscript>
+                  <p className="text-xs text-muted-foreground text-center mt-2">
+                    JavaScript is required for this form. You can also reach us directly at{' '}
+                    <a href="mailto:khmtutoring1@gmail.com" className="text-primary underline">khmtutoring1@gmail.com</a>{' '}
+                    or call <a href="tel:+18083817856" className="text-primary underline">(808) 381-7856</a>.
+                  </p>
+                </noscript>
               </form>
             </div>
           </div>

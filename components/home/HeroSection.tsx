@@ -1,7 +1,4 @@
-'use client';
-
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Users, TrendingUp, GraduationCap, Star } from 'lucide-react';
@@ -14,12 +11,6 @@ const stats = [
 ];
 
 export function HeroSection() {
-  const router = useRouter();
-
-  const handleConsultationClick = useCallback(() => {
-    router.push('/contact');
-  }, [router]);
-
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 md:pt-20 overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent" />
@@ -43,7 +34,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              Looking for a math tutor in Honolulu? KHM Tutoring provides expert tutoring services across Oahu,
+              Looking for a math tutor in Honolulu? KHM Tutoring provides expert <Link href="/educators" className="text-primary hover:underline">tutoring services</Link> across Oahu,
               specializing in Math, English, SAT, and SSAT prep. Our experienced Hawaii tutors deliver personalized
               one-on-one instruction that builds confidence and achieves academic excellence for K-12 students.
             </p>
@@ -51,11 +42,13 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                onClick={handleConsultationClick}
+                asChild
                 className="bg-primary hover:bg-primary/90 text-primary-foreground text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-full shadow-lg w-full sm:w-auto"
               >
-                Book Free Consultation
-                <ArrowRight className="ml-2" />
+                <Link href="/contact">
+                  Book Free Consultation
+                  <ArrowRight className="ml-2" />
+                </Link>
               </Button>
             </div>
 

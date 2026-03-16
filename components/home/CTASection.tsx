@@ -1,21 +1,8 @@
-'use client';
-
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Users } from 'lucide-react';
 
 export function CTASection() {
-  const router = useRouter();
-
-  const handleContactClick = useCallback(() => {
-    router.push('/contact');
-  }, [router]);
-
-  const handleEducatorsClick = useCallback(() => {
-    router.push('/educators');
-  }, [router]);
-
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary" />
@@ -34,21 +21,25 @@ export function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
             <Button
-              onClick={handleContactClick}
+              asChild
               size="lg"
               className="bg-white text-primary hover:bg-white/90 px-6 py-5 md:px-8 md:py-6 rounded-full shadow-xl w-full sm:w-auto"
             >
-              Contact Us
-              <ArrowRight className="ml-2" />
+              <Link href="/contact">
+                Contact Us
+                <ArrowRight className="ml-2" />
+              </Link>
             </Button>
             <Button
-              onClick={handleEducatorsClick}
+              asChild
               size="lg"
               variant="outline"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-5 md:px-8 md:py-6 rounded-full w-full sm:w-auto"
             >
-              <Users className="mr-2" />
-              View Educators
+              <Link href="/educators">
+                <Users className="mr-2" />
+                View Educators
+              </Link>
             </Button>
           </div>
 
@@ -64,8 +55,8 @@ export function CTASection() {
             </div>
             <div className="w-px bg-white/20 hidden sm:block self-stretch" />
             <div className="min-w-[100px] text-center flex flex-col justify-center">
-              <p className="text-2xl md:text-3xl font-bold text-white">+250-400</p>
-              <p className="text-sm md:text-base">Avg SAT Score Increase</p>
+              <p className="text-2xl md:text-3xl font-bold text-white">5.0</p>
+              <p className="text-sm md:text-base">Parent Rating</p>
             </div>
           </div>
         </div>
