@@ -47,12 +47,12 @@ export function Footer() {
           <div className="space-y-2 md:space-y-2.5 md:text-right">
             <div>
               <p className="text-white text-xs md:text-sm break-all">
-                Email: khmtutoring1@gmail.com
+                Email: <a href="mailto:khmtutoring1@gmail.com" className="hover:underline">khmtutoring1@gmail.com</a>
               </p>
             </div>
             <div>
               <p className="text-white text-xs md:text-sm">
-                Phone: (808) 381-7856
+                Phone: <a href="tel:+18083817856" className="hover:underline">(808) 381-7856</a>
               </p>
             </div>
             <div>

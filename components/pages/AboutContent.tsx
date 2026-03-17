@@ -89,7 +89,7 @@ export function AboutContent() {
                 Our Team
               </h3>
               <p className="text-gray-700 leading-relaxed text-base">
-                Quality tutors are at the heart of everything we do. Our team consists of experienced educators with deep expertise in their subjects, each carefully selected through our rigorous vetting process.
+                Quality tutors are at the heart of everything we do. Our team consists of experienced educators with deep expertise in their subjects, each carefully selected through our rigorous vetting process. <Link href="/educators" className="text-primary hover:underline font-medium">Meet our expert tutors</Link>.
               </p>
             </div>
 

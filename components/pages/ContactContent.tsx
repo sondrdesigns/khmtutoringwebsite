@@ -12,7 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Mail, Clock, CheckCircle2, AlertCircle, Phone } from 'lucide-react';
+import { Mail, Clock, CheckCircle2, AlertCircle, Phone, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import {
   Dialog,
@@ -319,6 +320,119 @@ export function ContactContent() {
                   </p>
                 </noscript>
               </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-8 md:py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              How to Get Started
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">1</span>
+                </div>
+                <h3 className="font-semibold mb-2">Free Consultation</h3>
+                <p className="text-sm text-muted-foreground">Submit the form above or call us. We&apos;ll discuss your child&apos;s needs and goals.</p>
+              </div>
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">2</span>
+                </div>
+                <h3 className="font-semibold mb-2">Tutor Matching</h3>
+                <p className="text-sm text-muted-foreground">We match your student with the ideal tutor based on subject, learning style, and personality.</p>
+              </div>
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">3</span>
+                </div>
+                <h3 className="font-semibold mb-2">Start Learning</h3>
+                <p className="text-sm text-muted-foreground">Sessions begin in-home, at a library, or online via Zoom — whatever works best for your family.</p>
+              </div>
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/educators" className="inline-flex items-center text-primary hover:underline font-medium text-sm">
+                Meet our expert tutors <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Area */}
+      <section className="py-8 md:py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-4">
+              Service Areas
+            </h2>
+            <p className="text-center text-muted-foreground mb-6 max-w-2xl mx-auto">
+              KHM Tutoring provides in-home and online tutoring across Hawaii. We serve families in Honolulu,
+              Kailua, Kapolei, Pearl City, Mililani, and throughout Oahu. Online sessions via Zoom are available
+              statewide for all of Hawaii.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-8 md:py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  What subjects does KHM Tutoring offer?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  We offer Math (arithmetic through AP Calculus), English (reading comprehension, essay writing, grammar, vocabulary), SAT prep, SSAT prep, AP subject tutoring, and college counseling & essay writing for K-12 students in Hawaii.
+                </p>
+              </details>
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  Do you offer online tutoring?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  Yes! We offer both in-home tutoring throughout Honolulu and Oahu, as well as online tutoring via Zoom for students across all of Hawaii. Sessions are available 7 days a week from 8 AM to 10 PM.
+                </p>
+              </details>
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  How do I get started?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  Schedule a free consultation through the form above or call us at <a href="tel:+18083817856" className="text-primary hover:underline">(808) 381-7856</a>. We&apos;ll discuss your child&apos;s needs, match them with the ideal tutor, and create a personalized learning plan.
+                </p>
+              </details>
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  What makes KHM different from other tutoring services?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  KHM Tutoring is locally owned in Honolulu — not a franchise. We have 10+ expert tutors from institutions like Harvard, Princeton, and Phillips Exeter Academy. We use a proprietary tutor-matching process and have helped 300+ students with a 5.0 parent rating. <Link href="/about" className="text-primary hover:underline">Learn more about our approach</Link>.
+                </p>
+              </details>
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  What are your tutors&apos; qualifications?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  Our team includes graduates from Harvard University (Magna Cum Laude), Princeton University, Phillips Exeter Academy, and Penn State. We have a Fulbright Scholar, a medical student with a top 0.5% MCAT score (525/528), and a 35-year Iolani School teaching veteran. <Link href="/educators" className="text-primary hover:underline">Meet our tutors</Link>.
+                </p>
+              </details>
             </div>
           </div>
         </div>

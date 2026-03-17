@@ -243,9 +243,9 @@ export function EducatorsContent() {
               Meet Our{' '}
               <span className="text-gradient font-bold">Expert Educators</span>
             </h1>
-            <h2 className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base font-normal">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base font-normal">
               Experienced, passionate tutors in Hawaii and Honolulu dedicated to your child&apos;s success.
-            </h2>
+            </p>
             <p className="text-muted-foreground max-w-3xl mx-auto text-xs md:text-sm mt-3 leading-relaxed">
               KHM Tutoring employs 10+ tutors with credentials from Harvard University (Magna Cum Laude),
               Princeton University, Phillips Exeter Academy, Penn State, and University of Hawaii. Our team

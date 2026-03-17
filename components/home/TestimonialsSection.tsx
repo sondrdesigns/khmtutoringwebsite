@@ -134,7 +134,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* All testimonials rendered in HTML for AI crawlers (visually hidden when JS active) */}
-        <div className="sr-only" aria-hidden="true">
+        <div className="sr-only">
           {testimonials.map((testimonial, index) => (
             <blockquote key={index}>
               <p>{testimonial.content}</p>

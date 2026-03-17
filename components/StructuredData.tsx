@@ -113,6 +113,7 @@ const websiteSchema = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${baseUrl}/#service`,
   name: 'Tutoring Services',
   provider: {
     '@id': `${baseUrl}/#organization`,
@@ -136,6 +137,88 @@ const serviceSchema = {
     ],
   },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What subjects does KHM Tutoring offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'KHM Tutoring offers Math (arithmetic through AP Calculus), English (reading comprehension, essay writing, grammar, vocabulary), SAT prep, SSAT prep, AP subject tutoring, and college counseling & essay writing for K-12 students in Hawaii.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer online tutoring in Hawaii?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! KHM Tutoring offers both in-home tutoring throughout Honolulu and Oahu, as well as online tutoring via Zoom for students across all of Hawaii. Sessions are available 7 days a week from 8 AM to 10 PM.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I get started with KHM Tutoring?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Getting started is easy — schedule a free consultation through our contact page or call us at (808) 381-7856. We will discuss your child\'s needs, match them with the ideal tutor, and create a personalized learning plan.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes KHM Tutoring different from other tutoring services?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'KHM Tutoring is locally owned in Honolulu (not a franchise) with 10+ expert tutors from institutions like Harvard, Princeton, and Phillips Exeter Academy. We use a proprietary tutor-matching process, provide personalized one-on-one instruction, and have helped 300+ students with a 5.0 parent rating.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are KHM Tutoring\'s qualifications?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our team includes graduates from Harvard University (Magna Cum Laude), Princeton University, Phillips Exeter Academy, and Penn State. Our tutors include a Fulbright Scholar, a medical student with a top 0.5% MCAT score (525/528), and a 35-year Iolani School teaching veteran.',
+      },
+    },
+  ],
+};
+
+const reviewSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: { '@id': `${baseUrl}/#organization` },
+    author: { '@type': 'Person', name: 'Sarah Johnson' },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    reviewBody: "KHM Tutoring transformed my daughter's confidence in math. She went from struggling with algebra to acing her tests. The personalized attention made all the difference!",
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: { '@id': `${baseUrl}/#organization` },
+    author: { '@type': 'Person', name: 'Michael Chen' },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    reviewBody: 'Outstanding SAT prep! My son improved his score by 150 points. The tutors are patient, knowledgeable, and really know how to connect with students.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: { '@id': `${baseUrl}/#organization` },
+    author: { '@type': 'Person', name: 'Emily Rodriguez' },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    reviewBody: "Thanks to KHM, I got into my dream college! The AP prep was thorough and the essay help was invaluable. I can't recommend them enough.",
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: { '@id': `${baseUrl}/#organization` },
+    author: { '@type': 'Person', name: 'David Park' },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    reviewBody: 'The flexible scheduling and online options made tutoring so convenient for our busy family. My son actually looks forward to his sessions now!',
+  },
+];
 
 const educatorPersonSchemas = [
   {
@@ -185,6 +268,75 @@ const educatorPersonSchemas = [
     knowsAbout: ['Neuroscience', 'Chemistry', 'Biology', 'College Counseling', 'Essay Writing'],
     award: ['Fulbright Scholar', 'Harvard Magna Cum Laude'],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Noah Agena',
+    jobTitle: 'Math & Physics Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'Iolani School' },
+    ],
+    knowsAbout: ['Mathematics', 'Physics', 'Calculus', 'Mechanical Engineering'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Blythe Yangson',
+    jobTitle: 'Math & Science Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'Damien Memorial School' },
+    ],
+    knowsAbout: ['Mathematics', 'Calculus', 'Pre-Calculus', 'SAT Prep', 'ACT Prep'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Keenan Kim',
+    jobTitle: 'Math Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'HBA High School' },
+      { '@type': 'CollegeOrUniversity', name: 'Penn State University' },
+    ],
+    knowsAbout: ['Mathematics', 'Calculus', 'Architectural Engineering'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Colton Inamine',
+    jobTitle: 'Math Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'Iolani School' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Hawaii at Manoa' },
+    ],
+    knowsAbout: ['Mathematics', 'Electrical Computer Engineering'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Alec Wong',
+    jobTitle: 'Math & English Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'Punahou School' },
+    ],
+    knowsAbout: ['Mathematics', 'English'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Aizen Chung',
+    jobTitle: 'Math & Physics Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'EducationalOrganization', name: 'Iolani School' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Hawaii at Manoa' },
+    ],
+    knowsAbout: ['Mathematics', 'Physics', 'Electrical Computer Engineering'],
+  },
 ];
 
 const contactPageSchema = {
@@ -197,17 +349,38 @@ const contactPageSchema = {
   },
 };
 
+function getBreadcrumbSchema(pageName: string, pageUrl: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: pageName,
+        item: pageUrl,
+      },
+    ],
+  };
+}
+
 export function StructuredData({ type }: StructuredDataProps) {
   const getSchemas = () => {
     switch (type) {
       case 'home':
-        return [organizationSchema, localBusinessSchema, websiteSchema, serviceSchema];
+        return [organizationSchema, localBusinessSchema, websiteSchema, serviceSchema, faqSchema, ...reviewSchemas];
       case 'about':
-        return [organizationSchema, localBusinessSchema];
+        return [organizationSchema, localBusinessSchema, getBreadcrumbSchema('About', `${baseUrl}/about`)];
       case 'educators':
-        return [organizationSchema, ...educatorPersonSchemas];
+        return [organizationSchema, ...educatorPersonSchemas, getBreadcrumbSchema('Educators', `${baseUrl}/educators`)];
       case 'contact':
-        return [organizationSchema, localBusinessSchema, contactPageSchema];
+        return [organizationSchema, localBusinessSchema, contactPageSchema, faqSchema, getBreadcrumbSchema('Contact', `${baseUrl}/contact`)];
       case 'organization':
       default:
         return [organizationSchema];

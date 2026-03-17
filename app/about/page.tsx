@@ -4,14 +4,14 @@ import { StructuredData } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'About KHM Tutoring | Premier Tutoring Service',
-  description: "Learn about KHM Tutoring's mission to empower students through personalized education. Experienced educators, proven results, commitment to academic excellence. Serving Hawaii.",
+  description: "KHM Tutoring's mission: empowering Hawaii students through personalized education since 2016. 10+ expert tutors, 300+ students helped.",
   keywords: ['about KHM Tutoring', 'tutoring company', 'educational services', 'tutoring history', 'tutoring mission', 'experienced educators', 'personalized learning', 'Hawaii tutoring'],
   alternates: {
     canonical: 'https://www.khmtutoring.com/about',
   },
   openGraph: {
     title: 'About KHM Tutoring | Premier Tutoring Service',
-    description: "Learn about KHM Tutoring's mission to empower students through personalized education.",
+    description: "KHM Tutoring's mission: empowering Hawaii students through personalized education since 2016.",
     url: 'https://www.khmtutoring.com/about',
   },
 };
