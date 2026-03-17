@@ -147,8 +147,8 @@ export function ContactContent() {
               </div>
 
               <div className="space-y-3 md:space-y-4">
-                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
-                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border bg-blue-100">
+                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0 bg-blue-100">
                     <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div className="text-center">
@@ -157,8 +157,8 @@ export function ContactContent() {
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
-                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border bg-blue-100">
+                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0 bg-blue-100">
                     <Phone className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div className="text-center">
@@ -167,8 +167,8 @@ export function ContactContent() {
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border" style={{ backgroundColor: '#DBEAFE' }}>
-                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
+                <div className="flex flex-col items-center justify-center gap-2 md:gap-3 p-2 md:p-3 rounded-xl border border-border bg-blue-100">
+                  <div className="p-1.5 md:p-2 rounded-lg flex-shrink-0 bg-blue-100">
                     <Clock className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div className="text-center">
