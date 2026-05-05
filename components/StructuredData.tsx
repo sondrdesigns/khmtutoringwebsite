@@ -337,6 +337,38 @@ const educatorPersonSchemas = [
     ],
     knowsAbout: ['Mathematics', 'Physics', 'Electrical Computer Engineering'],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Omar Saidy',
+    jobTitle: 'Math, Test Prep, Social Studies & PE Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    knowsAbout: ['Mathematics', 'Test Preparation', 'Social Studies', 'Physical Education'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Jacob Bergeron',
+    jobTitle: 'Math, Physics & Engineering Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'Texas A&M University' },
+      { '@type': 'CollegeOrUniversity', name: 'University of Hawaii at Manoa' },
+    ],
+    knowsAbout: ['Mathematics', 'Physics', 'Aerospace Engineering', 'Mechanical Engineering'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Sheany Chung',
+    jobTitle: 'Biology & Chemistry Tutor',
+    worksFor: { '@id': `${baseUrl}/#organization` },
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'University of Hawaii at Manoa' },
+    ],
+    knowsAbout: ['Biology', 'Chemistry', 'Cell & Molecular Biology', 'Genetics'],
+    award: ['Cum Laude', 'UH Mānoa Student Marshall (Fall 2025)', '1st Place CTAHR Showcase & Research Symposium'],
+  },
 ];
 
 const contactPageSchema = {

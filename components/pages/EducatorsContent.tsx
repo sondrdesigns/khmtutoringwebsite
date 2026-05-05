@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 
-const subjects = ['All', 'Math', 'English', 'Test Prep', 'AP Subjects'];
+const subjects = ['All', 'Math', 'English', 'Test Prep', 'AP Subjects', 'Chemistry', 'Biology'];
 
 const educators = [
   {
@@ -192,6 +192,63 @@ const educators = [
     grades: 'K-12, College Prep',
     category: 'College Counseling',
   },
+  {
+    name: 'Omar Saidy',
+    subjects: ['Math', 'Test Prep', 'Social Studies', 'PE'],
+    tagline: 'Veteran teacher of 20 years',
+    image: '/images/tutors/omar-saidy.jpeg',
+    bio: 'Veteran K-12 educator with 20 years of experience, well-versed in Mathematics, Test Preparation, Social Studies, and Physical Education. Currently teaching Middle School Mathematics.',
+    achievements: [
+      '20+ years of K-12 teaching experience',
+      'Experienced with blended learning (Zoom, Canvas), face-to-face instruction, individual tutoring, and group tutoring',
+      'Has taught and tutored across many age levels, difficulty tiers, and diverse learners',
+      'Patient, adaptable teaching style with step-by-step instruction and proven methodology'
+    ],
+    experience: '20+ years',
+    certifications: 'Veteran K-12 educator',
+    funFact: 'Coaches his daughters in Judo, Wrestling, Jiu Jitsu, and Surfing',
+    grades: 'K-12',
+    category: 'Test Prep',
+  },
+  {
+    name: 'Jacob Bergeron',
+    subjects: ['Math', 'Physics', 'Engineering'],
+    tagline: 'UH Mānoa mechanical engineering grad student',
+    image: '/images/tutors/jacob-bergeron.jpg',
+    bio: 'Master’s student in Mechanical Engineering at the University of Hawai‘i at Mānoa, with a B.S. in Aerospace Engineering and a Math minor from Texas A&M. Teaching Assistant in machine dynamics and published research author.',
+    achievements: [
+      'B.S. Aerospace Engineering, Texas A&M University (Math minor)',
+      'Master’s Program in Mechanical Engineering, UH Mānoa (expected May 2027)',
+      'Perfect GRE Quantitative score (170/170)',
+      'Teaching Assistant for undergraduate dynamics of machine systems lab',
+      'Published author on lithium-ion battery electrolyte modeling'
+    ],
+    experience: 'Teaching Assistant since 2025',
+    certifications: 'Texas A&M University, University of Hawai‘i at Mānoa',
+    funFact: 'Working on a hybrid rocket experiment at the Hawaii Rocket Propulsion Lab',
+    grades: '9-12, College',
+    category: 'Math',
+  },
+  {
+    name: 'Sheany Chung',
+    subjects: ['Biology', 'Chemistry', 'Cell & Molecular Biology', 'Genetics'],
+    tagline: 'Biology BS cum laude | UH Mānoa Student Marshall',
+    image: '/images/tutors/sheany-chung.jpg',
+    bio: 'Biology BS cum laude graduate and Student Marshall for UH Mānoa\'s Fall 2025 convocation. Teaching intern for college-level Cell & Molecular Biology and Genetics, with hands-on tutoring experience at Kapiolani Medical Center for Women & Children.',
+    achievements: [
+      'Biology BS, cum laude — University of Hawai‘i at Mānoa',
+      'Student Marshall, UH Mānoa Fall 2025 Convocation',
+      'Teaching Intern — College-level Cell & Molecular Biology and Genetics',
+      '1st Place, College of Tropical Agriculture and Human Resources (CTAHR) Showcase & Research Symposium',
+      'College of Natural Sciences Student Ambassador & Social Media Chair',
+      'DOE Tutor at Kapiolani Medical Center for Women & Children',
+    ],
+    experience: 'Teaching Intern & DOE Tutor',
+    certifications: 'University of Hawai‘i at Mānoa — B.S. Biology (cum laude)',
+    funFact: 'Student Marshall for UH Mānoa\'s Fall 2025 convocation',
+    grades: '9-12, College',
+    category: 'Biology',
+  },
 ];
 
 export function EducatorsContent() {
@@ -219,7 +276,9 @@ export function EducatorsContent() {
       'Math': ['Math', 'Mathematics', 'Calculus', 'Physics', 'Pre-Calculus'],
       'English': ['English', 'Essay Writing', 'Reading Comprehension', 'College Essay Writing', 'Writing'],
       'Test Prep': ['SAT', 'ACT', 'SSAT', 'MCAT', 'Test Prep'],
-      'AP Subjects': ['AP', 'Advanced Placement']
+      'AP Subjects': ['AP', 'Advanced Placement'],
+      'Chemistry': ['Chemistry'],
+      'Biology': ['Biology', 'Cell & Molecular Biology', 'Genetics']
     };
     
     const keywords = filterMap[activeFilter] || [];
@@ -288,7 +347,7 @@ export function EducatorsContent() {
               return (
                 <div
                   key={educator.name}
-                  className="relative min-h-[380px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-all md:duration-300 md:hover:-translate-y-1 cursor-pointer text-left"
+                  className="relative min-h-[280px] flex flex-col group rounded-3xl overflow-hidden border-2 border-border shadow-lg bg-card md:hover:shadow-xl md:hover:border-primary md:transition-all md:duration-300 md:hover:-translate-y-1 cursor-pointer text-left"
                 >
                   <div
                     role="button"
@@ -297,7 +356,7 @@ export function EducatorsContent() {
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleEducatorClick(originalIndex); } }}
                     className="flex-1 flex flex-col"
                   >
-                    <div className="relative aspect-[3/4] min-h-44 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
+                    <div className="relative aspect-square min-h-28 overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 flex-shrink-0 flex items-center justify-center">
                       <Image
                         src={educator.image}
                         alt={`${educator.name} - Expert tutor in Hawaii`}
@@ -308,9 +367,9 @@ export function EducatorsContent() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
-                    <div className="p-4 flex flex-col flex-1 min-h-0 gap-2">
+                    <div className="p-3 flex flex-col flex-1 min-h-0 gap-2">
                       <div className="flex-1">
-                        <h3 className="mb-1 text-lg font-semibold font-heading">
+                        <h3 className="mb-1 text-base font-semibold font-heading">
                           {educator.name}
                         </h3>
                         <p className="text-primary mb-2 text-xs font-medium">
@@ -326,7 +385,7 @@ export function EducatorsContent() {
                     </div>
                   </div>
                   {/* Crawlable bio content for SEO - visually collapsed */}
-                  <details className="text-xs text-muted-foreground px-4 pb-4" onClick={(e) => e.stopPropagation()}>
+                  <details className="text-xs text-muted-foreground px-3 pb-3" onClick={(e) => e.stopPropagation()}>
                     <summary className="pt-2 border-t border-border/50 font-medium cursor-pointer">
                       Read bio
                     </summary>
