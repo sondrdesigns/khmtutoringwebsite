@@ -127,10 +127,56 @@ export function ContactContent() {
             <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
               Contact KHM Tutoring in Hawaii and Honolulu. Schedule a session or ask us anything about our tutoring services.
             </p>
+            <div className="mt-6">
+              <Button asChild variant="outline" size="lg" className="rounded-xl">
+                <a href="#faq">
+                  FAQ
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-8 md:py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              How to Get Started
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">1</span>
+                </div>
+                <h3 className="font-semibold mb-2">Free Consultation</h3>
+                <p className="text-sm text-muted-foreground">Submit the form below or call us. We&apos;ll discuss your child&apos;s needs and goals.</p>
+              </div>
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">2</span>
+                </div>
+                <h3 className="font-semibold mb-2">Tutor Matching</h3>
+                <p className="text-sm text-muted-foreground">We match your student with the ideal tutor based on subject, learning style, and personality.</p>
+              </div>
+              <div className="text-center p-6 bg-card rounded-2xl border border-border">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-primary font-bold">3</span>
+                </div>
+                <h3 className="font-semibold mb-2">Start Learning</h3>
+                <p className="text-sm text-muted-foreground">Sessions begin in-home, at a library, or online via Zoom - whatever works best for your family.</p>
+              </div>
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/educators" className="inline-flex items-center text-primary hover:underline font-medium text-sm">
+                Meet our expert tutors <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Contact Form & Info */}
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
@@ -325,63 +371,8 @@ export function ContactContent() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-8 md:py-12 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
-              How to Get Started
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-card rounded-2xl border border-border">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-primary font-bold">1</span>
-                </div>
-                <h3 className="font-semibold mb-2">Free Consultation</h3>
-                <p className="text-sm text-muted-foreground">Submit the form above or call us. We&apos;ll discuss your child&apos;s needs and goals.</p>
-              </div>
-              <div className="text-center p-6 bg-card rounded-2xl border border-border">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-primary font-bold">2</span>
-                </div>
-                <h3 className="font-semibold mb-2">Tutor Matching</h3>
-                <p className="text-sm text-muted-foreground">We match your student with the ideal tutor based on subject, learning style, and personality.</p>
-              </div>
-              <div className="text-center p-6 bg-card rounded-2xl border border-border">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-primary font-bold">3</span>
-                </div>
-                <h3 className="font-semibold mb-2">Start Learning</h3>
-                <p className="text-sm text-muted-foreground">Sessions begin in-home, at a library, or online via Zoom — whatever works best for your family.</p>
-              </div>
-            </div>
-            <div className="text-center mt-6">
-              <Link href="/educators" className="inline-flex items-center text-primary hover:underline font-medium text-sm">
-                Meet our expert tutors <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Area */}
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-4">
-              Service Areas
-            </h2>
-            <p className="text-center text-muted-foreground mb-6 max-w-2xl mx-auto">
-              KHM Tutoring provides in-home and online tutoring across Hawaii. We serve families in Honolulu,
-              Kailua, Kapolei, Pearl City, Mililani, and throughout Oahu. Online sessions via Zoom are available
-              statewide for all of Hawaii.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
-      <section className="py-8 md:py-12 bg-muted/30">
+      <section id="faq" className="py-8 md:py-12 bg-muted/30 scroll-mt-28">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
@@ -395,6 +386,15 @@ export function ContactContent() {
                 </summary>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                   We offer Math (arithmetic through AP Calculus), English (reading comprehension, essay writing, grammar, vocabulary), SAT prep, SSAT prep, AP subject tutoring, and college counseling & essay writing for K-12 students in Hawaii.
+                </p>
+              </details>
+              <details className="bg-card rounded-xl border border-border p-5 group">
+                <summary className="font-semibold cursor-pointer list-none flex items-center justify-between">
+                  What areas do you serve?
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  KHM Tutoring provides in-home and online tutoring across Hawaii. We serve families in Honolulu, Kailua, Kapolei, Pearl City, Mililani, and throughout Oahu. Online sessions via Zoom are available statewide.
                 </p>
               </details>
               <details className="bg-card rounded-xl border border-border p-5 group">

@@ -233,7 +233,7 @@ const educators = [
     name: 'Sheany Chung',
     subjects: ['Biology', 'Chemistry', 'Cell & Molecular Biology', 'Genetics'],
     tagline: 'Biology BS cum laude | UH Mānoa Student Marshall',
-    image: '/images/tutors/sheany-chung.jpg',
+    image: '/images/tutors/sheany-chung.jpg?v=20260617',
     bio: 'Biology BS cum laude graduate and Student Marshall for UH Mānoa\'s Fall 2025 convocation. Teaching intern for college-level Cell & Molecular Biology and Genetics, with hands-on tutoring experience at Kapiolani Medical Center for Women & Children.',
     achievements: [
       'Biology BS, cum laude — University of Hawai‘i at Mānoa',

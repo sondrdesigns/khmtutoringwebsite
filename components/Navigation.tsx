@@ -27,7 +27,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background shadow-sm py-2.5 border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background shadow-sm py-3 border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -35,13 +35,13 @@ export function Navigation() {
             <Image 
               src="/images/khm-tutoring-logo.png"
               alt="KHM Tutoring Logo - Expert Tutors in Hawaii and Honolulu" 
-              width={40}
-              height={40}
-              className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
+              width={48}
+              height={48}
+              className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
               priority
             />
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-base sm:text-lg text-foreground leading-tight">
+              <span className="font-heading font-bold text-lg sm:text-xl text-foreground leading-tight">
                 KHM Tutoring
               </span>
               <span className="text-[11px] sm:text-xs text-muted-foreground italic hidden sm:inline">
@@ -59,7 +59,7 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'px-4 py-2 rounded-lg font-medium',
+                    'px-5 py-2.5 rounded-lg font-medium text-base',
                     isActive 
                       ? 'text-primary bg-primary/10' 
                       : 'text-foreground/80 hover:text-primary'
@@ -87,7 +87,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 top-[60px] bg-background shadow-lg border-t border-border">
+          <div className="md:hidden fixed inset-x-0 top-[72px] bg-background shadow-lg border-t border-border">
             <div className="px-4 py-4">
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => {
