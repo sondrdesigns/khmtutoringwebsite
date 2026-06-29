@@ -1,29 +1,33 @@
 import { NextResponse } from 'next/server';
-import type { Resource, ResourceDraft } from '@/lib/staff/types';
+import type { ResourceDraft } from '@/lib/staff/types';
 import { requireAdmin } from '@/lib/staff/auth';
+import { createAdminClient } from '@/lib/supabase/admin';
 
-/**
- * STUB — bulk import (admin only). The client sends the reviewed/corrected
- * drafts from the Bulk Upload modal; persist them in one transaction.
- *
- * A fuller pipeline would instead accept the uploaded PDFs (multipart), store
- * each blob, optionally extract first-page text + run `classifyFilename` /
- * `aiClassifyFallback` server-side, then insert rows. See lib/staff/classify.ts.
- */
-
-// POST /api/staff/resources/bulk  -> { drafts: ResourceDraft[] }
+// POST /api/staff/resources/bulk  -> { drafts: ResourceDraft[] }  (admin only)
 export async function POST(req: Request) {
   if (!(await requireAdmin())) {
     return NextResponse.json({ error: 'Admin only' }, { status: 403 });
   }
-  const { drafts } = (await req.json()) as { drafts: ResourceDraft[] };
-  const now = Date.now();
-  const created: Resource[] = (drafts || []).map((d, i) => ({
-    ...d,
-    id: `b_${now + i}`,
-    added: new Date().toISOString().slice(0, 10),
-    author: d.author || 'Kody Kim',
+
+  const { drafts } = await req.json() as { drafts: ResourceDraft[] };
+  if (!drafts?.length) return NextResponse.json({ created: [], count: 0 }, { status: 201 });
+
+  const today = new Date().toISOString().slice(0, 10);
+  const rows = drafts.map((d) => ({
+    type: d.type,
+    title: d.title,
+    subject: d.subject,
+    grade: d.grade,
+    topic: d.topic,
+    pages: d.pages,
+    difficulty: d.difficulty,
+    added: today,
+    author: d.author ?? 'Kody Kim',
   }));
-  // TODO: INSERT created INTO resources (transaction)
-  return NextResponse.json({ created, count: created.length }, { status: 201 });
+
+  const db = createAdminClient();
+  const { data, error } = await db.from('resources').insert(rows).select();
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ created: data, count: data?.length ?? 0 }, { status: 201 });
 }

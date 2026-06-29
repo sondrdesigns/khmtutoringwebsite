@@ -1,32 +1,53 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { createServerClient } from '@supabase/ssr';
 
-/**
- * Gate the staff portal. PLACEHOLDER security — it only checks that the
- * `khm_staff` cookie exists, not that it's valid/signed. Real auth (NextAuth,
- * Clerk, Supabase, signed JWT) replaces the cookie check below.
- *
- * NOTE: if the existing repo already has a `middleware.ts`, merge this
- * `/staff` logic into it rather than adding a second file (only one is allowed).
- */
-const STAFF_COOKIE = 'khm_staff';
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next({ request: req });
 
-export function middleware(req: NextRequest) {
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return req.cookies.getAll(); },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            res.cookies.set(name, value, options)
+          );
+        },
+      },
+    }
+  );
+
+  // Always refresh the session so tokens don't expire mid-session
+  const { data: { user } } = await supabase.auth.getUser();
+
   const { pathname } = req.nextUrl;
 
-  // Allow the login page and the auth API through unauthenticated.
-  if (pathname.startsWith('/staff/login') || pathname.startsWith('/api/staff/auth')) {
-    return NextResponse.next();
+  if (
+    pathname.startsWith('/staff/login') ||
+    pathname.startsWith('/staff/update-password') ||
+    pathname.startsWith('/api/staff/auth') ||
+    pathname.startsWith('/auth/callback')
+  ) {
+    // Redirect already-authenticated users away from the login page
+    if (user && pathname.startsWith('/staff/login')) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/staff/library';
+      return NextResponse.redirect(url);
+    }
+    return res;
   }
 
-  const hasSession = Boolean(req.cookies.get(STAFF_COOKIE)?.value);
-  if (!hasSession) {
+  if (!user) {
     const url = req.nextUrl.clone();
     url.pathname = '/staff/login';
     url.searchParams.set('from', pathname);
     return NextResponse.redirect(url);
   }
-  return NextResponse.next();
+
+  return res;
 }
 
 export const config = {

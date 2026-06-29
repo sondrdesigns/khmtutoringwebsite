@@ -1,24 +1,46 @@
 import { NextResponse } from 'next/server';
-import {
-  STAFF_COOKIE, sessionForPasscode, encodeSession, getStaffSession,
-} from '@/lib/staff/auth';
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { getStaffSession } from '@/lib/staff/auth';
 
-// POST /api/staff/auth  -> { passcode }  : sets the session cookie
+async function makeClient() {
+  const jar = await cookies();
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return jar.getAll(); },
+        setAll(list) {
+          list.forEach(({ name, value, options }) => jar.set(name, value, options));
+        },
+      },
+    }
+  );
+}
+
+// POST /api/staff/auth  -> { email, password }  : signs in and sets session cookies
 export async function POST(req: Request) {
-  const { passcode } = (await req.json()) as { passcode?: string };
-  const session = passcode ? sessionForPasscode(passcode) : null;
-  if (!session) {
-    return NextResponse.json({ error: 'Invalid passcode' }, { status: 401 });
+  const { email, password } = await req.json() as { email?: string; password?: string };
+  if (!email || !password) {
+    return NextResponse.json({ error: 'Email and password are required' }, { status: 400 });
   }
-  const res = NextResponse.json({ session });
-  res.cookies.set(STAFF_COOKIE, encodeSession(session), {
-    httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
-    path: '/',
-    maxAge: 60 * 60 * 12, // 12h
-  });
-  return res;
+
+  const supabase = await makeClient();
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+  if (error || !data.user) {
+    return NextResponse.json({ error: error?.message ?? 'Invalid credentials' }, { status: 401 });
+  }
+
+  const role = (data.user.app_metadata?.role as 'admin' | 'tutor') ?? 'tutor';
+  const session = {
+    role,
+    name: (data.user.user_metadata?.name as string | undefined) ?? data.user.email!.split('@')[0],
+    email: data.user.email!,
+  };
+
+  return NextResponse.json({ session });
 }
 
 // GET /api/staff/auth  -> current session (or null)
@@ -29,7 +51,7 @@ export async function GET() {
 
 // DELETE /api/staff/auth  -> sign out
 export async function DELETE() {
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(STAFF_COOKIE, '', { path: '/', maxAge: 0 });
-  return res;
+  const supabase = await makeClient();
+  await supabase.auth.signOut();
+  return NextResponse.json({ ok: true });
 }
