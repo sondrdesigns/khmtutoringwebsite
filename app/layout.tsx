@@ -4,6 +4,7 @@ import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { StructuredData } from '@/components/StructuredData';
+import { HideOnStaff } from '@/components/staff/HideOnStaff';
 import Script from 'next/script';
 
 const inter = Inter({
@@ -82,9 +83,13 @@ export default function RootLayout({
       <body className="min-h-screen bg-background antialiased">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
         <StructuredData type="home" />
-        <Navigation />
+        <HideOnStaff>
+          <Navigation />
+        </HideOnStaff>
         <main id="main-content" className="min-h-screen">{children}</main>
-        <Footer />
+        <HideOnStaff>
+          <Footer />
+        </HideOnStaff>
 
         {/* Google Analytics */}
         <Script
