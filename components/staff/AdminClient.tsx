@@ -34,43 +34,83 @@ export function AdminClient({
   const [confirming, setConfirming] = useState<Resource | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   const flash = (msg: string) => { setToast(msg); setTimeout(() => setToast(null), 3200); };
 
-  // These mutate local state for an instant UI; each also has a matching API
-  // route (POST/PATCH/DELETE /api/staff/resources...) to wire to the DB.
-  function addFile(draft: ResourceDraft) {
-    const f: Resource = { ...draft, id: `n${Date.now()}`, added: new Date().toISOString().slice(0, 10), author: 'Kody Kim' };
-    setFiles((s) => [f, ...s]);
-    flash(`"${f.title}" added to the library`);
-    // fetch('/api/staff/resources', { method: 'POST', body: JSON.stringify(draft) });
+  async function addFile(draft: ResourceDraft) {
+    setSaving(true);
+    try {
+      const body = await jsonFetch<{ resource: Resource }>('/api/staff/resources', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(draft),
+      });
+      setFiles((s) => [body.resource, ...s]);
+      setAdding(false);
+      flash(`"${body.resource.title}" added to the library`);
+    } catch (err) {
+      flash(err instanceof Error ? err.message : 'Unable to add resource');
+    } finally {
+      setSaving(false);
+    }
   }
-  function saveEdit(updated: Resource) {
-    setFiles((s) => s.map((f) => (f.id === updated.id ? updated : f)));
-    setEditing(null);
-    flash(`"${updated.title}" updated`);
-    // fetch(`/api/staff/resources/${updated.id}`, { method: 'PATCH', body: JSON.stringify(updated) });
+
+  async function saveEdit(updated: Resource) {
+    setSaving(true);
+    try {
+      const body = await jsonFetch<{ resource: Resource }>(`/api/staff/resources/${updated.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updated),
+      });
+      setFiles((s) => s.map((f) => (f.id === body.resource.id ? body.resource : f)));
+      setEditing(null);
+      flash(`"${body.resource.title}" updated`);
+    } catch (err) {
+      flash(err instanceof Error ? err.message : 'Unable to update resource');
+    } finally {
+      setSaving(false);
+    }
   }
-  function deleteFile(f: Resource) {
-    setFiles((s) => s.filter((x) => x.id !== f.id));
-    setConfirming(null);
-    flash(`"${f.title}" removed`);
-    // fetch(`/api/staff/resources/${f.id}`, { method: 'DELETE' });
+
+  async function deleteFile(f: Resource) {
+    setSaving(true);
+    try {
+      await jsonFetch(`/api/staff/resources/${f.id}`, { method: 'DELETE' });
+      setFiles((s) => s.filter((x) => x.id !== f.id));
+      setConfirming(null);
+      flash(`"${f.title}" removed`);
+    } catch (err) {
+      flash(err instanceof Error ? err.message : 'Unable to delete resource');
+    } finally {
+      setSaving(false);
+    }
   }
-  function bulkImport(drafts: ResourceDraft[]) {
-    const now = Date.now();
-    const added: Resource[] = drafts.map((d, i) => ({ ...d, id: `b${now + i}`, added: new Date().toISOString().slice(0, 10), author: 'Kody Kim' }));
-    setFiles((s) => [...added, ...s]);
-    setBulkOpen(false);
-    flash(`${added.length} files imported & sorted into the library`);
-    // fetch('/api/staff/resources/bulk', { method: 'POST', body: JSON.stringify({ drafts }) });
+
+  async function bulkImport(drafts: ResourceDraft[]) {
+    setSaving(true);
+    try {
+      const body = await jsonFetch<{ created: Resource[]; count: number }>('/api/staff/resources/bulk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ drafts }),
+      });
+      setFiles((s) => [...body.created, ...s]);
+      setBulkOpen(false);
+      flash(`${body.count} files imported and saved to the library`);
+    } catch (err) {
+      flash(err instanceof Error ? err.message : 'Unable to import files');
+    } finally {
+      setSaving(false);
+    }
   }
 
   const visible = files.filter((f) => {
     if (typeFilter !== 'all' && f.type !== typeFilter) return false;
     if (query) {
       const q = query.toLowerCase();
-      if (!`${f.title} ${f.topic} ${f.subject} ${f.author}`.toLowerCase().includes(q)) return false;
+      if (!`${f.title} ${f.topic} ${f.subject} ${f.author} ${f.originalFilename ?? ''}`.toLowerCase().includes(q)) return false;
     }
     return true;
   });
@@ -90,7 +130,7 @@ export function AdminClient({
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="mb-1.5 font-heading text-4xl font-bold">Library Admin</h1>
-            <p className="text-base text-muted-foreground">Bulk-upload a batch and let it auto-sort, or add resources one at a time. Visible to Kody only.</p>
+            <p className="text-base text-muted-foreground">Upload, auto-sort, and manage staff PDFs. Visible to admins only.</p>
           </div>
           <button
             onClick={() => router.push('/staff/library')}
@@ -100,7 +140,6 @@ export function AdminClient({
           </button>
         </div>
 
-        {/* Primary feature: bulk upload */}
         <button
           onClick={() => setBulkOpen(true)}
           className="relative mb-7 flex w-full items-center gap-7 overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-br from-primary from-[42%] to-secondary p-[30px_32px] text-left shadow-lg"
@@ -118,8 +157,7 @@ export function AdminClient({
               </span>
             </div>
             <p className="max-w-[560px] text-base leading-relaxed text-white/90">
-              Drop a whole batch of worksheets &amp; tests — they&rsquo;re read, sorted by subject, grade &amp; type, and
-              filed into the library automatically. Review anything unclear before it saves.
+              Upload PDFs to private storage, classify them by subject, grade, and type, then review before saving.
             </p>
           </div>
           <span className="relative inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-primary shadow-md">
@@ -127,7 +165,7 @@ export function AdminClient({
           </span>
         </button>
 
-        {/* Stats */}
+
         <div className="mb-7 grid grid-cols-4 gap-4">
           {stats.map(({ Icon, label, value }) => (
             <div key={label} className="flex items-center gap-3.5 rounded-xl border border-border bg-card p-[18px_20px] shadow-sm">
@@ -142,7 +180,6 @@ export function AdminClient({
           ))}
         </div>
 
-        {/* Management table */}
         <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
           <div className="flex flex-wrap items-center gap-3 border-b border-border px-5 py-4">
             <span className="text-base font-bold">All Resources</span>
@@ -155,7 +192,8 @@ export function AdminClient({
             <MiniToggle value={typeFilter} onChange={setTypeFilter} />
             <button
               onClick={() => setAdding(true)}
-              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-[13.5px] font-semibold text-primary transition-colors hover:bg-primary/10"
+              disabled={saving}
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-[13.5px] font-semibold text-primary transition-colors hover:bg-primary/10 disabled:pointer-events-none disabled:opacity-50"
             >
               <Plus className="size-[15px]" />Add manually
             </button>
@@ -184,14 +222,10 @@ export function AdminClient({
         </div>
       </div>
 
-      {editing && (
-        <AddEditResourceModal initial={editing} isNew={false} onSave={(v) => saveEdit(v as Resource)} onClose={() => setEditing(null)} />
-      )}
-      {adding && (
-        <AddEditResourceModal initial={BLANK_DRAFT} isNew onSave={(v) => { addFile(v as ResourceDraft); setAdding(false); }} onClose={() => setAdding(false)} />
-      )}
-      {confirming && <ConfirmDelete file={confirming} onCancel={() => setConfirming(null)} onConfirm={() => deleteFile(confirming)} />}
-      {bulkOpen && <BulkUploadModal onClose={() => setBulkOpen(false)} onImport={bulkImport} />}
+      {editing && <AddEditResourceModal initial={editing} isNew={false} onSave={(v) => void saveEdit(v as Resource)} onClose={() => setEditing(null)} />}
+      {adding && <AddEditResourceModal initial={BLANK_DRAFT} isNew onSave={(v) => void addFile(v as ResourceDraft)} onClose={() => setAdding(false)} />}
+      {confirming && <ConfirmDelete file={confirming} onCancel={() => setConfirming(null)} onConfirm={() => void deleteFile(confirming)} />}
+      {bulkOpen && <BulkUploadModal onClose={() => setBulkOpen(false)} onImport={(drafts) => void bulkImport(drafts)} />}
       {toast && <Toast message={toast} />}
     </div>
   );
@@ -209,7 +243,7 @@ function AdminRow({ file, onEdit, onDelete }: { file: Resource; onEdit: () => vo
           <div className="min-w-0">
             <div className="max-w-[240px] truncate font-semibold">{file.title}</div>
             <div className="text-xs text-muted-foreground">
-              <span className={cn('font-semibold', isTest ? 'text-[hsl(0_70%_45%)]' : 'text-primary')}>{isTest ? 'Test' : 'Worksheet'}</span> · {file.subject}
+              <span className={cn('font-semibold', isTest ? 'text-[hsl(0_70%_45%)]' : 'text-primary')}>{isTest ? 'Test' : 'Worksheet'}</span> - {file.subject}
             </div>
           </div>
         </div>
@@ -264,4 +298,11 @@ function MiniToggle({ value, onChange }: { value: 'all' | ResourceType; onChange
       })}
     </div>
   );
+}
+
+async function jsonFetch<T = unknown>(url: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(url, init);
+  const body = await res.json().catch(() => ({})) as { error?: string } & T;
+  if (!res.ok) throw new Error(body.error || 'Request failed');
+  return body as T;
 }

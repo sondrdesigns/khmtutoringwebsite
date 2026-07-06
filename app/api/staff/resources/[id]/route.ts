@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { Resource } from '@/lib/staff/types';
 import { requireAdmin } from '@/lib/staff/auth';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { toResource, toResourcePatch, type DbResourceRow } from '@/lib/staff/resource-db';
 
 // PATCH /api/staff/resources/:id  -> edit metadata (admin only)
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -10,20 +11,18 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const patch = await req.json() as Partial<Resource & { fileUrl?: string }>;
-  const { fileUrl, ...rest } = patch;
-  const dbPatch = { ...rest, ...(fileUrl !== undefined ? { file_url: fileUrl } : {}) };
+  const patch = await req.json() as Partial<Resource>;
 
   const db = createAdminClient();
   const { data, error } = await db
     .from('resources')
-    .update(dbPatch)
+    .update(toResourcePatch(patch))
     .eq('id', id)
     .select()
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ resource: data });
+  return NextResponse.json({ resource: toResource(data as DbResourceRow) });
 }
 
 // DELETE /api/staff/resources/:id  (admin only)

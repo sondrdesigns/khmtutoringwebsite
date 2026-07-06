@@ -1,15 +1,15 @@
 import type { Resource } from './types';
 
-export const GRADES = ['6th', '7th', '8th', '9th', '10th', '11th', '12th', 'College'];
+export const GRADES = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', 'College'];
 
 export const SUBJECTS = [
   'Pre-Algebra', 'Algebra 1', 'Algebra 2', 'Geometry', 'Pre-Calculus',
-  'SAT Math', 'SAT Reading & Writing', 'SSAT', 'English', 'Biology', 'Chemistry',
+  'SAT Math', 'SAT Reading & Writing', 'SSAT', 'English', 'Biology', 'Chemistry', 'Physics',
 ];
 
-export const SUBJECT_FILTERS = ['All', 'Math', 'English', 'Test Prep', 'Biology', 'College Counseling'];
+export const SUBJECT_FILTERS = ['All', 'Math', 'English', 'Test Prep', 'Science', 'College Counseling'];
 
-/** Broad area for a subject — drives the accent color in the UI. */
+/** Broad area for a subject â€” drives the accent color in the UI. */
 export type SubjectArea = 'math' | 'testprep' | 'english' | 'science';
 
 export function subjectArea(subject: string): SubjectArea {
@@ -24,7 +24,7 @@ export const AREA_LABEL: Record<SubjectArea, string> = {
 };
 
 /**
- * Seed data. In production this is replaced by a DB query — see
+ * Seed data. In production this is replaced by a DB query â€” see
  * `app/api/staff/resources/route.ts`. Kept here so the UI renders offline.
  */
 export const SEED_RESOURCES: Resource[] = [
@@ -67,7 +67,7 @@ export function matchesSubjectFilter(filter: string, r: Resource): boolean {
     Math: ['Pre-Algebra', 'Algebra 1', 'Algebra 2', 'Geometry', 'Pre-Calculus'],
     English: ['English'],
     'Test Prep': ['SAT Math', 'SAT Reading & Writing', 'SSAT'],
-    Biology: ['Biology', 'Chemistry'],
+    Science: ['Biology', 'Chemistry', 'Physics'],
     'College Counseling': ['SAT Math', 'SAT Reading & Writing'],
   };
   return (map[filter] || []).includes(r.subject);

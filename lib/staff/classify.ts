@@ -1,12 +1,12 @@
 import type { ClassifiedFile, Difficulty, ResourceType } from './types';
 
 /**
- * Filename auto-sort heuristic — the cheap, zero-API first pass.
+ * Filename auto-sort heuristic â€” the cheap, zero-API first pass.
  *
  * Strategy (keep AI costs near zero):
  *   1. Parse the filename against the subject / grade dictionaries below.
  *   2. Anything matched confidently is filed automatically.
- *   3. Low-confidence rows are flagged `medium` / `low` — that is the ONLY
+ *   3. Low-confidence rows are flagged `medium` / `low` â€” that is the ONLY
  *      place a paid model should ever be called. See `aiClassifyFallback`.
  *
  * A production upgrade can also read the first page of PDF text and keyword
@@ -36,6 +36,7 @@ const SUBJECT_KEYWORDS: [string, string[]][] = [
   ['English', ['english', 'reading', 'inference', 'essay', 'comprehension']],
   ['Biology', ['biology', 'bio', 'cell', 'genetics']],
   ['Chemistry', ['chem', 'stoich', 'chemistry']],
+  ['Physics', ['physics', 'mechanics', 'kinematics', 'forces']],
 ];
 
 export function classifyFilename(name: string, id?: string): ClassifiedFile {
@@ -69,7 +70,7 @@ export function classifyFilename(name: string, id?: string): ClassifiedFile {
   }
 
   let difficulty: Difficulty = 'Intermediate';
-  if (grade && ['6th', '7th'].includes(grade)) difficulty = 'Beginner';
+  if (grade && ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th'].includes(grade)) difficulty = 'Beginner';
   else if (grade && ['11th', '12th', 'College'].includes(grade)) difficulty = 'Advanced';
 
   let confidence: ClassifiedFile['confidence'] = 'low';
@@ -93,7 +94,7 @@ export function classifyFilename(name: string, id?: string): ClassifiedFile {
 }
 
 /**
- * OPTIONAL paid fallback — only call this for rows where
+ * OPTIONAL paid fallback â€” only call this for rows where
  * `classifyFilename(...).confidence !== 'high'`. Classifying a filename plus a
  * short text snippet is a few hundred tokens, i.e. a fraction of a cent per
  * file, so even a large batch costs cents. NEVER send whole PDFs.

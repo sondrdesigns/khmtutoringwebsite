@@ -49,7 +49,7 @@ export function LibraryClient({
         if (difficulties.length && !difficulties.includes(f.difficulty)) return false;
         if (query) {
           const q = query.toLowerCase();
-          if (!`${f.title} ${f.topic} ${f.subject}`.toLowerCase().includes(q)) return false;
+          if (!`${f.title} ${f.topic} ${f.subject} ${f.originalFilename ?? ''}`.toLowerCase().includes(q)) return false;
         }
         return true;
       })
@@ -78,7 +78,7 @@ export function LibraryClient({
   function doExport() {
     const pages = selectedFiles.reduce((s, f) => s + f.pages, 0) + 1;
     setExportOpen(false);
-    setToast(`Packet exported — ${selectedFiles.length} files, ${pages} pages`);
+    setToast(`Packet exported ??? ${selectedFiles.length} files, ${pages} pages`);
     setTimeout(() => setToast(null), 3600);
   }
 
@@ -131,7 +131,7 @@ export function LibraryClient({
             <div className="mb-4 flex items-center justify-between">
               <span className="text-sm text-muted-foreground">
                 {results.length} {type === 'worksheet' ? 'worksheet' : 'test'}{results.length === 1 ? '' : 's'}
-                {activeFilterCount ? ' · filtered' : ''}
+                {activeFilterCount ? ' ?? filtered' : ''}
               </span>
               {selectedIds.length > 0 && (
                 <button onClick={() => setSelectedIds([])} className="text-sm font-semibold text-primary">
@@ -238,7 +238,7 @@ function SortSelect({ value, onChange }: { value: SortKey; onChange: (v: SortKey
         className="h-11 cursor-pointer appearance-none rounded-md border border-input bg-card pl-4 pr-9 text-sm font-medium text-foreground outline-none"
       >
         <option value="newest">Newest first</option>
-        <option value="az">Title A–Z</option>
+        <option value="az">Title A???Z</option>
         <option value="pages">Most pages</option>
       </select>
       <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -370,7 +370,7 @@ function SelectionTray({
         <div className="flex min-w-0 flex-1 gap-1.5 overflow-x-auto">
           {files.map((f) => (
             <span key={f.id} className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-secondary/40 py-[5px] pl-2.5 pr-2 text-xs font-medium">
-              {f.title.length > 22 ? `${f.title.slice(0, 22)}…` : f.title}
+              {f.title.length > 22 ? `${f.title.slice(0, 22)}???` : f.title}
               <button onClick={() => onRemove(f.id)} aria-label="Remove" className="flex text-muted-foreground">
                 <X className="size-3.5" />
               </button>
