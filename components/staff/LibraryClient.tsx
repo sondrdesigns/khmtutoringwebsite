@@ -33,6 +33,7 @@ export function LibraryClient({
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [preview, setPreview] = useState<Resource | null>(null);
   const [exportOpen, setExportOpen] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const toggle = (arr: string[], setArr: (v: string[]) => void, v: string) =>
@@ -75,11 +76,35 @@ export function LibraryClient({
       [n[i], n[j]] = [n[j], n[i]];
       return n;
     });
-  function doExport() {
-    const pages = selectedFiles.reduce((s, f) => s + f.pages, 0) + 1;
-    setExportOpen(false);
-    setToast(`Packet exported ??? ${selectedFiles.length} files, ${pages} pages`);
-    setTimeout(() => setToast(null), 3600);
+  async function doExport() {
+    setExporting(true);
+    try {
+      const res = await fetch('/api/staff/export', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids: selectedIds }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const blob = await res.blob();
+      const disposition = res.headers.get('Content-Disposition') ?? '';
+      const match = disposition.match(/filename="([^"]+)"/);
+      const filename = match?.[1] ?? 'KHM-Packet.pdf';
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+      setExportOpen(false);
+      const pages = selectedFiles.reduce((s, f) => s + f.pages, 0) + 1;
+      setToast(`Exported ${selectedFiles.length} file${selectedFiles.length === 1 ? '' : 's'} · ${pages} pages`);
+      setTimeout(() => setToast(null), 4000);
+    } catch {
+      setToast('Export failed — please try again');
+      setTimeout(() => setToast(null), 4000);
+    } finally {
+      setExporting(false);
+    }
   }
 
   const counts = {
@@ -186,6 +211,7 @@ export function LibraryClient({
           onRemove={(id) => toggleSelect(id)}
           onClose={() => setExportOpen(false)}
           onExport={doExport}
+          loading={exporting}
         />
       )}
       {toast && <Toast message={toast} />}

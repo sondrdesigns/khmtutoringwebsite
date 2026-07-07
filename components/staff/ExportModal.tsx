@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronDown, ChevronUp, FileDown, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, FileDown, Loader2, X } from 'lucide-react';
 import type { Resource } from '@/lib/staff/types';
 import { Modal, ModalCloseButton } from './Modal';
 
@@ -10,12 +10,14 @@ export function ExportModal({
   onRemove,
   onClose,
   onExport,
+  loading = false,
 }: {
   files: Resource[];
   onReorder: (index: number, dir: -1 | 1) => void;
   onRemove: (id: string) => void;
   onClose: () => void;
   onExport: () => void;
+  loading?: boolean;
 }) {
   const totalPages = files.reduce((s, f) => s + f.pages, 0) + 1; // + cover
   return (
@@ -63,9 +65,11 @@ export function ExportModal({
         </button>
         <button
           onClick={onExport}
-          className="inline-flex h-9 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+          disabled={loading}
+          className="inline-flex h-9 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60 disabled:pointer-events-none"
         >
-          <FileDown className="size-4" />Export Combined PDF
+          {loading ? <Loader2 className="size-4 animate-spin" /> : <FileDown className="size-4" />}
+          {loading ? 'Building PDF…' : 'Export Combined PDF'}
         </button>
       </div>
     </Modal>

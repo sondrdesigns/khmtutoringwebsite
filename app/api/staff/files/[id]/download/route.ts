@@ -19,20 +19,27 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   const filename = resource.originalFilename || `${resource.title}.pdf`;
 
   if (resource.storageProvider === 'vercel_blob' && resource.storageKey) {
-    const blob = await get(resource.storageKey, { access: 'private' });
-    if (!blob || blob.statusCode !== 200) {
+    const blobResult = await get(resource.storageKey, { access: 'private' });
+    if (!blobResult || blobResult.statusCode !== 200 || !blobResult.stream) {
       return NextResponse.json({ error: 'Blob file not found' }, { status: 404 });
     }
 
     const headers = new Headers();
-    headers.set('Content-Type', blob.blob.contentType || resource.mimeType || 'application/pdf');
+    headers.set('Content-Type', resource.mimeType || 'application/pdf');
     headers.set('Content-Disposition', `${asDownload ? 'attachment' : 'inline'}; filename="${filename.replace(/"/g, '')}"`);
     headers.set('Cache-Control', 'private, max-age=300');
-    return new Response(blob.stream, { status: 200, headers });
+    return new Response(blobResult.stream, { status: 200, headers });
   }
 
   if (resource.fileUrl) {
-    return NextResponse.redirect(resource.fileUrl);
+    const upstream = await fetch(resource.fileUrl);
+    if (!upstream.ok) return NextResponse.json({ error: 'File not found' }, { status: 404 });
+
+    const headers = new Headers();
+    headers.set('Content-Type', resource.mimeType || 'application/pdf');
+    headers.set('Content-Disposition', `${asDownload ? 'attachment' : 'inline'}; filename="${filename.replace(/"/g, '')}"`);
+    headers.set('Cache-Control', 'private, max-age=300');
+    return new Response(upstream.body, { status: 200, headers });
   }
 
   return NextResponse.json({ error: 'No file is attached to this resource' }, { status: 404 });
