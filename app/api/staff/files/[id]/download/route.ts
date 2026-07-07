@@ -24,11 +24,13 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       return NextResponse.json({ error: 'Blob file not found' }, { status: 404 });
     }
 
+    const buffer = Buffer.from(await new Response(blobResult.stream).arrayBuffer());
     const headers = new Headers();
     headers.set('Content-Type', resource.mimeType || 'application/pdf');
     headers.set('Content-Disposition', `${asDownload ? 'attachment' : 'inline'}; filename="${filename.replace(/"/g, '')}"`);
+    headers.set('Content-Length', String(buffer.length));
     headers.set('Cache-Control', 'private, max-age=300');
-    return new Response(blobResult.stream, { status: 200, headers });
+    return new Response(buffer, { status: 200, headers });
   }
 
   if (resource.fileUrl) {

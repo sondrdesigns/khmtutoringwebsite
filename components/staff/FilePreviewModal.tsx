@@ -74,9 +74,9 @@ export function FilePreviewModal({
       <div className="overflow-auto bg-secondary/30 p-7">
         {hasRealFile ? (
           pdfSrc ? (
-            <iframe
-              title={`${file.title} PDF preview`}
+            <embed
               src={pdfSrc}
+              type="application/pdf"
               className="h-[720px] w-full rounded-md border border-border bg-white"
             />
           ) : pdfError ? (
