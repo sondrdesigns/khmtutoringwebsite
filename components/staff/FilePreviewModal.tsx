@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import {
-  BarChart3, BookOpen, Calendar, Check, Download, FileText, GraduationCap, Loader2, Plus, Tag, User,
+  BarChart3, BookOpen, Calendar, Check, Download, FileText, GraduationCap, Plus, Tag, User,
 } from 'lucide-react';
 import { subjectArea, fmtDate } from '@/lib/staff/resources';
 import type { Resource } from '@/lib/staff/types';
@@ -34,31 +33,6 @@ export function FilePreviewModal({
   const fileRoute = `/api/staff/files/${file.id}/download`;
   const hasRealFile = !!(file.storageKey || file.fileUrl);
 
-  const [pdfSrc, setPdfSrc] = useState<string | null>(null);
-  const [pdfError, setPdfError] = useState(false);
-
-  useEffect(() => {
-    if (!hasRealFile) return;
-    let objectUrl: string | null = null;
-    setPdfSrc(null);
-    setPdfError(false);
-
-    fetch(fileRoute)
-      .then((res) => {
-        if (!res.ok) throw new Error('load failed');
-        return res.blob();
-      })
-      .then((blob) => {
-        objectUrl = URL.createObjectURL(blob);
-        setPdfSrc(objectUrl);
-      })
-      .catch(() => setPdfError(true));
-
-    return () => {
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
-    };
-  }, [fileRoute, hasRealFile]);
-
   const meta: { icon: React.ReactNode; label: string; value: string }[] = [
     { icon: <BookOpen className="size-4" />, label: 'Subject', value: file.subject },
     { icon: <GraduationCap className="size-4" />, label: 'Grade', value: file.grade },
@@ -73,21 +47,11 @@ export function FilePreviewModal({
     <Modal onClose={onClose} className="grid max-w-[1040px] grid-cols-[1fr_320px]">
       <div className="overflow-auto bg-secondary/30 p-7">
         {hasRealFile ? (
-          pdfSrc ? (
-            <embed
-              src={pdfSrc}
-              type="application/pdf"
-              className="h-[720px] w-full rounded-md border border-border bg-white"
-            />
-          ) : pdfError ? (
-            <div className="flex h-[720px] items-center justify-center rounded-md border border-border bg-white text-sm text-muted-foreground">
-              Could not load preview.
-            </div>
-          ) : (
-            <div className="flex h-[720px] items-center justify-center rounded-md border border-border bg-white">
-              <Loader2 className="size-6 animate-spin text-muted-foreground" />
-            </div>
-          )
+          <iframe
+            title={`${file.title} PDF preview`}
+            src={fileRoute}
+            className="h-[720px] w-full rounded-md border border-border bg-white"
+          />
         ) : (
           <DocumentPage file={file} />
         )}
